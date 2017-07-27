@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Philip Callender",
+      "authorEmail": "philip.callender@tooltwist.com",
+      "authorUrl": ""
+    }
+  }
+}

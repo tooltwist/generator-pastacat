@@ -1,0 +1,1064 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+
+  //- style
+
+
+block content
+
+  .banner.home
+    .gradient
+    .owl-carousel
+      .item
+        img(src='assets/images/cm/banner/b1.png')
+      //- item
+      .item
+        img(src='assets/images/cm/banner/b2.png')
+      //- item
+      .item
+        img(src='assets/images/cm/banner/b3.png')
+      //- item
+      .item
+        img(src='assets/images/cm/banner/b4.png')
+      //- item
+    //- owl-carousel
+    .content
+      .container
+        h1.jumbo
+          | The fun marketplace connecting online shoppers.
+          br
+          | It's the new way to save!
+          br
+          small Discover. Share. Enjoy.
+        //- h1
+        .action.authservice-logged-out
+          a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
+            i.fa.fa-envelope
+            span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+          //- a
+          a.btn.btn-primary.btn-lg
+            i.fa.fa-facebook
+            span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+          //- a
+        //- action
+      //- container
+    //- content
+  //- banner-home
+  
+  article
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          form
+            .form-group
+              .input-group.dc-filters
+                a.link-1(href='#refineSearch', data-toggle='collapse') Refine Search
+                #drop_recent_search.search-dropdown.collapse
+                  a.close(href='#drop_recent_search', data-toggle='collapse') &times;
+                  .dropdown-wrap
+                    big Suggestions
+                    ul
+                      li
+                        a(href='#modal_coming_soon', data-toggle='modal') Brokenwood - Graveyard Vineyard
+                      //- li
+                    //- ul
+                    big Recent search&nbsp;
+                      small
+                        a(href='#modal_coming_soon', data-toggle='modal') clear
+                      //- small
+                    //- strong
+                    ul
+                      li
+                        a(href='#modal_coming_soon', data-toggle='modal') Corona Extra - Imported Beer
+                      //- li
+                    //- ul
+                  //- .dropdown-wrap
+                //- drop_recent_search
+                #refineSearch.search-dropdown.collapse
+                  a.close(href='#refineSearch', data-toggle='collapse') &times;
+                  .dropdown-wrap
+                    .row
+                      .col-md-4
+                        strong Category
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Red Wine
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | White Wine
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Beer
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Cider
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Spirits
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Bubbles
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Organic
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Varietal
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Shiraz
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Chardonnay
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Cabernet
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Suvignon
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Pinot Gris
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Vintage
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Non Vintage
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 2016
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 2015
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Etc.
+                          //- li
+                        //- ul
+                      //- col-md-4
+                    //- row
+                    .row
+                      .col-md-4
+                        strong Pack Size
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Single Bottle
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 6 pack
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 12 pack
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 24 pack
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Country
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Australia
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | France
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Spain
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Italy
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | New Zealand
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Argentina
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | United States
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Chile
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | South Africa
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Greece
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Uruguay
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Portugal
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Romania
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Austria
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Macedonia
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Hungary
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Brazil
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | China
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Germany
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Region
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Adelaide Hills
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Adelaide Plains
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Alphine Valleys
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Barossa Valley
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Beechworth
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Bendigo
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Blackwood Valley
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Canberra District
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Clare Valley
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Coonawarra
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Cowra
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Currency Creek
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Eden Valley Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Geelong Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Geographe Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Gippsland Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Glenrowan
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Goulburn Valley
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Grampians Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Granite Belt Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Great Southern Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Gundagai
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Hastings River
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Heathcote Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Henty
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Hilltops Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Hunter Valley Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Kangaroo Island
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | King Valley Wineries
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Langhorne Creek Wineries
+                          //- li
+                        //- ul
+                      //- col-md-4
+                    //- row
+                    .row
+                      .col-md-4
+                        strong Price
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Under $10
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $10 - $20
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $20 - $30
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $30 - $40
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $40 - $50
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $50 - $60
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $60 - $80
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $80 - $100
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $100 - $150
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | $150 - $200
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Over $200
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Ratings
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Over 95
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 90 - 94
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 85 - 89
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 80 - 84
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | 75 - 79
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Less than 74
+                          //- li
+                        //- ul
+                      //- col-md-4
+                      .col-md-4
+                        strong Awards
+                        ul
+                          li
+                            input(type='checkbox')
+                            | Trophy
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Gold
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Silver
+                          //- li
+                          li
+                            input(type='checkbox')
+                            | Bronze
+                          //- li
+                        //- ul
+                      //- col-md-4
+                    //- row
+                  //- filters-wrap
+                //- dc-filters-dropdown
+                a.arrow(href='#drop_recent_search', data-toggle='collapse')
+                  i.fa.fa-caret-down
+                //- a
+                input.form-control.input-lg(type='text', placeholder='Search products...')
+                span.input-group-btn
+                  a.btn.btn-default.btn-lg(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-search
+                //- span
+              //- input-group
+            //- form-group
+          //- form
+        //- col-md-8
+      //- row
+    //- container
+  //- article
+
+  //- section.pagenav
+  //-   .container
+  //-     nav.page
+  //-       ul
+  //-         li
+  //-           a(href='drinks.html?category=620') Red
+  //-         //- li
+  //-         li
+  //-           a(href='drinks.html?category=610') White
+  //-         //- li
+  //-         li
+  //-           a(href='drinks.html?category=660') Beer
+  //-         //- li
+  //-         li
+  //-           a(href='drinks-spirits.html') Spirits
+  //-         //- li
+  //-         li
+  //-           a(href='drinks-bubbles.html') Bubbles
+  //-         //- li
+  //-         li
+  //-           a(href='drinks-cider.html') Cider
+  //-         //- li
+  //-       //- ul
+  //-     //- nav
+  //-   //- container
+  //- //- section
+
+  section.drinks.compare(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+    .container
+      .product-wrap
+        h4 Compare Products
+        p Select a maximum of 3 drinks to compare.
+        .row.compare-summary
+
+
+          .col-md-4(ng-repeat="variant in variants")
+            .alert.alert-success
+              a.close(ng-click="removeFromCompare(variant)" href='#', data-toggle='modal') &times;
+              strong {{variant.manufacturer}}
+              p {{variant.name}}
+            //- alert
+          //- col-md-4
+
+          // Dummy data
+          .col-md-4.hide
+            .alert.alert-success
+              a.close(href='#modal_coming_soon', data-toggle='modal') &times;
+              strong Giant Steps
+              p Pinot Noir
+            //- alert
+          //- col-md-4
+          .col-md-4.hide
+            .alert.alert-success
+              a.close(href='#modal_coming_soon', data-toggle='modal') &times;
+              strong Rosnay Organic
+              p Triple Blend
+            //- alert
+          //- col-md-4
+        //- row
+        a.btn.btn-success.btn-small(href='#modal_coming_soon', data-toggle='modal') Compare up to 3 Products
+        hr
+        .row
+
+
+
+
+          .col-sm-6.col-md-4(ng-repeat="variant in variants")
+            .product
+              .thumb
+                .ctr
+                  .count.product-rating.patch-in-average-product-rating(productVariantId="{{variant.productVariantId}}")
+                    | &nbsp;
+                  span points
+                  //- count
+                //- ctr
+                a(href='productdetails2.html')
+                  img.img-prod(src='{{variant.images[0].imagePath}}', alt='')
+                //- a
+                .details
+                  p
+                  .name
+                    a(href='#modal_coming_soon', data-toggle='modal') {{variant.manufacturer}}
+                    br
+                    small {{variant.name}}
+                  //- name
+                  table.table
+                    tr(ng-repeat="specname in uniqueSpecificationNames")
+                      th {{specname}}
+                      td {{getVariantSpec(variant,specname)}}
+
+                    tr
+                      th
+                      td
+                    //- tr
+                  //- table
+                  .pricing
+                    .buy.drop
+                      ul
+                        li
+                          a.thumb-action(href='productdetails2.html') Buy
+                        //- li
+                        li.price {{formattedPrice(variant)}}
+                        //- li
+                        li
+                          a.thumb-action(href='productdetails2.html') View
+                        //- li
+                      //- ul
+                    //-buy
+                  //- pricing
+                //- details
+              //- thumb
+            //- product
+          //- col
+
+
+
+
+          // Dummy data
+          .col-sm-6.col-md-4.hide
+            .product
+              .thumb
+                .ctr
+                  .count 91
+                    span points
+                  //- count
+                //- ctr
+                a(href='productdetails2.html')
+                  img.img-prod(src='assets/images/producers/gs/prod5.jpg', alt='')
+                //- a
+                .details
+                  p
+                  .name
+                    a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                    br
+                    small Pinot Noir
+                  //- name
+                  table.table
+                    tr
+                      th Rating
+                      td 91 points
+                    //- tr
+                    tr
+                      th Variety
+                      td Pinot Noir
+                    //- tr
+                    tr
+                      th Region
+                      td Yarra Valley
+                    //- tr
+                    tr
+                      th Alcohol
+                      td 13.0%
+                    //- tr
+                    tr
+                      th Vintage
+                      td 2015
+                    //- tr
+                    tr
+                      th Shipping
+                      td $9
+                    //- tr
+                    tr
+                      th Returns
+                      td 30 days
+                    //- tr
+                    tr
+                      th Circlebuys
+                      td 21
+                    //- tr
+                    tr
+                      th No. Ratings
+                      td 69
+                    //- tr
+                    tr
+                      th No. Reviews
+                      td 13
+                    //- tr
+                    tr
+                      th Case Size
+                      td 6 bottles
+                    //- tr
+                    tr
+                      th Standard Drinks
+                      td 7
+                    //- tr
+                    tr
+                      th Food Matching
+                      td Pasta, Duck
+                    //- tr
+                    tr
+                      th
+                      td
+                    //- tr
+                  //- table
+                  .pricing
+                    .buy.drop
+                      ul
+                        li
+                          a.thumb-action(href='productdetails2.html') Buy
+                        //- li
+                        li.price $35.00
+                        //- li
+                        li
+                          a.thumb-action(href='productdetails2.html') View
+                        //- li
+                      //- ul
+                    //-buy
+                  //- pricing
+                //- details
+              //- thumb
+            //- product
+          //- col
+
+
+
+          .col-sm-6.col-md-4.hide
+            .product
+              .thumb
+                .ctr
+                  .count 96
+                    span points
+                  //- count
+                //- ctr
+                a(href="productdetails-rosnay.html")
+                  img.img-prod(src='assets/images/producers/rosnay/prod9.png', alt='')
+                //- a
+                .details
+                  p
+                  .name
+                    a(href='#modal_coming_soon', data-toggle='modal') Rosnay Organic
+                    br
+                    small Triple Blend
+                  //- name
+                  table.table
+                    tr
+                      th Rating
+                      td 96 points
+                    //- tr
+                    tr
+                      th Variety
+                      td Triple Blend
+                    //- tr
+                    tr
+                      th Region
+                      td Cowra
+                    //- tr
+                    tr
+                      th Alcohol
+                      td 14.0%
+                    //- tr
+                    tr
+                      th Vintage
+                      td 2015
+                    //- tr
+                    tr
+                      th Shipping
+                      td Free
+                    //- tr
+                    tr
+                      th Returns
+                      td 90 days
+                    //- tr
+                    tr
+                      th Circlebuys
+                      td 9
+                    //- tr
+                    tr
+                      th No. Ratings
+                      td 34
+                    //- tr
+                    tr
+                      th No. Reviews
+                      td 8
+                    //- tr
+                    tr
+                      th Case Size
+                      td 12 bottles
+                    //- tr
+                    tr
+                      th Standard Drinks
+                      td 7.5
+                    //- tr
+                    tr
+                      th Food Matching
+                      td Steak, Casserole
+                    //- tr
+                    tr
+                      th
+                      td
+                    //- tr
+                  //- table
+                  .pricing
+                    .buy.drop
+                      ul
+                        li
+                          a.thumb-action(href='productdetails-rosnay.html') Buy
+                        //- li
+                        li.price $19.99
+                        //- li
+                        li
+                          a.thumb-action(href='productdetails-rosnay.html') View
+                        //- li
+                      //- ul
+                    //-buy
+                  //- pricing
+                //- details
+              //- thumb
+            //- product
+          //- col
+        //- row
+      //- product-wrap
+    //- container
+  //- section
+
+
+block scripts
+  // External Script goes here...
+  script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+
+  script.
+    $(function () {
+      $('.popover_price[data-toggle="popover"]').popover({
+        html: true,
+        content : function() {
+          return '<ul class="cost">' + $(this).parent().find("ul").html() + '</ul>';
+        },
+        title: function(){
+          return jQuery(this).data('title') + '<span class="close">&times;</span>';
+        }
+      }).on('shown.bs.popover', function(e) {
+        var popover = jQuery(this);
+        $(this).parent().find('.popover span.close').on('click', function(e) {
+          popover.popover('hide');
+        });
+      }).click(function(e) {
+        e.preventDefault();
+      });
+    });
+
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        autoplayHoverPause: true,
+        animateOut: 'fadeOut',
+        autoplaySpeed: 1000,
+        mouseDrag: false,
+        responsive:{
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      });
+
+      //search filter
+      $(".dc-filters").find("input.input-lg").keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+          {
+            $(".dc-filters").find("span a").trigger("click");
+            return false;
+          }
+      });
+
+    });
+
+
+
+
+    /************************************************************
+     *
+     *    Angular code.
+     */
+    var app = angular.module('myApp', ['ngSanitize']);
+
+    teaservice.init({
+      host: TEASERVICE_HOST,
+      port: TEASERVICE_PORT,
+      accessToken: TEASERVICE_ACCESS_TOKEN
+    });
+
+    // Add the controller for this page
+    app.controller('myCtrl', function($scope, teaService) {
+
+      // Get the products to compare from a cookie
+
+
+      // Start updating countdownTimers, even though
+      // we won't have any yet.
+      /*teaService.startCountdownTimers();*/
+
+
+      //var cookieValue = "6210,6260";
+      var COMPARE_COOKIE = 'idsForCompare';
+      var compare_productVariantIds = [ ];
+      var cookie = authservice.getCookie(COMPARE_COOKIE);
+      if (cookie) {
+        compare_productVariantIds = cookie.split(',');
+        if (compare_productVariantIds.length == 1 && compare_productVariantIds[0] == '') {
+          compare_productVariantIds = [ ];
+        }
+      } else {
+        compare_productVariantIds = [ ];
+      }
+      console.log('compare_productVariantIds=', compare_productVariantIds);
+
+
+
+
+
+
+      // Call the TEA API to get the product details
+      //var compare_productVariantIds = [ 6210, 6260 ];
+      // Display the current price nicely formatted.
+
+      if (compare_productVariantIds.length > 0) {
+
+        var params = {
+          productVariantId: compare_productVariantIds,
+          needImages: true,
+          needSpecifications: true
+        };
+        teaService.getProduct(params).then(function(products){
+
+          // Display the product details
+          console.log('\n\n\nREPLY FROM getProduct:', products);
+
+          //$scope.products = products;
+
+          // Create a list of the product variants
+          var variants = [ ];
+          for (var i = 0; i < products.length; i++) {
+            variants.push(products[i].variants[0]);
+          }
+          $scope.variants = variants;
+
+          // Create a complete list of specification fields
+          var hashOfVariantNames = [ ]; // hash of name -> name
+          for (var i = 0; i < variants.length; i++) {
+            var variant = variants[i];
+            variant.d_specIndex = [ ]; // name -> specification
+            for (var v = 0; v < variant.specifications.length; v++) {
+              var spec = variant.specifications[v];
+              var name = spec.name;
+              hashOfVariantNames[name] = name; // Add this to our unique list of names
+              variant.d_specIndex[name] = spec; // Add to the variant's index of specifications
+              //console.log('add spec', spec.name)
+            }
+          }
+          var uniqueSpecificationNames = [ ];
+          for (name in hashOfVariantNames) {
+            //console.log('--> ' + name);
+            uniqueSpecificationNames.push(name);
+          }
+          //console.log('full field list is:', uniqueSpecificationNames);
+          $scope.uniqueSpecificationNames = uniqueSpecificationNames;
+
+
+          // This function returns the value for a specific specification type,
+          // using the lookup index on the variant we created above.
+          $scope.getVariantSpec = function(variant, specname) {
+            var spec = variant.d_specIndex[specname];
+            if (spec) {
+              return spec.value;
+            } else {
+              return '';
+            }
+          }
+
+
+          // Remove a product from the comparison
+          $scope.removeFromCompare = function(variant) {
+            var productVariantId = variant.productVariantId;
+            for (var i = 0; i < compare_productVariantIds.length; i++) {
+              if (compare_productVariantIds[i] == productVariantId) {
+                compare_productVariantIds.splice(i, 1);
+                break;
+              }
+            }
+            console.log('compare_productVariantIds is now ', compare_productVariantIds);
+
+            // Save the new cookie
+            var sep = '';
+            var cookie = '';
+            for (var i = 0; i < compare_productVariantIds.length; i++) {
+              cookie += sep + compare_productVariantIds[i];
+              sep = ',';
+            }
+            console.log('new cookie is ' + cookie + '.');
+            authservice.setCookie(COMPARE_COOKIE, cookie, 30); // keep it a maximum of a month
+            window.location.reload(false);
+          }
+
+          $scope.formattedPrice = function(variant) {
+            return accounting.formatMoney(variant.lastPrice);
+          }
+
+        }); // GetProduct()
+      } //-compare_productVariantIds.length > 0
+
+
+
+      /*
+       *  Initialize CrowdHound and get the product ratings.
+       */
+      CrowdHound.init({
+            serverUrl : '//' + CROWDHOUND_HOST + ':' + CROWDHOUND_PORT,
+            apiVersion : CROWDHOUND_VERSION,
+            tenantId : CROWDHOUND_TENANT,
+            debug: false,
+            authenticationToken: authservice.getUserAccessToken(),
+      }, function afterCuriaInit() {
+
+        // Load the reviews
+        //chratingsandreview.loadReviews(productVariantId);
+
+        // Patch in the average ratings
+        setTimeout(function() {
+          chratingsandreview.patchInProductRatings();
+
+        }, 1000);
+      }); // CrowdHound.init
+
+    });
+
+
+    /*
+     *  Set up the login part at the top of the page.
+     */
+    authservice.init({
+      // Environment specific values are defined in environment.js
+      host: AUTHSERVICE_HOST,
+      port: AUTHSERVICE_PORT,
+      tenant: AUTHSERVICE_TENANT,
+      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
+      onUserChange: function(user, ttuat, fromCookie) {
+        // If the current user came from the cookie, reload it
+        //if (fromCookie) {
+        //  console.log('Reloading user details (cookie details are just a summary)');
+        //  return authservice.reloadUser();
+        //}
+      }
+    });
+
+
+  //- script.
+//- block scripts

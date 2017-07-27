@@ -1,0 +1,378 @@
+// Composer
+.composer {
+  & {
+    background: white;
+    border: 1px solid #eee;
+    outline: 1px solid whitesmoke;
+    margin-top: 27px;
+  }
+  .head {
+    padding: 10px 15px !important;
+    background: whitesmoke;
+    a {
+      color: #777;
+      margin: 0 8px;
+      font-size: 14px;
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+  .content {
+    padding: 15px;
+    > div:not(#composer-tab-events) {
+      textarea {
+        border: 0;
+        box-shadow: none;
+        resize: none;
+      }
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  .controls {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    a {
+      color: #777;
+      margin: 0 8px;
+      font-weight: lighter;
+      text-decoration: none;
+      i {
+        margin-right: 5px;
+      }
+      &.post {
+        float: right;
+        font-weight: normal;
+      }
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+}
+
+// controls
+.generic-controls {
+  padding: 10px 5px;
+  // border-top: 1px solid #d8d8d8;
+  font-size: 12px;
+  clear: both;
+  a {
+    color: #777;
+    margin: 0 8px;
+    text-decoration: none;
+    i {
+      margin-right: 5px;
+    }
+    &.post {
+      float: right;
+      font-weight: normal;
+    }
+    &:hover {
+      color: #ccc;
+    }
+  }
+}
+
+// Avatar
+.avatar {
+	& {
+		display: inline-block;
+	}
+	.img {
+		@include border-radius(50%);
+    @include box(150px);
+    @media screen and (min-width: 768px) {
+      @include box(120px);
+    }
+    @media screen and (min-width: 1200px) {
+      @include box(150px);
+    }
+		overflow: hidden;
+		position: relative;
+		img {
+			padding: 20px;
+			@include border-radius(50%);
+			// max-width: 100%;
+      max-height: 100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			bottom: 0;
+			top: 0;
+		}
+	}
+	.ring {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background: transparent url($bg-avatar-ring) center center no-repeat;
+		background-size: auto 100%;
+		&._70p {
+			background-image: url($bg-avatar-ring-70p);
+		}
+		&._50p {
+			background-image: url($bg-avatar-ring-50p);
+		}
+		&._40p {
+			background-image: url($bg-avatar-ring-40p);
+		}
+    &._s20 {
+			background-image: url($bg-avatar-ring-s20);
+		}
+		&._s6 {
+			background-image: url($bg-avatar-ring-s6);
+		}
+		&._s3 {
+			background-image: url($bg-avatar-ring-s3);
+		}
+    &.cb3of12 {
+			background-image: url($bg-avatar-ring-cb3of12);
+		}
+    &.cb6of12 {
+			background-image: url($bg-avatar-ring-cb6of12);
+		}
+    &.cb7of12 {
+			background-image: url($bg-avatar-ring-cb7of12);
+		}
+    &.cb8of12 {
+			background-image: url($bg-avatar-ring-cb8of12);
+		}
+	}
+	.name {
+		font-size: 11px;
+		text-align: center;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		span {
+			white-space: nowrap;
+		}
+	}
+}
+
+// Popover
+.popover {
+  & {
+    z-index: 1040;
+  }
+  .popover-title {
+    span {
+      position: absolute;
+      right: 15px;
+      top: 5px;
+    }
+  }
+  .popover-content {
+    ul {
+      &.cost {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        & {
+          display: table;
+        }
+        & + li {
+          border-top: 1px solid #eee;
+        }
+        a {
+          & {
+            display: table-row;
+          }
+          span {
+            & {
+              vertical-align: middle;
+              display: table-cell;
+              white-space: nowrap;
+            }
+            &:last-child {
+              padding-left: 5px;
+            }
+            &.qty {
+              display: inline-block;
+              font-size: 12px;
+              line-height: 15px;
+              text-align: center;
+              padding: 2px 5px;
+              width: 45px;
+              // border-right: 1px solid #eee;
+              color: black;
+            }
+            &.price {
+              margin-left: 10px;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+    .ratings {
+      display: block;
+      .progress {
+        margin-bottom: 0;
+        height: 10px;
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// Show rating ranges in a popover
+// Don't use the inline below
+.popover_rating_groups {
+	.ratings {
+		& {
+			display: none;
+		}
+		.progress {
+			margin-bottom: 0;
+			height: 10px;
+			display: inline-block;
+			width: 100%;
+			vertical-align: middle;
+		}
+	}
+}
+
+// Show rating ranges on the page
+// Don't use the popover above
+.inline_rating_groups {
+	.ratings {
+    table {
+      margin-top: 8px;
+      margin-left: 50px;
+    }
+		.progress {
+			margin-bottom: 0;
+			height: 10px;
+			display: inline-block;
+			width: 100%;
+			vertical-align: middle;
+		}
+	}
+}
+
+
+// deals
+.deals {
+  padding: 10px 0 10px 10px;
+  // border: 1px dashed #ccc;
+  border-radius: 8px;
+  // max-width: 80%;
+  margin: 15px 0;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+  legend {
+    font-size: 14px;
+    border: 0;
+    margin-bottom: 0;
+    float: left;
+  }
+  p {
+    &.lead {
+      margin-bottom: 0;
+    }
+  }
+  big.lead {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .btn {
+    margin-bottom: 5px;
+    padding: 2px 25px;
+  }
+  &.card {
+    // background: #ececec;
+    outline: 0;
+    border-color: #41B54B;
+    padding: 5px 10px;
+  }
+}
+
+
+.card_rounded {
+  padding: 5px 15px 0 15px;
+  background: white;
+  border: 1px solid #eee;
+  // outline: 1px solid whitesmoke;
+  border-radius: 8px;
+}
+
+.rating-status {
+  font-size: 18px;
+  span {
+    vertical-align: middle;
+    &.right {
+      margin-left: 5px;
+    }
+    &.xs {
+      font-size: 12px;
+    }
+    &.sm {
+      font-size: 14px;
+    }
+    &.md {
+      font-size: 16px;
+    }
+  }
+  &.md {
+    font-size: 16px;
+  }
+  &.sm {
+    font-size: 14px;
+  }
+  &.xs {
+    font-size: 12px;
+  }
+  .stars {
+    display: inline-block;
+    white-space: nowrap;
+    color: #41B54B;
+    .fa + .fa {
+      margin-left: 5px;
+    }
+  }
+}
+
+.picture {
+  & {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  &.round {
+    border-radius: 50%;
+  }
+  img {
+    &.placeholder {
+      &.xs {
+        width: 30px;
+      }
+      &.sm {
+        width: 45px;
+      }
+      &.md {
+        width: 60px;
+      }
+      &.lg {
+        width: 75px;
+      }
+    }
+    &.source {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

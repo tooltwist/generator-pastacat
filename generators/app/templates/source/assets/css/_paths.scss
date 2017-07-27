@@ -1,0 +1,116 @@
+$source   : 'ttstatic'; // change value to 'ttstatic' for local testing
+
+// Banners(main.scss)
+$banner-home        : '';
+$banner-advisor     : '';
+$banner-direct      : '';
+$banner-circle      : '';
+// Other Background Images
+// From(main.scss)
+$bg-userprofile     : '';
+$bg-seller          : '';
+$bg-ww              : '';
+$bg-yh              : '';
+$bg-ro              : '';
+$bg-ar              : '';
+$bg-gs              : '';
+$bg-fg              : '';
+$bg-4p              : '';
+$bg-dc              : '';
+$bg-ctr-gold        : '';
+$bg-ctr-silver      : '';
+$bg-ctr-bronze      : '';
+// From(_cardgroups.scss)
+$bg-thumb-ring      : '';
+// From(_components.scss)
+$bg-avatar-ring     : '';
+$bg-avatar-ring-70p : '';
+$bg-avatar-ring-50p : '';
+$bg-avatar-ring-40p : '';
+$bg-avatar-ring-s20 : '';
+$bg-avatar-ring-s6  : '';
+$bg-avatar-ring-s3  : '';
+$bg-avatar-ring-cb3of12  : '';
+$bg-avatar-ring-cb6of12  : '';
+$bg-avatar-ring-cb7of12  : '';
+$bg-avatar-ring-cb8of12  : '';
+// From(_adrian.scss)
+$bg-title-ctr       : '';
+$drop-arrow         : '';
+
+@if ($source == 'ttstatic') {
+  // Banners(main.scss)
+  $banner-home        : '../../assets/images/banner/banner_8.jpg';
+  $banner-advisor     : '../../assets/images/banner/banner_8.jpg';
+  $banner-direct      : '../../assets/images/banner/banner_4.jpg';
+  $banner-circle      : '../../assets/images/banner/banner_1.jpg';
+  // Other Background Images
+  // From(main.scss)
+  $bg-userprofile     : '../../assets/images/cover/cover_1.jpg';
+  // $bg-seller          : '../../assets/images/producers/brokenwood/cover.png';
+  // $bg-ww              : '../../assets/images/producers/westwinds/cover.png';
+  // $bg-yh              : '../../assets/images/producers/yh/cover.jpg';
+  // $bg-ro              : '../../assets/images/producers/rosnay/cover.jpg';
+  $bg-ar              : '../../assets/images/producers/ar/cover.jpg';
+  $bg-gs              : '../../assets/images/producers/gs/cover.jpg';
+  $bg-fg              : '../../assets/images/producers/fg/cover.jpg';
+  $bg-4p              : '../../assets/images/producers/4p/cover.jpg';
+  $bg-dc              : '../../assets/images/bg_drinkcircle.jpg';
+  $bg-ctr-gold        : '../../assets/images/ring_gold.png';
+  $bg-ctr-silver      : '../../assets/images/ring_silver.png';
+  $bg-ctr-bronze      : '../../assets/images/ring_bronze.png';
+  // From(_cardgroups.scss)
+  $bg-thumb-ring      : '../../assets/images/ring.png';
+  // From(_components.scss)
+  $bg-avatar-ring     : '../../assets/images/ring.png';
+  // $bg-avatar-ring-70p : '../../assets/images/ring_70p_solid.png';
+  $bg-avatar-ring-70p : '../../assets/images/cb70.png';
+  // $bg-avatar-ring-50p : '../../assets/images/ring_50p_solid.png';
+  $bg-avatar-ring-50p : '../../assets/images/cb50.png';
+  // $bg-avatar-ring-40p : '../../assets/images/ring_40p_solid.png';
+  $bg-avatar-ring-40p : '../../assets/images/cb40.png';
+  $bg-avatar-ring-s20 : '../../assets/images/s20.png';
+  $bg-avatar-ring-s6 : '../../assets/images/s6.png';
+  $bg-avatar-ring-s3 : '../../assets/images/s3.png';
+  $bg-avatar-ring-cb3of12  : '../../assets/images/cb3of12.png';
+  $bg-avatar-ring-cb6of12  : '../../assets/images/cb6of12.png';
+  $bg-avatar-ring-cb7of12  : '../../assets/images/cb7of12.png';
+  $bg-avatar-ring-cb8of12  : '../../assets/images/cb8of12.png';
+  // From(_adrian.scss)
+  $bg-title-ctr       : '../assets/images/ring.png';
+  $drop-arrow         : '../../assets/images/drop_arrow.png';
+} @else {
+  // Banners(main.scss)
+  $banner-home        : '/ttsvr/cropImage/drinkcircle.images.i_banner_home.jpg';
+  $banner-advisor     : '/ttsvr/cropImage/drinkcircle.images.i_banner_advisor.jpg';
+  $banner-direct      : '/ttsvr/cropImage/drinkcircle.images.i_banner_direct.jpg';
+  $banner-circle      : '/ttsvr/cropImage/drinkcircle.images.i_banner_circles.jpg';
+  // Other Background Images
+  // From(main.scss)
+  $bg-userprofile     : '/ttsvr/cropImage/drinkcircle.images.i_tmp_cover_1.jpg';
+  $bg-seller          : '/ttsvr/cropImage/drinkcircle.images.i_tmp_cover_2.png';
+  $bg-dc              : '/ttsvr/cropImage/drinkcircle.images.i_tmp_bg_drinkcircle.jpg';
+  $bg-ctr-gold        : '/ttsvr/cropImage/drinkcircle.images.i_ring_gold.png';
+  $bg-ctr-silver      : '/ttsvr/cropImage/drinkcircle.images.i_ring_silver.png';
+  $bg-ctr-bronze      : '/ttsvr/cropImage/drinkcircle.images.i_ring_bronze.png';
+  // From(_cardgroups.scss)
+  $bg-thumb-ring      : '/ttsvr/cropImage/drinkcircle.images.i_ring.png';
+  // From(_components.scss)
+  $bg-avatar-ring     : '/ttsvr/cropImage/drinkcircle.images.i_ring.png';
+  // $bg-avatar-ring-70p : '../../assets/images/ring_70p_solid.png';
+  $bg-avatar-ring-70p : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_70p.png';
+  // $bg-avatar-ring-50p : '../../assets/images/ring_50p_solid.png';
+  $bg-avatar-ring-50p : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_50p.png';
+  // $bg-avatar-ring-40p : '../../assets/images/ring_40p_solid.png';
+  $bg-avatar-ring-40p : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_40p.png';
+  $bg-avatar-ring-s20 : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_s20.png';
+  $bg-avatar-ring-s6 : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_s6.png';
+  $bg-avatar-ring-s3 : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_s3.png';
+  $bg-avatar-ring-cb3of12  : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_cb3of12.png';
+  $bg-avatar-ring-cb6of12  : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_cb6of12.png';
+  $bg-avatar-ring-cb7of12  : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_cb7of12.png';
+  $bg-avatar-ring-cb8of12  : '/ttsvr/cropImage/drinkcircle.images.i_tmp_ring_cb8of12.png';
+  // From(_adrian.scss)
+  $bg-title-ctr       : '/ttsvr/cropImage/drinkcircle.images.i_ring.png';
+  $drop-arrow         : '/ttsvr/cropImage/drinkcircle.images.i_drop_arrow.png';
+}

@@ -1,0 +1,25 @@
+#!/bin/bash
+#	Publish the build directory to the S3 bucket.
+#
+#	The home page might be:
+#	http://<%=S3_BUCKET%>.s3-website-ap-southeast-2.amazonaws.com/index.html
+#
+
+S3_BUCKET=<%=S3_BUCKET%>
+
+DIR=$(dirname $0)
+
+subpath=$1
+
+
+echo "$" cd ${DIR}/build/drinkcircle
+         cd ${DIR}/build/drinkcircle
+
+ENVFILE=assets/scripts/environment.js
+echo "$" s3cmd --exclude=".git/*" --exclude ${ENVFILE} sync ${REMOVE_OPT} ./${subpath} ${S3_BUCKET}/${subpath}
+         s3cmd --exclude=".git/*" --exclude ${ENVFILE} sync ${REMOVE_OPT} ./${subpath} ${S3_BUCKET}/${subpath}
+
+# Update the environment specific config file
+echo "$" s3cmd sync ./${ENVFILE}-drinkcircle-mvp ${S3_BUCKET}/${ENVFILE}
+         s3cmd sync ./${ENVFILE}-drinkcircle-mvp ${S3_BUCKET}/${ENVFILE}
+

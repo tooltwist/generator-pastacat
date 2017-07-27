@@ -1,0 +1,478 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+
+  //- style
+
+
+block content
+
+  section.drinkmakers(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+    .container
+      .row
+        .col-md-3
+          .facets
+            .wrap
+              strong(data-toggle='collapse', data-target='#collapse-category') Products
+              #collapse-category.collapse.in
+                ul
+                  //- li(ng-repeat="category in categories")
+                  //-   input.category-checkbox(type='checkbox' value="{{category.id}}" ng-click="categorySelection()")
+                  //-   | {{category.name}}
+                  //- //- li
+
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_RED}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_RED)")
+                    span(ng-class="{green: categorySelected(CATEGORY_RED, true)}") Red Wine
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_WHITE}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_WHITE)")
+                    span(ng-class="{green: categorySelected(CATEGORY_WHITE, true)}") White Wine
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_BEER}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_BEER)")
+                    span(ng-class="{green: categorySelected(CATEGORY_BEER, true)}") Beer
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_SPIRITS}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_SPIRITS)")
+                    span(ng-class="{green: categorySelected(CATEGORY_SPIRITS, true)}") Spirits
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_BUBBLES}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_BUBBLES)")
+                    span(ng-class="{green: categorySelected(CATEGORY_BUBBLES, true)}") Bubbles
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_CIDER}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_CIDER)")
+                    span(ng-class="{green: categorySelected(CATEGORY_CIDER, true)}") Cider
+                  li.hide.NOTYET
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_ORGANIC}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_ORGANIC)")
+                    span(ng-class="{green: categorySelected(CATEGORY_ORGANIC, true)}") Organic
+                  li
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_FORTIFIED}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_FORTIFIED)")
+                    span(ng-class="{green: categorySelected(CATEGORY_FORTIFIED, true)}") Fortified
+                  li.hide.NOTYET
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_DESSERT}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_DESSERT)")
+                    span(ng-class="{green: categorySelected(CATEGORY_DESSERT, true)}") Dessert
+                  li.hide.NOTYET
+                    input.category-checkbox(type='checkbox' value="{{CATEGORY_LIQUEUR}}" ng-click="categorySelection()" ng-checked="categorySelected(CATEGORY_LIQUEUR)")
+                    span(ng-class="{green: categorySelected(CATEGORY_LIQUEUR, true)}") Liqueur
+
+                //- ul
+              //- collpase
+            //- filters-wrap
+          //- dc-filters-dropdown
+        //- col-md-3
+        .col-md-9.right-block
+          h5.text-center
+            a(href='drinkmakers.html') All Suppliers
+          //- p
+          h4.text-center Wine, Beer, Cider &amp; Spirit makers
+          .maker-filters
+            form
+              .form-group
+                .input-group.dc-filters
+                  input#searchButton.form-control(type='text', placeholder='Find a supplier...' ng-model="filter" autocomplete="off")
+                  span.input-group-btn &nbsp;&nbsp;
+                  span.input-group-btn
+                    button.btn.btn-primary(type="submit" ng-click="searchButton()") Search
+                  //- span
+                //- input-group
+              //- form-group
+            //- form
+          //- maker-filters
+          hr
+          form.form-inline.hide.NOTYET
+            .form-group
+              label(for='exampleInputName2') Sort by
+              select.form-control
+                option highest rated
+                option most reviews
+                option A to Z
+                option Z to A
+              //- select
+            //- form-group
+            .form-group
+              label(for='exampleInputEmail2') Show
+              select.form-control
+                option 15
+                option 50
+                option 100
+              //- select
+            //- form-group
+          //- form
+
+
+          .text-center.green(ng-hide="suppliers.length > 0 || !filter")
+            br
+            br
+            h4 Sorry, no suppliers were found matching: {{filter}}
+            br
+            br
+            br
+            br
+          .maker-list(ng-repeat="supplier in suppliers")
+            .row
+
+              // Image
+              .col-md-5
+                img.maker(src='{{supplier.directory_photo}}')
+                p.visible-xs.visible-sm
+              //- col-md-5
+
+              // Description
+              .col-md-7
+                .maker-description
+                  .media
+                    .media-left
+                      .picture
+                        img.placeholder.sm(src='http://placehold.it/150', alt='placeholder')
+                        img.source(src='{{supplier.logo}}')
+                      //- picture
+                    //- media-left
+                    .media-body
+                      .media-right
+                        //a.btn.btn-success.btn-xs(href='seller.html') Go to Profile
+                        //| &nbsp;
+                        a.btn.btn-default.btn-xs(href='shop.html?supplier={{supplier.id}}') Visit Store
+                      //- media-right
+                      h4.media-heading {{supplier.supplier_name}}
+                      .rating-status.md
+                        span.left 4.6
+                        .stars
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star-half-o
+                        //- stars
+                        span.right.sm
+                          a(href='#modal_coming_soon', data-toggle='modal') 162 reviews
+                      //- rating-status
+                    //- media-body
+                  //- media
+                  p.address.hide.NOTYET
+                    strong 401-427 McDonalds Rd Pokolbin, New South Wales
+                  //- p
+                  .summary-frame.initial-fixed-size
+                    p.summary.size-unrestrained {{supplier.story}}
+                  a.maker-more(style="display:none;") read more
+                //- maker-description
+
+              //- col-md-7
+            //- row
+          //- maker-list
+
+          hr.hide.NOTYET
+          nav.text-center(aria-label='...').hide.NOTYET
+            ul.pagination.pagination-sm
+              li
+                a(href='#', aria-label='Previous')
+                  span(aria-hidden='true') «
+              li
+                a(href='#modal_coming_soon', data-toggle='modal') 1
+              li
+                a(href='#modal_coming_soon', data-toggle='modal') 2
+              li
+                a(href='#modal_coming_soon', data-toggle='modal') 3
+              li
+                a(href='#modal_coming_soon', data-toggle='modal') 4
+              li
+                a(href='#modal_coming_soon', data-toggle='modal') 5
+              li
+                a(href='#', aria-label='Next')
+                  span(aria-hidden='true') »
+                //- a
+              //- li
+            //- ul
+          //- nav
+        //- col-md-9
+      //- row
+    //- container
+  //- section
+
+block scripts
+  // External Script goes here...
+
+  script.
+    $(function () {
+      $('.popover_price[data-toggle="popover"]').popover({
+        html: true,
+        content : function() {
+          return '<ul class="cost">' + $(this).parent().find("ul").html() + '</ul>';
+        },
+        title: function(){
+          return jQuery(this).data('title') + '<span class="close">&times;</span>';
+        }
+      }).on('shown.bs.popover', function(e) {
+        var popover = jQuery(this);
+        $(this).parent().find('.popover span.close').on('click', function(e) {
+          popover.popover('hide');
+        });
+      }).click(function(e) {
+        e.preventDefault();
+      });
+    });
+
+
+
+
+    /************************************************************
+     *
+     *    Angular code.
+     */
+    var app = angular.module('myApp', ['ngSanitize']);
+
+    teaservice.init({
+      host: TEASERVICE_HOST,
+      port: TEASERVICE_PORT,
+      accessToken: TEASERVICE_ACCESS_TOKEN
+    });
+
+    // Add the controller for this page
+    app.controller('myCtrl', function($scope, teaService) {
+
+
+      // This code checks for parameters in the URL
+      var option_categoriesById = { };
+      var option_categoryIds = null;
+      var option_filter = null;
+      console.log('window.location=' + window.location + '.')
+      window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
+        //console.log('xx:' + key + ':' + value + ':');
+        if (key === 'category') {
+          option_categoryIds = value;
+          var arr = value.split(',');
+          arr.forEach(function(categoryId) {
+            option_categoriesById[categoryId.trim()] = true;
+          });
+        }
+        else if (key === 'filter') {
+          option_filter = value;
+        }
+      });
+      console.log('Displaying the page for categoryId=' + option_categoryIds);
+      console.log('Displaying the page for filter=' + option_filter);
+      $scope.filter = option_filter;
+
+      // Get the details of suppliers from TEA.
+      var categoryId = '1';
+      var options = {
+        storeId: 6,
+        /*categoryId: categoryId,
+        needPricing: true,
+        needImages: true*/
+        needCategories: true
+      };
+      if (option_filter) {
+        options.filter = option_filter;
+      }
+      if (option_categoryIds) {
+        options.categoryId = option_categoryIds;
+      }
+      teaService.getSupplier(options).then(function(suppliers){
+        console.log('BACK FROM getSupplier', suppliers);
+        $scope.suppliers = suppliers;
+
+
+        $scope.CATEGORY_RED = CATEGORY_RED;
+        $scope.CATEGORY_WHITE = CATEGORY_WHITE;
+        $scope.CATEGORY_BEER = CATEGORY_BEER;
+        $scope.CATEGORY_SPIRITS = CATEGORY_SPIRITS;
+        $scope.CATEGORY_BUBBLES = CATEGORY_BUBBLES;
+        $scope.CATEGORY_CIDER = CATEGORY_CIDER;
+        $scope.CATEGORY_ORGANIC = CATEGORY_ORGANIC;
+        $scope.CATEGORY_OTHER = CATEGORY_OTHER;
+        $scope.CATEGORY_FORTIFIED = CATEGORY_FORTIFIED;
+        $scope.CATEGORY_DESSERT = CATEGORY_DESSERT;
+        $scope.CATEGORY_LIQUEUR = CATEGORY_LIQUEUR;
+
+
+
+        // Get a unique list of categories for these suppliers
+        /*var categoriesById = { };
+        suppliers.forEach(function(supplier) {
+          console.log('supplier is ', supplier)
+          if (supplier.categories) {
+            console.log('categories=', supplier.categories);
+            for (categoryId in supplier.categories) {
+              var categoryName = supplier.categories[categoryId];
+              console.log('  ' + categoryId + ' => ' + categoryName);
+              categoriesById[categoryId] = categoryName;
+            }
+          }
+        });*/
+
+        /*// Create a sorted list of categories
+        var categories = [ ];
+        for (categoryId in categoriesById) {
+          var categoryName = categoriesById[categoryId];
+          categories.push({
+            id: categoryId,
+            name: categoryName
+          });
+        }
+        categories.sort(function(c1, c2) {
+          if (c1.name < c2.name) return -1;
+          if (c1.name > c2.name) return +1;
+          return 0;
+        });
+        $scope.categories = categories;*/
+
+        /*$scope.categoryInList = function(categoryId) {
+          //console.log('categoryInList(' + categoryId + ')')
+          if (categoriesById[categoryId]) {
+            //console.log('- yep')
+            return true;
+          }
+          //console.log('- nope')
+          return false;
+        }*/
+
+        // Is the categoryId one of the those in our selection criteria.
+        $scope.categorySelected = function(categoryId, includeNoneSelected) {
+          if (includeNoneSelected && option_categoryIds == null) {
+            return true;
+          }
+          if (option_categoriesById[''+categoryId]) {
+            return true;
+          }
+          return false;
+        }
+
+
+
+        /*
+         *  Trim the height of the text for each supplier if it is
+         *  too long. To do this, we place the summary inside a frame.
+         *
+         *  The frame is initially fixed size, with hidden overflow. This
+         *  allows us to see if the summary is longer than the frame.
+         *
+         *  Solutions:
+         *    1. Summary is shorter than the frame - do nothing.
+         *    2. Summary is longer than the frame:
+         *      - remove the fixed size and hidden overflow from the frame.
+         *      - make the more / less button visible, with two modes:
+         *            a) collapsed, with constrained size for the summary.
+         *            b) expanded, with no constrained of size for the summary.
+         */
+        setTimeout(function() {
+          $('.maker-description').each(function() {
+            var description = $(this);
+            var frame = description.find('.summary-frame');
+            var summary = description.find('.summary');
+            var more = description.find('a.maker-more');
+
+            // See if the summary is too big
+            if (summary.height() > frame.height()) {
+              $(summary).addClass('constrained');
+              more.show();
+            }
+            $(frame).removeClass('initial-fixed-size');
+          });
+        }, 200);
+
+        $('div.container').on('click', '.maker-more', function() {
+          var more = $(this);
+          var description = more.closest('.maker-description');
+          var summary = description.find('.summary');
+
+          // Toggle the 'constrained' class and button label
+          if (summary.hasClass('constrained')) {
+            summary.removeClass('constrained');
+            more.html('read less');
+          } else {
+            summary.addClass('constrained');
+            more.html('read more');
+          }
+        });
+
+      });//getSuppliers
+
+
+      /*
+       *  Handler for the 'search' button.
+       */
+      $scope.searchButton = function() {
+        reloadPage();
+      };
+
+      /*
+       *  Category checkbox has been clicked.
+       */
+      $scope.categorySelection = function() {
+        reloadPage();
+      };
+
+
+      /*
+       *  Reload the page, with the new selection criteria.
+       */
+      function reloadPage() {
+        //alert('reload page');
+        var url = 'drinkmakers.html';
+        var sep = '?';
+        /*if (option_categoryId) {
+          url += sep + 'category=' + option_categoryId;
+          sep = '&';
+        }*/
+
+        // Perhaps specify the filter
+        if ($scope.filter) {
+          url += sep + 'filter=' + $scope.filter;//ZZZZZ Need Url encoding
+          sep = '&';
+        }
+
+        // Find any selected categories
+        var elements = $('.category-checkbox:checked');
+        console.log('selected= ' + elements.length);
+        var sep2 = '';
+        var categoryIds = '';
+        for (var i = 0; i < elements.length; i++) {
+          var categoryId = $(elements[i]).attr('value');
+          categoryIds += sep2 + categoryId;
+          sep2 = ',';
+        }
+        console.log('categoryIds=', categoryIds)
+        if (categoryIds) {
+          url += sep + 'category=' + categoryIds;
+          sep = '&';
+        }
+
+        // Relaod with the new criteria
+        window.location.href = url;
+      }
+    });
+
+
+
+    /*
+     *  Put focus on the search button.
+     */
+    setTimeout(function() {
+      $('#searchButton').focus();
+      //if (option_filter) {
+      //  $('html, body').animate({
+      //    scrollTop: $("#searchArea").offset().top - 92
+      //  }, 500);
+      //}
+    }, 100);
+
+
+    /*
+     *  Set up the login part at the top of the page.
+     */
+    authservice.init({
+      // Environment specific values are defined in environment.js
+      host: AUTHSERVICE_HOST,
+      port: AUTHSERVICE_PORT,
+      tenant: AUTHSERVICE_TENANT,
+      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
+      onUserChange: function(user, ttuat, fromCookie) {
+        // If the current user came from the cookie, reload it
+        //if (fromCookie) {
+        //  console.log('Reloading user details (cookie details are just a summary)');
+        //  return authservice.reloadUser();
+        //}
+      }
+    });
+
+
+  //- script.
+//- block scripts

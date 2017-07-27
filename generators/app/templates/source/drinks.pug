@@ -1,0 +1,2391 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+
+  //- style
+
+
+block content
+  div(ng-app="myApp" ng-controller="myCtrl" ng-cloak directive="")
+    .banner.home
+      .gradient
+      .owl-carousel
+        .item
+          img(src='assets/images/cm/banner/b1.png')
+        //- item
+        .item
+          img(src='assets/images/cm/banner/b2.png')
+        //- item
+        .item
+          img(src='assets/images/cm/banner/b3.png')
+        //- item
+        .item
+          img(src='assets/images/cm/banner/b4.png')
+        //- item
+      //- owl-carousel
+      .content
+        .container
+          h1.jumbo
+            | The fun marketplace connecting online shoppers.
+            br
+            | It's the new way to save!
+            br
+            small Discover. Share. Enjoy.
+          //- h1
+          .action.authservice-logged-out
+            a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
+              i.fa.fa-envelope
+              span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+            //- a
+            a.btn.btn-primary.btn-lg
+              i.fa.fa-facebook
+              span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+            //- a
+          //- action
+        //- container
+      //- content
+    //- banner-home
+
+    article
+      .container
+        .row#searchArea
+          .col-md-8.col-md-offset-2
+            form
+              .form-group
+                .input-group.dc-filters
+                  #drop_recent_search.search-dropdown.collapse
+                    a.close(href='#drop_recent_search', data-toggle='collapse') &times;
+                    .dropdown-wrap
+                      big Suggestions
+                      ul
+                        li
+                          a(href='#modal_coming_soon', data-toggle='modal') Brokenwood - Graveyard Vineyard Shiraz
+                        //- li
+                      //- ul
+                      big Recent search&nbsp;
+                        small
+                          a(href='#modal_coming_soon', data-toggle='modal') clear
+                        //- small
+                      //- strong
+                      ul
+                        li
+                          a(href='#modal_coming_soon', data-toggle='modal') Corona Extra - Imported Beer
+                        //- li
+                      //- ul
+                    //- .dropdown-wrap
+                  //- drop_recent_search
+                  #refineSearch.search-dropdown.collapse
+                    a.close(href='#refineSearch', data-toggle='collapse') &times;
+                    .dropdown-wrap
+                      .row
+                        .col-md-4
+                          strong Category
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Red Wine
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | White Wine
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Beer
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Cider
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Spirits
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Bubbles
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Organic
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Varietal
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Shiraz
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Chardonnay
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Cabernet
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Suvignon
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Pinot Gris
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Vintage
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Non Vintage
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 2016
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 2015
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Etc.
+                            //- li
+                          //- ul
+                        //- col-md-4
+                      //- row
+                      .row
+                        .col-md-4
+                          strong Pack Size
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Single Bottle
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 6 pack
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 12 pack
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 24 pack
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Country
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Australia
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | France
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Spain
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Italy
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | New Zealand
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Argentina
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | United States
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Chile
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | South Africa
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Greece
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Uruguay
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Portugal
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Romania
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Austria
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Macedonia
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Hungary
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Brazil
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | China
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Germany
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Region
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Adelaide Hills
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Adelaide Plains
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Alphine Valleys
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Barossa Valley
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Beechworth
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Bendigo
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Blackwood Valley
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Canberra District
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Clare Valley
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Coonawarra
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Cowra
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Currency Creek
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Eden Valley Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Geelong Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Geographe Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Gippsland Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Glenrowan
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Goulburn Valley
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Grampians Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Granite Belt Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Great Southern Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Gundagai
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Hastings River
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Heathcote Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Henty
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Hilltops Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Hunter Valley Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Kangaroo Island
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | King Valley Wineries
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Langhorne Creek Wineries
+                            //- li
+                          //- ul
+                        //- col-md-4
+                      //- row
+                      .row
+                        .col-md-4
+                          strong Price
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Under $10
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $10 - $20
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $20 - $30
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $30 - $40
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $40 - $50
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $50 - $60
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $60 - $80
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $80 - $100
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $100 - $150
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | $150 - $200
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Over $200
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Ratings
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Over 95
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 90 - 94
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 85 - 89
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 80 - 84
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | 75 - 79
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Less than 74
+                            //- li
+                          //- ul
+                        //- col-md-4
+                        .col-md-4
+                          strong Awards
+                          ul
+                            li
+                              input(type='checkbox')
+                              | Trophy
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Gold
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Silver
+                            //- li
+                            li
+                              input(type='checkbox')
+                              | Bronze
+                            //- li
+                          //- ul
+                        //- col-md-4
+                      //- row
+                    //- filters-wrap
+                  //- dc-filters-dropdown
+                  // Dropdown to refine the search
+                  a.link-1(href='#refineSearch', data-toggle='collapse').hide.NOTYET Refine Search
+                  a.arrow(href='#drop_recent_search', data-toggle='collapse').hide.NOTYET
+                    i.fa.fa-caret-down
+                  //- a
+                  input#searchButton.form-control.input-lg(type='text', placeholder='Search products in this category...' ng-model="filter" autocomplete="off")
+                  span.input-group-btn
+                    a.btn.btn-default.btn-lg(ng-click="searchButton()")
+                      i.fa.fa-search
+                  //- span
+                //- input-group
+              //- form-group
+            //- form
+          //- col-md-8
+        //- row
+      //- container
+    //- article
+
+    //- section.pagenav
+    //-   .container
+    //-     .row
+    //-       .col-md-2.text-center
+    //-         p
+    //-         form.form-inline.hide.NOTYET
+    //-           .form-group
+    //-             label(for='exampleInputName2') Sort by
+    //-             select.form-control
+    //-               option highest rated
+    //-               option most reviews
+    //-               option A to Z
+    //-               option(ng-click=" sortType='name' ; sortReverse=true ") Z to A
+    //-             //- select
+    //-           //- form-group
+    //-         //- form
+    //-       //- col-md-4
+    //-       .col-md-8
+    //-         nav.page
+    //-           ul
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_RED}}' ng-class="{green: categoryId == CATEGORY_RED}") Red
+    //-             //- li
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_WHITE}}' ng-class="{green: categoryId == CATEGORY_WHITE}") White
+    //-             //- li
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_BEER}}' ng-class="{green: categoryId == CATEGORY_BEER}") Beer
+    //-             //- li
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_SPIRITS}}' ng-class="{green: categoryId == CATEGORY_SPIRITS}") Spirits
+    //-             //- li
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_BUBBLES}}' ng-class="{green: categoryId == CATEGORY_BUBBLES}") Bubbles
+    //-             //- li
+    //-             li
+    //-               a(href='drinks.html?category={{CATEGORY_CIDER}}' ng-class="{green: categoryId == CATEGORY_CIDER}") Cider
+    //-             //- li
+    //-           //- ul
+    //-         //- nav
+    //-       //- col-md-4
+    //-       .col-md-2.text-center
+    //-         p
+    //-         form.form-inline.hide.NOTYET
+    //-           .form-group
+    //-             label(for='exampleInputEmail2') Show
+    //-             select.form-control
+    //-               option 15
+    //-               option 30
+    //-               option 60
+    //-             //- select
+    //-           //- form-group
+    //-         //- form
+    //-       //- col-md-4
+    //-     //- row
+    //-   //- container
+    //- //- section
+
+
+    //section.drinks.drinks_result(id='products' ng-app="myApp" ng-controller="myCtrl" ng-cloak directive="")
+    section.drinks.drinks_result#products
+      .container
+        .product-wrap
+          
+          .alert.alert-danger.text-center(ng-hide="variants.length > 0 || !filter")
+            h4 Sorry, no products were found matching: {{filter}}
+          //- alert
+          .row
+
+            // Loop through our product variants
+
+            .col-sm-6.col-md-4(ng-repeat="variant in variants | orderBy:sortType:sortReverse"  ng-cloak)
+              .product
+                input.product-id(type='hidden', value='{{variant.productVariantId}}')
+                .thumb
+                  .ctr
+                    .count.product-rating.patch-in-average-product-rating(productVariantId="{{variant.productVariantId}}" style='display:none')
+                      | -
+                    span.pointContainer(productVariantId="{{variant.productVariantId}}" style='display:none')
+                      | rating
+                      br
+                      | points
+                    .first-rating(productVariantId="{{variant.productVariantId}}" style='display:none')
+                      a(href="/product-ratings.html?product={{variant.productVariantId}}")
+                        | Be the
+                        br
+                        | first
+                        br
+                        | to rate
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html?product={{variant.productVariantId}}')
+                    //img.img-prod(src='//www.brokenwood.com.au/assets/images/products/pictures/CricketPitchRed1.jpg', alt='')
+                    img.img-prod(ng-src='{{variant.d_image}}', alt='')
+                  //- a
+                  .details
+                    p.hide.NOTYET
+                    .stats.hide.NOTYET
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big.patch-in-number-of-product-ratings(productVariantId="{{variant.productVariantId}}")
+                            small &nbsp;rating
+                            small.patch-in-number-of-product-ratings-ess(productVariantId="{{variant.productVariantId}}")
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='productdetails2.html?product={{variant.productVariantId}}') {{variant.manufacturer}}
+                      br
+                      small {{variant.name}}
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(ng-click="addToCompare(variant.productVariantId)", data-toggle='modal') Compare
+                          //- li
+                          li.price {{variant.displayPrice}}
+                          //- li
+                          li
+                            a.thumb-action(href='/productdetails2.html?product={{variant.productVariantId}}') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+
+
+
+            // START OF THE DUMMY PRODUCTS
+
+
+
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 95
+                      span.pointContainer points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='//www.brokenwood.com.au/assets/images/products/pictures/IndigoVineyardShiraz.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Brokenwood
+                      br
+                      small 2014 Indigo Vineyard Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $43.99
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 90
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='//www.brokenwood.com.au/assets/images/products/pictures/GraveyardVineyardShiraz11.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Brokenwood
+                      br
+                      small 2014 Graveyard Vineyard Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $12.99
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/gs/prod5.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Yarra Valley Pinot Noir
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $35.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/gs/prod6.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Applejack Vineyard Pinot Noir
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $50.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/gs/prod7.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Lusatia Park Vineyard Pinot Noir
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $50.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Primavera Vineyard Pinot Noir
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $50.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Sexton Vineyard Pinot Noir
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $50.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Yarra Valley Syrah
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $35.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Tarraford Vineyard Syrah
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $50.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Yarra Valley Merlot
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $35.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/gs/prod8.jpg', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Giant Steps
+                      br
+                      small 2015 Giant Steps Harry's Monster
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $55.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 93
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/rosnay/prod1.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Rosnay Organic
+                      br
+                      small Garage Wine Number 1
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $34.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/rosnay/prod3.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Rosnay Organic
+                      br
+                      small Grand-Pere Reserve Red 2013
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $30.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 95
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/rosnay/prod9.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Rosnay Organic
+                      br
+                      small Triple Blend 2011
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $18.50
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 96
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/rosnay/prod11.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Rosnay Organic
+                      br
+                      small Chardonnay 2015
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $18.50
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 93
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/fg/prod1.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 Jon's Block Reserve Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $40.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/fg/prod2.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 Jen’s Block Cabernet Sauvignon
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $40.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/fg/prod3.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 Sue’s Paddock Reserve Grenache
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $40.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 93
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/fg/prod4.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 "Gander's Blend" Grenache Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $28.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/fg/prod5.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 "The Pippali" Old Vine Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $28.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 91
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/fg/prod6.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2014 "La Volpe" Nero d’Avola
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $28.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/fg/prod7.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2014 "Indian File" Grenache
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $28.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 92
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-sticks.html")
+                    img.img-prod(src='assets/images/producers/fg/prod8.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 21&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 69&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 13&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2014 Five Geese Shiraz
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $24.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-sticks.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 95
+                      span points
+                    //- count
+                  //- ctr
+                  a(href="productdetails-rosnay.html")
+                    img.img-prod(src='assets/images/producers/fg/prod9.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 9&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 34&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 8&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2012 Five Geese Cabernet Sauvignon
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $24.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails-rosnay.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+            .col-sm-6.col-md-4(ng-hide="!showDummies")
+              .product
+                .thumb
+                  .ctr
+                    .count 95
+                      span points
+                    //- count
+                  //- ctr
+                  a(href='productdetails2.html')
+                    img.img-prod(src='assets/images/producers/fg/prod10.png', alt='')
+                  //- a
+                  .details
+                    p
+                    .stats
+                      .row
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 84&nbsp;
+                            small circlebuys
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 242&nbsp;
+                            small ratings
+                        //- col-md-6
+                        .col-md-4.col-sm-4.col-xs-4
+                          a(href='#modal_coming_soon', data-toggle='modal')
+                            big 88&nbsp;
+                            small reviews
+                        //- col-md-6
+                      //- .row
+                    //- stats
+                    .name
+                      a(href='#modal_coming_soon', data-toggle='modal') Five Geese
+                      br
+                      small 2016 Five Geese Rose
+                    //- name
+                    .pricing
+                      .buy.drop
+                        ul
+                          li
+                            a.thumb-action(href='#modal_compare', data-toggle='modal') Compare
+                          //- li
+                          li.price $24.00
+                          //- li
+                          li
+                            a.thumb-action(href='productdetails2.html') View
+                          //- li
+                        //- ul
+                      //-buy
+                    //- pricing
+                  //- details
+                //- thumb
+              //- product
+            //- col
+
+
+            // END OF THE DUMMY PRODUCTS
+
+
+
+
+          //- row
+        //- product-wrap
+        hr.hide.NOTYET
+        nav.text-center(aria-label='...').hide.NOTYET
+          ul.pagination.pagination-sm
+            li
+              a(href='#', aria-label='Previous')
+                span(aria-hidden='true') «
+            li
+              a(href='#modal_coming_soon', data-toggle='modal') 1
+            li
+              a(href='#modal_coming_soon', data-toggle='modal') 2
+            li
+              a(href='#modal_coming_soon', data-toggle='modal') 3
+            li
+              a(href='#modal_coming_soon', data-toggle='modal') 4
+            li
+              a(href='#modal_coming_soon', data-toggle='modal') 5
+            li
+              a(href='#', aria-label='Next')
+                span(aria-hidden='true') »
+              //- a
+            //- li
+          //- ul
+        //- nav
+      //- container
+    //- section
+
+
+block scripts
+  // External Script goes here...
+  script(src='assets/vendor/crowdhound/chsearchresultrating.js', type="text/javascript")
+  script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+
+
+  script.
+    /*$(function () {
+      $('.popover_price[data-toggle="popover"]').popover({
+        html: true,
+        content : function() {
+          return '<ul class="cost">' + $(this).parent().find("ul").html() + '</ul>';
+        },
+        title: function(){
+          return jQuery(this).data('title') + '<span class="close">&times;</span>';
+        }
+      }).on('shown.bs.popover', function(e) {
+        var popover = jQuery(this);
+        $(this).parent().find('.popover span.close').on('click', function(e) {
+          popover.popover('hide');
+        });
+      }).click(function(e) {
+        e.preventDefault();
+      });
+    });*/
+
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        autoplayHoverPause: true,
+        animateOut: 'fadeOut',
+        autoplaySpeed: 1000,
+        mouseDrag: false,
+        responsive:{
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      });
+
+      //search filter
+      $(".dc-filters").find("input.input-lg").keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+          {
+            $(".dc-filters").find("span a").trigger("click");
+            return false;
+          }
+      });
+
+    });
+
+
+    /************************************************************
+     *
+     *    Angular code.
+     */
+    var app = angular.module('myApp', ['ngSanitize']);
+
+    teaservice.init({
+      host: TEASERVICE_HOST,
+      port: TEASERVICE_PORT,
+      accessToken: TEASERVICE_ACCESS_TOKEN
+    });
+
+    // Add the controller for this page
+    app.controller('myCtrl', function($scope, teaService) {
+
+
+      // This code checks for parameters in the URL.
+      var option_categoryId = null;
+      var option_filter = null;
+      console.log('window.location=' + window.location + '.')
+      window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
+        //console.log('xx:' + key + ':' + value + ':');
+        if (key === 'category') {
+          option_categoryId = value;
+        }
+        else if (key === 'filter') {
+          option_filter = value;
+        }
+        else if (key === 'd') {
+          console.log('showing dummy products');
+          $scope.showDummies = true;       // Show dummies during demos?
+        }
+      });
+      console.log('Displaying the page for categoryId=' + option_categoryId);
+
+      // During development only
+      if ( !option_categoryId) {
+        var DEFAULT_CATEGORY_ID = [ CATEGORY_RED, CATEGORY_WHITE, CATEGORY_BEER ].join(',');
+        option_categoryId = DEFAULT_CATEGORY_ID;
+      }
+      $scope.categoryId = option_categoryId;
+      $scope.filter = option_filter;
+
+      $scope.CATEGORY_RED = CATEGORY_RED;
+      $scope.CATEGORY_WHITE = CATEGORY_WHITE;
+      $scope.CATEGORY_BEER = CATEGORY_BEER;
+      $scope.CATEGORY_SPIRITS = CATEGORY_SPIRITS;
+      $scope.CATEGORY_BUBBLES = CATEGORY_BUBBLES;
+      $scope.CATEGORY_CIDER = CATEGORY_CIDER;
+
+      // Get the details of products from TEA.
+      var options = {
+        categoryId: option_categoryId,
+        needPricing: true,
+        needImages: true
+      };
+      if (option_filter) {
+        options.filter = option_filter;
+      }
+      teaService.getProduct(options).then(function(products){
+        console.log('BACK NOW', products);
+
+        // Put all the variants in a single list
+        var variants = [ ];
+        $(products).each(function(index, product) {
+          //console.log('-> GOT product ' + index, product);
+          $(product.variants).each(function(i, variant) {
+    if (variant.productVariantId == 193 || variant.productVariantId == 350) {
+            console.log('  -> GOT variant ' + index, variant);
+    }
+
+            // Decide what image to use
+            //variant.d_image = '//www.brokenwood.com.au/assets/images/products/pictures/CricketPitchRed1.jpg';
+            if (variant.images && variant.images.length > 0) {
+              //console.log('image is:' + variant.images[0].imagePath + ':')
+              variant.d_image = variant.images[0].imagePath;
+            } else {
+              variant.d_image = "NOTFOUND.jpg"; // ZZZZZ
+            }
+
+            //computation for display price
+    if (variant.productVariantId == 193 || variant.productVariantId == 350) {
+        console.log('variant.pricing=', variant.pricing)
+    }
+
+            var lowestPrice = variant.lastPrice;
+            if (variant.pricing && variant.pricing.length > 0) {
+              for (var i = 0; i < variant.pricing.length; i++) {
+                var pricing = variant.pricing[i];
+
+                if (pricing.pricingQuantity && pricing.pricingQuantity.length > 0) {
+                  for (var j = 0; j < pricing.pricingQuantity.length; j++) {
+                    var price = pricing.pricingQuantity[j].price;
+                    if (price < lowestPrice) {
+                      lowestPrice = price;
+                    }
+                  }
+                }
+              }
+            }
+            variant.displayPrice = accounting.formatMoney(lowestPrice);
+
+            variants.push(variant);
+          });
+        });
+        $scope.variants = variants;
+      }); // getProduct()
+
+      $scope.sortType     = 'name'; // set the default sort type
+      $scope.sortReverse  = false;  // set the default sort order
+
+      /*
+       *  Functions to keep track of which products will be compared.
+       */
+      var COMPARE_COOKIE = 'idsForCompare';
+      var compare_productVariantIds = [ ];
+      var cookie = authservice.getCookie(COMPARE_COOKIE);
+      if (cookie) {
+        compare_productVariantIds = cookie.split(',');
+        if (compare_productVariantIds.length == 1 && compare_productVariantIds[0] == '') {
+          compare_productVariantIds = [ ];
+        }
+      } else {
+        compare_productVariantIds = [ ];
+      }
+      console.log('ids=', compare_productVariantIds);
+
+
+      /*
+       *  Add a new product to compare
+       */
+      $scope.addToCompare = function(productVariantId) {
+        console.log('addToCompare ' + productVariantId);
+        // See if it's already in the list
+        for (var i = 0; i < compare_productVariantIds.length; i++) {
+          if (compare_productVariantIds[i] == productVariantId) {
+            console.log('ids=', compare_productVariantIds);
+            //pop up message here
+            bootbox.alert("This item is already in your compare list.", function(){});
+            return;
+          }
+        }
+
+        compare_productVariantIds.unshift(productVariantId);
+        while (compare_productVariantIds.length > 3) {
+          compare_productVariantIds.pop();
+        }
+        console.log('ids=', compare_productVariantIds);
+
+        //ZZZ Should show 'modal_compare' first.
+        // Save the new cookie value.
+        var sep = '';
+        var cookie = '';
+        for (var i = 0; i < compare_productVariantIds.length; i++) {
+          cookie += sep + compare_productVariantIds[i];
+          sep = ',';
+        }
+        console.log('new cookie is ' + cookie + '.');
+        authservice.setCookie(COMPARE_COOKIE, cookie, 30); // keep it a maximum of a month
+
+        if (compare_productVariantIds.length > 1) {
+          window.location.href = 'compare.html';
+        } else {
+          alert('Select another drink to see the comparison');
+        }
+
+      }
+
+      /*
+       *  Handler for the 'search' button.
+       */
+      $scope.searchButton = function() {
+        var url = 'drinks.html?category=' + option_categoryId;
+        if ($scope.filter) {
+          url += '&filter=' + $scope.filter;
+        }
+        window.location.href = url;
+      }
+
+
+      /*
+       *  Initialize CrowdHound and get the product ratings.
+       */
+      CrowdHound.init({
+            serverUrl : '//' + CROWDHOUND_HOST + ':' + CROWDHOUND_PORT,
+            apiVersion : CROWDHOUND_VERSION,
+            tenantId : CROWDHOUND_TENANT,
+            debug: false,
+            authenticationToken: authservice.getUserAccessToken(),
+            cookers: {
+                //cook_avatars : cookAvatars, //definition is in the curia_js widget
+                cook_ratings: chratingsandreview.cookRatings
+            },
+            themes : {
+                "productReview": {
+                    "product-reviews_0" : "#reviewList",
+                    "review_0" : "#review"
+                }
+            }
+      }, function afterCuriaInit() {
+
+        // Load the reviews
+        //chratingsandreview.loadReviews(productVariantId);
+
+        // Patch in the average ratings
+        setTimeout(function() {
+          chratingsandreview.patchInProductRatings();
+
+        }, 1000);
+      }); // CrowdHound.init
+
+
+
+      /*
+       *  Put focus on the search button.
+       */
+      setTimeout(function() {
+        $('#searchButton').focus();
+        if (option_filter) {
+          $('html, body').animate({
+            scrollTop: $("#searchArea").offset().top - 92
+          }, 500);
+        }
+      }, 100);
+
+
+    });// app.controller('myCtrl'
+
+    /*app.directive('directive', function($timeout) {
+      return {
+        link: function(scope, element, attr) {
+          $timeout(function() {
+            chsearchresultrating.init();
+          }, 1000);
+        }
+      }
+    });*/
+
+    /*
+     *  Set up the login part at the top of the page.
+     */
+    authservice.init({
+      // Environment specific values are defined in environment.js
+      host: AUTHSERVICE_HOST,
+      port: AUTHSERVICE_PORT,
+      tenant: AUTHSERVICE_TENANT,
+      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
+      onUserChange: function(user, ttuat, fromCookie) {
+        // If the current user came from the cookie, reload it
+        //if (fromCookie) {
+        //  console.log('Reloading user details (cookie details are just a summary)');
+        //  return authservice.reloadUser();
+        //}
+      }
+
+    });
+
+  //- script.
+//- block scripts

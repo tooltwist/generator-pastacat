@@ -1,0 +1,110 @@
+// Required sharedOrder, as returned by philChristmas/getSharedOrders
+// See productdetails2.pug for an example.
+.card_rounded
+  a(href='#modal_preview_detail_brokenwood', data-toggle='modal')
+    big
+      span {{sharedOrder.productVariant.manufacturer}}
+        br
+        small.el
+          | {{sharedOrder.productVariant.name}}
+          br
+          .color.black
+            small.pack-price {{sharedOrder.productVariant.componentsQty}} pack - {{sharedOrder.d_packPrice}}
+            small.bottle-price {{sharedOrder.d_unitPrice}}
+              small &nbsp;/ bottle
+            //- small
+          //- color
+        //- small
+      //- span
+    //- big
+  //- a
+  hr
+  span
+    big
+      big
+        small {{sharedOrder.sharedOrder.ownerLabel}}
+        span.green
+          big {{sharedOrder.sharedOrder.quantity}}
+          small &nbsp;case&nbsp;
+        //- span
+        br
+        small Group Buy
+      //- big
+    //- big
+  //- span
+  .shortsummary
+    .sold
+      p.lead
+        span.green {{sharedOrder.sold}}
+        br
+      //- p
+      p.cases-sold sold
+    //- sold
+    .left
+      p.lead
+        span.green {{sharedOrder.remaining}}
+        br
+      | to go
+      //- p
+    //- left
+  //- shortsummary
+  p
+  .avatar
+    .gauge
+      img(src='assets/images/circles/circles_8.png', alt='')
+      //-img
+      .gauge
+        .circlebuyGauge(data-size='{{sharedOrder.sharedOrder.quantity}}',data-sold='{{sharedOrder.sold}}')
+        //-circlebuyGauge
+      //-gauge
+  //- avatar
+  br
+  //status is {{sharedOrder.sharedOrder.status}}
+  //br
+  p
+    .circlebuy-button-wrap
+      a.button.inline.v7.joincirclebuy.thin-line(href='circlebuy-start.html?circleBuy={{sharedOrder.sharedOrder.sharedOrderId}}') Join now
+    //- | &nbsp;
+    //- a.button.inline.v7.joincirclebuy.thin-line(href="circlebuy-start.html?circleBuy={{sharedOrder.sharedOrder.sharedOrderId}}") join
+    //- | &nbsp;
+    //- a.button.inline.v8.joincirclebuy.thin-line(href="") watch
+  //- p
+  .circlebuy-table.hide
+    .prod-details.deals
+      .label-qty.cols
+        strong Qty
+        br
+      //- qty
+      .label-bottle.cols
+        strong Bottle
+        br
+      //- label-bottle
+      .label-pack.cols
+        strong {{sharedOrder.productVariant.componentsQty}} Pack
+        br
+        //- span
+      //- price
+      .label-savings.cols
+        span
+          strong.green Save
+        br
+      //- savings
+    //- prod-details
+    .prod-details.deals.tr
+      .label-qty.cols
+        span {{sharedOrder.sharedOrder.quantity}}
+      //- qty
+      .label-bottle.cols
+        span {{sharedOrder.d_unitPrice}}
+      //- label-bottle
+      .label-pack.cols
+        span {{sharedOrder.d_packPrice}}
+        //- span
+      //- price
+      .label-savings.cols
+        strong.middle
+          big.lead {{sharedOrder.d_packSave}}
+      //- savings
+    //- prod-details
+  //- .circlebuy-table
+//- card_rounded

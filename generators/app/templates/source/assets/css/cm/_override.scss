@@ -1,0 +1,148 @@
+header {
+  // NAVBAR
+  nav {
+    &.navbar {
+      border: 0;
+      .navbar-toggle {
+        border: 0;
+        &:hover, &:focus {
+          background: none;
+        }
+      }
+    }
+  }
+  .navbar-brand {
+    & {
+      padding: 0 15px 0 15px;
+      display: flex;
+      align-items: center;
+      // margin-right: 15px;
+      background: #0186d5;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    &:hover {
+      background: lighten(#0186d5, 5%) !important;
+    }
+    i {
+      margin-right: 5px;
+    }
+    i, span {
+      color: #fff;
+    }
+    img {
+      max-height: 100%;
+    }
+  }
+  .navbar-default {
+    background: darken(#0186d5, 30%);
+    .navbar-nav > li > a {
+      color: #fff;
+      &:hover {
+        color: darkgray;
+      }
+    }
+  }
+  .btn-group {
+    .form-group {
+      margin-bottom: 15px;
+      display: block;
+      .form-control {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// REMOVE DROP SHADOW
+.form-control, tags-input .tags {
+  box-shadow: none;
+  outline-color: #0186d5;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+// REMOVE ROUNDED CORNERS
+.btn,
+.dropdown-menu,
+.form-control,
+.alert,
+.modal-content {
+  border-radius: 0;
+}
+
+// DRINKMAKERS
+.maker-list {
+  // font-size: 1.2em;
+  & + .maker-list {
+    margin-top: 15px;
+  }
+  .rating-status {
+    > span, > div {
+      display: inline-block;
+      margin-right: 5px;
+    }
+  }
+  .summary-frame {
+    margin-top: 5px;
+  }
+}
+
+// MEDIA
+.media {
+  .media-left {
+    .picture {
+      position: relative;
+      img {
+        &.placeholder {
+          width: 40px;
+          position: relative;
+        }
+        &.source {
+          position: absolute;
+          left: 0;
+          top: 0;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .media-right {
+    float: right;
+  }
+}
+
+// TABS
+.nav-tabs > li > a {
+  border-radius: 0;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: transparent;
+}
+
+
+.navbar-nav > li {
+  &.dropdown {
+    &:hover {
+      > ul {
+        @media screen and (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  > li {
+    > a {
+      padding: 15px 8px;
+      @media screen and (min-width: 991px) {
+        padding: 15px;
+      }
+    }
+  }
+}

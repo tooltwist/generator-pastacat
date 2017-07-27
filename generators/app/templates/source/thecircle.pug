@@ -1,0 +1,425 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+
+  //- style
+
+
+block content
+
+  .banner.circle
+    .gradient
+    h1.jumbo Welcome to a new world of drinking
+      br
+      small find your circles
+    //- h1
+    .action
+      a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
+        i.fa.fa-envelope
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+      a.btn.btn-info.btn-lg
+        i.fa.fa-facebook
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+      .util
+        a(href='#modal_coming_soon', data-toggle='modal')
+          | Download our app
+        //- a
+        | &nbsp;&nbsp;
+        i.fa.fa-android
+        | &nbsp;
+        i.fa.fa-apple
+      //- util
+    //- action
+  //- banner-home
+
+  section.profile
+    h2.circle Welcome to circles
+      i.fa.fa-circle-o
+      br
+      small Start or join a circle buy with your friends for big savings.
+        br
+        | Get specials, updates and news. Post, share and comment.
+    //- h2
+    .container
+      br
+      h3.heading-center.text-uppercase.color.green
+        a(href='#modal_coming_soon', data-toggle='modal') Take a tour
+      //- h3
+    //- container
+  //- section
+
+  section.circles.tc
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          form
+            .form-group
+              .icon_search
+                input.form-control.input-lg(type='text', placeholder='Search products...')
+                i.fa.fa-search
+                a.link-1(href='#') Refine Search
+              //- icon_search
+            //- form-group
+          //- form
+        //- col-md-8
+      //- row
+      .card.categories
+        form.visible-xs
+          .form-group
+            label(for='exampleInputEmail1') Select type
+            select.form-control
+              option(selected)
+              option Red
+              option White
+              option Bubbles
+              option Beer
+              option Cider
+              option Spirits
+              option Others
+            //- select
+          //- form-group
+        //- form
+        .row.hidden-xs
+          .col-xs-7.col-sm-7.col-md-7
+            .row
+              .col-xs-3.col-sm-3.col-md-3.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c1.png", alt="")
+                  .text Red
+                //- a
+              //-
+              .col-xs-3.col-sm-3.col-md-3.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c2.png", alt="")
+                  .text White
+                //- a
+              //-
+              .col-xs-3.col-sm-3.col-md-3.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c3.png", alt="")
+                  .text Bubbles
+                //- a
+              //-
+              .col-xs-3.col-sm-3.col-md-3.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c4.png", alt="")
+                  .text Beer
+                //- a
+              //-
+            //- row
+          //- col-md-7
+          .col-xs-5.col-sm-5.col-md-5
+            .row
+              .col-xs-4.col-sm-4.col-md-4.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c5.png", alt="")
+                  .text Cider
+                //- a
+              //-
+              .col-xs-4.col-sm-4.col-md-4.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c6.png", alt="")
+                  .text Spirits
+                //- a
+              //-
+              .col-xs-4.col-sm-4.col-md-4.icons
+                a(href='#modal_coming_soon', data-toggle='modal')
+                  img(src="assets/images/category/c7.png", alt="")
+                  .text Others
+                //- a
+              //-
+            //- row
+          //- col-md-5
+        //- row
+      //- card
+      br
+      .row
+        .col-md-12
+          p.lead.text-center Latest Circle Buys
+            br
+            small 121,719 active circles
+          //- p
+        //- col-md-12
+
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/1.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Roddie's Corona surf circle
+                    //- a
+                    br
+                    .text-muted Corona Extra Imported Beer
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $39.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/2.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Randwick Shiraz Club Circle
+                    //- a
+                    br
+                    .text-muted Brokenwood Graveyard Vineyard
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 9 sold / 2 available
+                    strong.text-muted $19.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/3.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Darren white wine circle
+                    //- a
+                    br
+                    .text-muted 12 Year Old Scotch Whisky 700mL
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $32.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/4.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Bondi Beach Swimmers Circle
+                    //- a
+                    br
+                    .text-muted French Champagne
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $11.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/5.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Charmaine's Super Circle
+                    //- a
+                    br
+                    .text-muted Vodka
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $43.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/6.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Rose Bay mother's lunch circle
+                    //- a
+                    br
+                    .text-muted Sauvignon Blanc
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $12.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/7.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Perth Yatching Wine Club Circle
+                    //- a
+                    br
+                    .text-muted Lagger Stubbies
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $36.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/8.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Kirra cycle circle
+                    //- a
+                    br
+                    .text-muted Pinot Noir
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $14.99
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+        .col-md-4.col-sm-6
+          .drawer
+            .list_groups
+              .content
+                .input-group
+                  a.button.v7.inline(href="#") request to join
+                  span.input-group-addon
+                    .thumb
+                      .img.square
+                        img(src='assets/images/drawer/9.png', alt='')
+                      //- img
+                    //- thumb
+                  //- span
+                  span.form-control
+                    a.name(href='#')
+                      strong Pharmacare wine buyers circle
+                    //- a
+                    br
+                    .text-muted Botrytis Semillon 250mL
+                    .text-muted
+                      i.fa.fa-clock-o
+                      | &nbsp;2hrs remaining
+                    .text-muted 19 sold / 4 available
+                    strong.text-muted $12.50
+                  //- span
+                //- input-group
+              //- content
+            //- list_groups
+          //- drawer
+        //- col-md-4
+      //- row
+    //- container
+  //- section
+
+
+block scripts
+  // External Script goes here...
+  script.
+    $(document).ready(function(){
+
+    });

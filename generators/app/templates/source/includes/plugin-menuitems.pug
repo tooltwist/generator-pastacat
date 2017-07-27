@@ -1,0 +1,76 @@
+
+li(role="presentation" ng-repeat="item in menuItems")
+  a(href="{{item.id}}", role="tab", data-toggle="tab" onclick="PluginMenuItems.menuItemSelected();") {{item.label}}
+//- li
+
+
+script.
+  //alert('plugin-menus 2')
+
+
+    var PluginMenuItems = (function() {
+    console.log('pluginMenuItems constructor()');
+
+    // Private variables
+    var menuItems = [ ];
+    var _context = {
+      /*$scope: null,
+      $http: null,
+      $timeout: null,
+      $compile: null*/
+    };
+
+    // Return the object.
+    return {
+
+      /*
+       *  Register a menu option.
+       */
+      register: function(menuItemDefinition) {
+        console.log('pluginMenuItems.register(' + menuItemDefinition.label + ')');
+        menuItems.push(menuItemDefinition);
+      },
+
+      /*
+       *  Initialise the menu items. Note this
+       *  should happen after the individual menu
+       *  items have registered themselves.
+       */
+      //init: function init($scope, $http, $timeout, $compile) {
+      init: function init(context) {
+
+        console.log('pluginMenuItems.init()');
+
+        _context = context;
+
+        // Initialise the menu items.
+        for (var i = 0; i < menuItems.length; i++) {
+          var item = menuItems[i];
+          if (item.init) {
+            item.init(_context);
+          }
+        }
+        context.$scope.menuItems = menuItems;
+      },
+
+
+      // Reset all the menu items.
+      // This gives them a chance to save or hide stuff, etc.
+      menuItemSelected: function menuItemSelected() {
+        //alert('pluginMenuItems_menuItemSelected()');
+        if (menuItems) {
+          for (var i = 0; i < menuItems.length; i++) {
+            var item = menuItems[i];
+            if (item.reset) {
+              //console.log('_context=', _context);
+              item.reset(_context);
+            }
+          }
+        }
+      },
+
+      // Ignore this
+      nocomma: null
+
+    };
+  })();
