@@ -3,7 +3,7 @@
   .card(ng-hide=" !pv_listPaneIsVisible()")
     .row
       .col-md-12
-        h4 {{pv_viewLabel}} List and Stuff
+        h1 {{pv_viewLabel}} List and Stuff
 
         // A "filter" field, so the user can search
         //- .form-group
@@ -25,7 +25,7 @@
   .card(ng-hide="pv_listPaneIsVisible()")
     .row
       .col-md-12
-        h4 {{pv_headingForRecordPane}}
+        h1 {{pv_headingForRecordPane}}
 
         // Buttons above
         .actions-wrap
@@ -54,7 +54,8 @@ script.
   (function(){
 
     const LABEL = 'Product Variants';
-    const VIEW = 'product_variant';
+    const VARIANT_VIEW = 'product_variant';
+    var VARIANT_METADATA = null;
 
     /*
      *  Now register this menu item to use the pane described above.
@@ -75,11 +76,11 @@ script.
          *  Load the initial records.
          */
         var params = { };
-        TooltwistViews.select(context, VIEW, params, pv_selectCallback);
+        TooltwistViews.select(context, VARIANT_VIEW, params, pv_selectCallback);
 
 
         /*
-         *  If we have enough characters, do a search.
+         *  When we have enough characters, do another search.
          */
         $scope.pv_filterChanged = function() {
 
@@ -91,7 +92,7 @@ script.
           var params = {
             filter: $scope.pv_filter
           };
-          TooltwistViews.select(context, VIEW, params, pv_selectCallback);
+          TooltwistViews.select(context, VARIANT_VIEW, params, pv_selectCallback);
         };// pv_filterChanged
 
 
@@ -99,6 +100,13 @@ script.
          *  This function is called once we have the records.
          */
         function pv_selectCallback(err, data, metadata) {
+          if (err) {
+            console.log('Error selecting view ' + VARIANT_VIEW, err);
+            return;
+          }
+          VARIANT_METADATA = metadata;
+          
+          
           console.log('data=', data);
           console.log('metadata=', metadata);
 
@@ -162,8 +170,13 @@ script.
          */
         $scope.pv_saveButton = function() {
           //alert('pv_saveButton()');
-          TooltwistViews.save(context, VIEW, $scope.pv_record, function(err, reply) {
+          TooltwistViews.save(context, VARIANT_METADATA, 'record', $scope.pv_record, function(err, reply) {
             console.log('save returned', err, reply);
+            if (err) {
+              console.log('Error selecting view ' + VARIANT_VIEW, err);
+              return;
+            }
+
             // Jump back to the supplier list
             context.$timeout(function() {
               context.$scope.pv_showListPane = true;

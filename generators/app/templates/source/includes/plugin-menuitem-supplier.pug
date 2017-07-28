@@ -1,5 +1,10 @@
 // "Supplier List" pane
 .tab-pane#tab-supplier-list(role="tabpanel")
+  
+  
+  //
+  //  Pane for showing a list of Suppliers
+  //
   .card(ng-hide=" !supplierShowList()")
     .row
       .col-md-12
@@ -20,16 +25,52 @@
   //- card
   //- tab-pane
 
-  // "Supplier Details" pane
-  //.tab-pane#tab-supplier-details(role="tabpanel")
+  //
+  //  Pane for showing a specific Supplier
+  //
   .card(ng-hide="supplierShowList()")
     .row
       .col-md-12
         h1 {{supplier.supplierName}} ({{supplier.supplierId}})
+        
+        
+        h2 {{product.name}}
+        ul.nav.nav-tabs
+          li.active
+            a(href="#tab-supplier-details" data-toggle="tab") Details
+          li
+            a(href="#tab-supplier-description" data-toggle="tab") Description
+          li
+            a(href="#tab-supplier-metadata" data-toggle="tab") SEO
+          li
+            a(href="#tab-supplier-variants" data-toggle="tab") Variants
+        br
+
+        
+        
+        
+        
         //br
         .actions-wrap
           a.btn(ng-click="supplierBackButton()") Back
           a.btn.btn-success(ng-click="supplierSaveButton()") Save
+        //- .actions-wrap
+        
+        
+        
+        .tab-content.clearfix
+          // Product details pane
+          #tab-supplier-details.tab-pane.active
+            | Details
+        
+          #tab-supplier-description.tab-pane
+            | Descripton
+        
+        
+        
+        
+        
+        
         .form-group
           //label(for='supplier-id') Supplier Id
           //input#supplier-id.form-control(ng-model="supplier.supplierId" placeholder='Supplier id')

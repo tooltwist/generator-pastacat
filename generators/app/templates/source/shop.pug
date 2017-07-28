@@ -12,51 +12,81 @@ block css
 
 
 block content
-  div(ng-app="myApp" ng-controller="myCtrl" ng-cloak, directive="")
-    
-    .banner.social(style="background: url({{supplier.banner}});")
-      //- .gradient
-      .container.wall-header
-        .col-md-3.photo
-          .img
-            a(href='#modal_coming_soon', data-toggle='modal')
-              i.fa.fa-camera
-            //- a
-            img(ng-src="{{supplier.logo}}", alt="")
-          //- img
-          .name
-            span {{supplier.supplier_name}}&nbsp;
-            sup
-              a(href='#modal_coming_soon', data-toggle='modal')
-                i.fa.fa-pencil
-                span edit profile
-              //- a
-            //- sup
-          //- name
-        //- photo
-        .col-md-9.wall-menu
+  div(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak, directive="")
+
+    .banner.userprofile.seller(style="background: url({{supplier._banner}});")
+      .gradient
+      .info
+        .container
           .row
-            nav.menu
-              .btn-add-friend.pull-right.hide.NOTYET(ng-hide="isMyFriend()")
-                a.btn.btn-success.btn-sm(href="#")
-                  i.fa.fa-user-plus
-                  | Add friend
-                //- a
-                | &nbsp;
-                a.btn.btn-success.btn-sm(href="#")
-                  | Follow
-                //- a
-              //- btn-add-friend
-              ul
-                li
-                  a.active(href="shop.html") Shop
-                //- li
-              //- ul
-            //- nav
+            .col-sm-3.col-md-3
+              .photo
+                .img.square
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-camera
+                  //- a
+                  img(ng-src="{{supplier._logo}}", alt="")
+                //- img
+                .name
+                  span {{supplier.supplier_name}}&nbsp;
+                  //- sup
+                  //-   a(href='#modal_coming_soon', data-toggle='modal')
+                  //-     i.fa.fa-pencil
+                  //-     span edit profile
+                  //-   //- a
+                  //- //- sup
+                  br
+                  small.hide.NOTYET
+                    | Winery &amp; Vineyard
+                  br
+                //- name
+              //- photo
+            //- col-md-3
           //- row
-        //- wall-menu
+          
+          .row
+            .col-sm-9.col-md-9.col-sm-offset-3.col-md-offset-3
+              .userprofilemenu
+                nav.menu
+                  .btn-add-friend.hide.NOTYET
+                    | &nbsp;
+                    a.btn.btn-success.btn-sm(href="#")
+                      | Follow
+                    //- a
+                  //- btn-add-friend
+                  ul
+                    li
+                      a(href="seller.html?supplier={{supplierId}}") News
+                    //- li
+                    li
+                      a.active(href="#") Shop
+                    li
+                      a(href="supplier-maint.html?supplier={{supplierId}}") Maintenance
+                    //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Shipping
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Return Policy
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Circlebuys
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Contact Us
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') About Us
+                    //- //- li
+                  //- ul
+                //- nav
+              //- userprofilemenu
+            //- col-md-6
+          //- row
+        //- container
       //- info
     //- banner-home
+
 
     section.userprofile.drinks.results
       .container
@@ -64,6 +94,8 @@ block content
 
           // Options on the left side
           .col-md-3
+            reviews-summary(hero="ctrl.hero" on-done="heroDetailClick(val)")
+
             br
             .search.form-icon
               a.icon(href='#', target='_blank')
@@ -72,55 +104,52 @@ block content
               input.form-control(type='text', placeholder='search {{supplier.supplier_name}}...')
             //- search
             .seller-categories
-              h4 Wines
-              ul
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Cricket Pitch
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Varietal
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Single Vineyard
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Icon
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Dessert
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Packs &amp; Specials
-                //- li
-              //- ul
+              h3 Wines
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Cricket Pitch
+              //- h4
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Varietal
+              //- h4
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Single Vineyard
+              //- h4
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Icon
+              //- h4
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Dessert
+              //- h4
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Packs &amp; Specials
+              //- h4
             //- card
           //- col-md-3
 
           // Right side with products - the main part of the page
-          .col-md-9.right-block
-            .hide.NOTYET
-              br
-              form.form-inline
-                .form-group
-                  label(for='exampleInputName2') Sort by
-                  select.form-control
-                    //- option Highest rated
-                    //- option Most reviews
-                    option(ng-click=" sortType='name' ; sortReverse=false ") A to Z
-                    option(ng-click=" sortType='name' ; sortReverse=true ") Z to A
-                  //- select
-                //- form-group
-                //- .form-group
-                //-   label(for='exampleInputEmail2') Show
-                //-   select.form-control
-                //-     option 15
-                //-     option 50
-                //-     option 100
-                //-   //- select
-                //- //- form-group
-              //- form
-              hr
-            
+          .col-md-9
+            br
+            form.form-inline.hide.NOTYET
+              .form-group
+                label(for='exampleInputName2') Sort by
+                select.form-control
+                  //- option Highest rated
+                  //- option Most reviews
+                  option(ng-click=" sortType='name' ; sortReverse=false ") A to Z
+                  option(ng-click=" sortType='name' ; sortReverse=true ") Z to A
+                //- select
+              //- form-group
+              //- .form-group
+              //-   label(for='exampleInputEmail2') Show
+              //-   select.form-control
+              //-     option 15
+              //-     option 50
+              //-     option 100
+              //-   //- select
+              //- //- form-group
+            //- form
+            hr
+
             // The actual product list
             .product-wrap#products
 
@@ -141,7 +170,7 @@ block content
                           br
                           | points
                         //.first-rating-small(productVariantId="{{variant.productVariantId}}" style='display:none')
-                        .first-rating(productVariantId="{{variant.productVariantId}}" style='display:none')
+                        .first-rating-small(productVariantId="{{variant.productVariantId}}" style='display:none')
                           a(href="/product-ratings.html?product={{variant.productVariantId}}")
                             | Be the
                             br
@@ -150,7 +179,7 @@ block content
                             | to rate
                         //- count
                       a(href='productdetails2.html?product={{variant.productVariantId}}')
-                        img.img-prod(ng-src='{{variant.d_image}}', alt='')
+                        img.Zimg-prod.img_responsive(ng-src='{{variant._image}}', alt='')
                       //- a
                       // Edit
                       .details
@@ -169,7 +198,7 @@ block content
                               li.price {{variant.displayPrice}}
                               //- li
                               li
-                                a.thumb-action(href='/productdetails2.html?product={{variant.productVariantId}}', data-toggle='modal') View / Buy
+                                a.thumb-action(href='/productdetails2.html?product={{variant.productVariantId}}', data-toggle='modal') View
                               //- li
                             //- ul
                           //-buy
@@ -213,27 +242,56 @@ block scripts
   // External Script goes here...
   script(src='assets/vendor/crowdhound/chsearchresultrating.js', type="text/javascript")
   script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+  
+  script(src='assets/vendor/pastac/heroDetail/heroDetail.js', type="text/javascript")
+  script(src='assets/vendor/pastac/reviews-summary/reviews-summary.js', type="text/javascript")
+  script(src="/bower_components/cloudinary/js/jquery.cloudinary.js", type="text/javascript")
+  script(src='assets/scripts/image-paths.js', type="text/javascript")
+  
   script.
 
-
-   /************************************************************
+    /************************************************************
      *
      *    Angular code.
      */
-    var app = angular.module('myApp', ['ngSanitize']);
-
+    var app = angular.module('myApp', ['ngSanitize', 'pastacat', 'pastac-reviews', 'pastac-login']);
+    // Initialise teaservice
     teaservice.init({
       host: TEASERVICE_HOST,
       port: TEASERVICE_PORT,
       accessToken: TEASERVICE_ACCESS_TOKEN
     });
+    app.controller('pageCtrl', function($scope, teaService) {
+      
+      var cl = null; // Cloudinary API
+      
+      // Handle the logging in
+      $scope.authserviceConfig = {
+        host: AUTHSERVICE_HOST,
+        port: AUTHSERVICE_PORT,
+        tenant: AUTHSERVICE_TENANT,
+        dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+      };
+      $scope.userHandler = {
+        onUserChange: function(user, ttuat, stale) {
+          /*if (user) {
+            alert('Have user')
+          } else {
+            alert('Have no user')
+          }*/
+          console.log('Wow, the user changed!', user);
+          $scope.currentUser = user;
+          $scope.ttuat = ttuat;
+        }
+      }
 
-    // Add the controller for this page
-    app.controller('myCtrl', function($scope, teaService) {
+      
 
+      $scope.heroDetailClick = function(name) {
+        alert('rubbery: ' + name);
+      }
 
-      // This code gets the "product" parameter from the
-      // URL so we can use it as productVariantId.
+      // Get the "supplierId" parameter from the URL.
       var supplierId = null;
       console.log('window.location=' + window.location + '.')
       window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
@@ -243,12 +301,10 @@ block scripts
         }
       });
       console.log('Displaying the page for supplierId=' + supplierId);
-
-      // During development only
-      var DEFAULT_CATEGORY_ID = 621;
       if ( !supplierId) {
-        supplierId = DEFAULT_CATEGORY_ID;
+        window.location.href = 'index.html';
       }
+      $scope.supplierId = supplierId;
 
 
 
@@ -270,26 +326,15 @@ block scripts
 
           // These will all be for the same supplier.
           $scope.supplier = product.supplier;
+          imagePaths_setSupplierImages($scope.supplier);
 
           //console.log('-> GOT product ' + index, product);
           $(product.variants).each(function(i, variant) {
-    if (variant.productVariantId == 193 || variant.productVariantId == 350) {
-            console.log('  -> GOT variant ' + index, variant);
-    }
 
             // Decide what image to use
-            if (variant.images && variant.images.length > 0) {
-              //console.log('image is:' + variant.images[0].imagePath + ':')
-              variant.d_image = variant.images[0].imagePath;
-            } else {
-              variant.d_image = "NOTFOUND.jpg"; // ZZZZZ
-            }
+            imagePaths_setVariantImages(variant);
 
             //computation for display price
-            if (variant.productVariantId == 193 || variant.productVariantId == 350) {
-                console.log('variant.pricing=', variant.pricing)
-            }
-
             var lowestPrice = variant.lastPrice;
             if (variant.pricing && variant.pricing.length > 0) {
               for (var i = 0; i < variant.pricing.length; i++) {
@@ -404,42 +449,11 @@ block scripts
 
 
 
-      /*
-      // Display the circle buys
-      teaService.getSharedOrdersAndSetAngularVariables({
-        productVariantId: productVariantId
-      }, $scope, teaService);
-      */
+
 
     });
 
-    /*app.directive('directive', function($timeout) {
-      return {
-        link: function(scope, element, attr) {
-          $timeout(function() {
-    //ZZZ        chsearchresultrating.init();
-          }, 1000);
-        }
-      }
-    });*/
-
-    /*
-     *  Set up the login part at the top of the page.
-     */
-    authservice.init({
-      host: AUTHSERVICE_HOST,
-      port: AUTHSERVICE_PORT,
-      tenant: AUTHSERVICE_TENANT,
-      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
-      onUserChange: function(user, ttuat, fromCookie) {
-        // If the current user came from the cookie, reload it
-        //if (fromCookie) {
-        //  console.log('Reloading user details (cookie details are just a summary)');
-        //  return authservice.reloadUser();
-        //}
-      }
-    });
-    //console.log('Current user:', authservice.getCurrentUser());
+    
 
   //- script.
 //- block scripts

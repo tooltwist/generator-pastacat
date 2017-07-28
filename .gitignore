@@ -1,2 +1,3 @@
-node_modules
-coverage
+/node_modules
+/coverage
+/generators/app/templates/source.1

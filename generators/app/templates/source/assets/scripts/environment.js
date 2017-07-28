@@ -8,7 +8,7 @@ if (LOCAL_DEPLOYENT) {
   // Local Authservice
   var AUTHSERVICE_HOST = 'localhost';
   var AUTHSERVICE_PORT = 9090;
-  var AUTHSERVICE_TENANT = 'nodeclient';
+  var AUTHSERVICE_TENANT = 'drinkcircle';
   var AUTHSERVICE_USE_DUMMY_LOGIN = false;
 
   // Local Crowdhound
@@ -16,20 +16,23 @@ if (LOCAL_DEPLOYENT) {
   var CROWDHOUND_PORT = 4000;
   var CROWDHOUND_VERSION = "2.0";
   var CROWDHOUND_TENANT = 'drinkpoint';
+  var CROWDHOUND_APIKEY = 'drinkpoint';
 
   // Local TEAservice
   var TEASERVICE_HOST = 'localhost';
   var TEASERVICE_PORT = 3000;
   var TEASERVICE_ACCESS_TOKEN = '0613952f81da9b3d0c9e4e5fab123437';
   var TEASERVICE_VERSION = '2.0.0';
+  var TEASERVICE_APIKEY = 'test'
 
 } else {
   var REMOTE_PREFIX = '<%=DOMAIN_PREFIX%>';
 
+  //alert('using dcmvp')
   // Authservice
   var AUTHSERVICE_HOST = REMOTE_PREFIX + '.authservice.io';
   var AUTHSERVICE_PORT = 80;
-  var AUTHSERVICE_TENANT = 'nodeclient';
+  var AUTHSERVICE_TENANT = 'drinkcircle';
   var AUTHSERVICE_USE_DUMMY_LOGIN = false;
 
   // Crowdhound
@@ -37,13 +40,18 @@ if (LOCAL_DEPLOYENT) {
   var CROWDHOUND_PORT = 80;
   var CROWDHOUND_VERSION = "2.0";
   var CROWDHOUND_TENANT = 'drinkpoint';
+  var CROWDHOUND_APIKEY = 'drinkpoint';
 
   // TEAservice
   var TEASERVICE_HOST = REMOTE_PREFIX + '.teaservice.io';
   var TEASERVICE_PORT = 80;
   var TEASERVICE_ACCESS_TOKEN = '0613952f81da9b3d0c9e4e5fab123437';
   var TEASERVICE_VERSION = '2.0.0';
+  var TEASERVICE_APIKEY = 'test'
 }
+
+// Image handling variables
+const CLOUDINARY_CLOUD_NAME = 'twist-resources';
 
 
 // A few system-wide constants

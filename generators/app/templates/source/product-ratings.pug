@@ -13,7 +13,7 @@ block css
 
 block content
 
-  section.userprofile.simple.ratings(ng-app="myApp" ng-controller="myCtrl", min=0, max=100)
+  section.userprofile.simple(Zng-app="myApp" Zng-controller="myCtrl", min=0, max=100)
     .container
       .row
         .col-md-12
@@ -92,7 +92,7 @@ block scripts
     /*
      *    Set up Angular.
      */
-    var app = angular.module('myApp', ['ngSanitize']);
+    var app = angular.module('myApp', ['ngSanitize', 'pastac-login']);
 
     teaservice.init({
       host: TEASERVICE_HOST,
@@ -100,7 +100,7 @@ block scripts
       accessToken: TEASERVICE_ACCESS_TOKEN
     });
 
-    app.controller('myCtrl', function($scope, $http, teaService) {
+    app.controller('pageCtrl', function($scope, $http, teaService) {
 
 
       // This code gets the "product" parameter from the URL so we can use it as productVariantId.

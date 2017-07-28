@@ -12,11 +12,10 @@
             small.pack-price {{sharedOrder.productVariant.componentsQty}} pack - {{sharedOrder.d_packPrice}}
             small.bottle-price {{sharedOrder.d_unitPrice}}
               small &nbsp;/ bottle
-            //- small
-          //- color
-        //- small
+
+
+
       //- span
-    //- big
   //- a
   hr
   span
@@ -26,12 +25,8 @@
         span.green
           big {{sharedOrder.sharedOrder.quantity}}
           small &nbsp;case&nbsp;
-        //- span
-        br
-        small Group Buy
-      //- big
-    //- big
-  //- span
+        small circlebuy
+
   .shortsummary
     .sold
       p.lead
@@ -63,7 +58,7 @@
   //br
   p
     .circlebuy-button-wrap
-      a.button.inline.v7.joincirclebuy.thin-line(href='circlebuy-start.html?circleBuy={{sharedOrder.sharedOrder.sharedOrderId}}') Join now
+      a.button.inline.v7.joincirclebuy.thin-line(href='circlebuy-start.html?circleBuy={{sharedOrder.sharedOrder.sharedOrderId}}') join this circlebuy
     //- | &nbsp;
     //- a.button.inline.v7.joincirclebuy.thin-line(href="circlebuy-start.html?circleBuy={{sharedOrder.sharedOrder.sharedOrderId}}") join
     //- | &nbsp;

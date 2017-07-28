@@ -1,9 +1,9 @@
-# generator-pastac [![NPM version][npm-image]][npm-url]
+# generator-pastacat [![NPM version][npm-image]][npm-url]
 > Pug, Angular, Sass, TEAservice, Authservice, Crowdhound And TooltwistViews.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-pastac using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-pastacat using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo generator-pastacat
@@ -28,4 +28,4 @@ MIT © [Philip Callender]()
 
 
 [npm-image]: https://badge.fury.io/js/generator-pastacat.svg
-[npm-url]: https://npmjs.org/package/generator-pastac
+[npm-url]: https://npmjs.org/package/generator-pastacat

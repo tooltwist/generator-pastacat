@@ -46,7 +46,7 @@ module.exports = class extends Generator {
 
 	this.log('This command will produce a working PastaCat stack application.');
 	this.log();
-	this.log('A PastaC application utilizes cloud bases services for security, shopping, and social');
+	this.log('A pastacat application utilizes cloud bases services for security, shopping, and social');
 	this.log('media functionality, and will require an APIKEY from the websites http://authservice.io,');
 	this.log('http://teaservice.io, and http://crowdhound.io.');
 	this.log('');
@@ -88,7 +88,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'DOMAIN_PREFIX',
       message: 'Enter the domain name prefix provided for your API calls:',
-      //default: 'xxxxxxxxxxxxxxxxxxxx'
+      default: 'train'
     },
 		/*
     {
@@ -150,10 +150,10 @@ module.exports = class extends Generator {
 			this.destinationPath(appname)
 		);
 
-		// this.fs.copy(
-		// 	this.templatePath('configs/**'),
-		// 	this.destinationPath('configs')
-		// );
+		this.fs.copy(
+			this.templatePath('configs/**'),
+			this.destinationPath('configs')
+		);
 
 
 		/*
@@ -184,8 +184,8 @@ module.exports = class extends Generator {
 		);
 
 		this.fs.copyTpl(
-				this.templatePath('source/assets/scripts/environment.js-mvp'),
-				this.destinationPath(appname + '/assets/scripts/environment.js-mvp'),
+				this.templatePath('source/assets/scripts/environment.js-tst'),
+				this.destinationPath(appname + '/assets/scripts/environment.js-tst'),
 				this.props,
 				{interpolate: /<%=([\s\S]+?)%>/g} // Use <%= ... %>
 		);
@@ -208,8 +208,8 @@ module.exports = class extends Generator {
   install() {
 		if (!this.options['skip-install']) {
 	    // Change working directory to 'gulp' for dependency install
-			var projectDirectory = process.cwd();
-	    var sourceDir = projectDirectory + '/' + this.props.APP_NAME;
+			var here = process.cwd();
+	    var sourceDir = here + '/' + this.props.APP_NAME;
 	    process.chdir(sourceDir);
 
 	    this.installDependencies({
@@ -224,15 +224,22 @@ module.exports = class extends Generator {
 	// initializeGit() {
 	// 	execSync('pwd; ls -l');
 	// }
-	//
+
 	// finalMsg() {
+	// 	// This is unfortunately printed out before
 	// 	this.log()
-	// 	this.log('Project is now ready at ' + this.props.PROJECT_DIR);
+	// 	this.log('This project is now ready and can be run using:\n')
+	// 	this.log()
+	// 	this.log('  $ cd ' + this.props.PROJECT_DIR);
+	// 	this.log('  $ gulp main serve')
+	// 	this.log()
+	// 	this.log('Wait till the gulp command finishes, then refresh the browser window.')
 	// }
 };
 
 
 function projectDirectory(appname) {
-	var dir = '/Development/projects/' + appname ;
+	var dir = process.cwd() + '/' + appname;
+	//var dir = '/Development/projects/' + appname;
 	return dir;
 }

@@ -6,39 +6,35 @@ block content
     .gradient
     .owl-carousel
       .item
-        img(src='assets/images/cm/banner/b1.png')
+        img(src='assets/images/banner/banner_slide_1.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b2.png')
+        img(src='assets/images/banner/banner_slide_2.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b3.png')
+        img(src='assets/images/banner/banner_slide_3.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b4.png')
+        img(src='assets/images/banner/banner_slide_4.jpg')
       //- item
     //- owl-carousel
-    .content
-      .container
-        h1.jumbo
-          | The fun marketplace connecting online shoppers.
-          br
-          | It's the new way to save!
-          br
-          small Discover. Share. Enjoy.
-        //- h1
-        .action.authservice-logged-out
-          a.btn.btn-success.btn-lg(href='#modal_coming_soon', data-toggle='modal')
-            i.fa.fa-envelope
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
-          //- a
-          a.btn.btn-primary.btn-lg(href='#modal_coming_soon', data-toggle='modal')
-            i.fa.fa-facebook
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
-          //- a
-        //- action
-      //- container
-    //- content
+    h1.jumbo
+      | The fun marketplace connecting drinklovers and drinkmakers
+      br
+      | it's the new way to save.
+      br
+      small Discover. Share. Enjoy.
+    //- h1
+    .action.authservice-logged-out
+      a.btn.btn-success.btn-lg(href='#modal_coming_soon', data-toggle='modal')
+        i.fa.fa-envelope
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+      //- a
+      a.btn.btn-info.btn-lg(href='#modal_coming_soon', data-toggle='modal')
+        i.fa.fa-facebook
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+      //- a
+    //- action
   //- banner-home
 
   section.site
@@ -47,32 +43,34 @@ block content
       .row
         .col-xs-10.col-sm-4.col-md-4.col-xs-offset-1.col-sm-offset-0.col-md-offset-0
           .brief.dd
-            img(src='assets/images/cm/truck.png')
+            img(src='assets/images/icon_press.png')
             p.clearfix
             p.clearfix
-            h4.green Meet the Suppliers
+            h4.green Meet the drinkmakers
             p Get to personally know your drinkmakers on our social community. Get exclusive wine, beer, cider &amp; spirits offers and all the latest news.
             //- p
-            a.btn.btn-link(href="drinkmakers.html") view
+            br
+            a.button.v8(href="drinkmakers.html") view
           //- brief
         //- col-md-4
         .col-xs-10.col-sm-4.col-md-4.col-xs-offset-1.col-sm-offset-0.col-md-offset-0
           .brief.di
-            img(src='assets/images/cm/magnifier.png')
+            img(src='assets/images/icon_right.png')
             p.clearfix
             p.clearfix
             h4.green Find the best match
-            p Find your perfect drink using accumulated user ratings and top picks from shoppers like you.
+            p Find your perfect drink using accumulated user ratings and top picks from drinkers like you.
               br
               | Use our comparison module for a better match.
             //- p
-            a.btn.btn-link(href="compare.html") view
+            br
+            a.button.v8(href="compare.html") view
             //- p
           //- brief
         //- col-md-4
         .col-xs-10.col-sm-4.col-md-4.col-xs-offset-1.col-sm-offset-0.col-md-offset-0
           .brief.c
-            img(src='assets/images/cm/party.png')
+            img(src='assets/images/icon_friends.png')
             p.clearfix
             p.clearfix
             h4.green Buying with friends
@@ -80,10 +78,12 @@ block content
               br
               | Share your experiences both good and bad.
             //- p
-            a.btn.btn-link(href="circlebuys.html") view
+            br
+            a.button.v8(href="circlebuys.html") view
           //- brief
         //- col-md-4
       //- row
+      br
       br
       .text-center
         a.btn.btn-success.btn-lg.super-action-button(href='#modal_coming_soon', data-toggle='modal') Get Started
@@ -97,9 +97,8 @@ block content
       .row
         .col-sm-6.col-md-4.col-xs-12
           .type.categories
-            h4
-              a(href='drinkmakers.html') Search Suppliers
-            //- h4
+            p.title
+              a(href='drinkmakers.html') Search Drinkmakers
             .row.drinktype
               //- 1
               .col-md-4.col-sm-4.col-xs-4.cat-thumb
@@ -184,13 +183,13 @@ block content
             .shared
               img(src="assets/images/activity/image-2.png", alt="")
               header
-                h1.md Group Buying
-                  p.lead Buying With Friends
+                h1.md Circlebuying
+                  p Buying With Friends
                     br
                     | Opens up a World of Savings
               //- header
               footer
-                a.btn.btn-default(href="circlebuys.html") See how it works
+                a.action-btn(href="circlebuys.html") See how it works
               //- footer
             //- shared
           //- type
@@ -454,20 +453,34 @@ block scripts
     });
 
 
-    /*
-     *  Set up the login part at the top of the page.
+    
+    /************************************************************
+     *
+     *    Angular code.
      */
-    authservice.init({
-      // Environment specific values are defined in environment.js
-      host: AUTHSERVICE_HOST,
-      port: AUTHSERVICE_PORT,
-      tenant: AUTHSERVICE_TENANT,
-      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
-      onUserChange: function(user, ttuat, fromCookie) {
-        // If the current user came from the cookie, reload it
-        //if (fromCookie) {
-        //  console.log('Reloading user details (cookie details are just a summary)');
-        //  return authservice.reloadUser();
-        //}
-      }
-    });
+     var app = angular.module('myApp', ['ngSanitize', 'pastac-login']);
+
+     teaservice.init({
+       host: TEASERVICE_HOST,
+       port: TEASERVICE_PORT,
+       accessToken: TEASERVICE_ACCESS_TOKEN
+     });
+
+     // Add the controller for this page
+     app.controller('pageCtrl', function($scope, teaService) {
+       
+       
+       $scope.authserviceConfig = {
+         host: AUTHSERVICE_HOST,
+         port: AUTHSERVICE_PORT,
+         tenant: AUTHSERVICE_TENANT,
+         dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+       };
+       $scope.userHandler = {
+         onUserChange: function(user, jwt, stale) {
+           console.log('userHandler.onUserChange(): ', user);
+           $scope.currentUser = user;
+           $scope.jst = jwt;
+         }
+       }
+     });

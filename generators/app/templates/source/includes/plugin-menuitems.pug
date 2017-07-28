@@ -1,6 +1,6 @@
 
 li(role="presentation" ng-repeat="item in menuItems")
-  a(href="{{item.id}}", role="tab", data-toggle="tab" onclick="PluginMenuItems.menuItemSelected();") {{item.label}}
+  a.pluginMenuItems-menuItem(href="{{item.id}}", role="tab", data-toggle="tab" onclick="PluginMenuItems.menuItemSelected();") {{item.label}}
 //- li
 
 
@@ -65,6 +65,35 @@ script.
               //console.log('_context=', _context);
               item.reset(_context);
             }
+          }
+        }
+      },
+      
+      // Activate a specific menu item
+      activate: function activate(label, data) {
+        console.log('\n\n\n\n\nActivate ' + label);
+        if (menuItems) {
+          for (var i = 0; i < menuItems.length; i++) {
+            var item = menuItems[i];
+            //if (item.reset) {
+              console.log('menu item=', item);
+              if (item.label == label) {
+                if (item.activate) {
+                  
+                  // Select the tab
+                  var selector = 'a.pluginMenuItems-menuItem[href="' + item.id + '"]';
+                  console.log('selector=' + selector);
+                  var elem = $(selector);
+                  console.log('elem=' + elem.length);
+                  
+
+                  elem.tab('show');
+                  item.activate(_context, data);
+                }
+                break;
+              }
+              //item.reset(_context);
+            //}
           }
         }
       },

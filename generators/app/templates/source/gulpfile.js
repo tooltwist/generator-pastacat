@@ -9,9 +9,7 @@ var browserSync   = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 var exec = require('child_process').exec;
 
-//var root = '../ttstatic.github.io/'; // always add slash('/') at the end
-var root = 'build/'; // always add slash('/') at the end
-var dir = 'drinkcircle'; // project folder
+var DESTINATION = 'build/drinkcircle';
 
 var paths = {
     // This must be in the right order, so linked files are processed first.
@@ -27,7 +25,61 @@ var paths = {
       '!assets/vendor/tooltwist-views-client/boilerplate/**/*',
     ],
     scss: 'assets/css/**/*.scss',
-    js: 'assets/scripts/**/*.js'
+    js: [
+      'assets/scripts/**/*.js',
+      'assets/vendor/**/*.js'
+    ],
+    assets: [
+      'assets/css/**/*.css',
+      'assets/images/**/*.*',
+      // 'assets/scripts/**/*.*',
+      'assets/vendor/bootstrap/dist/**/*.*',
+      'assets/vendor/**/*.*',
+      'assets/fonts/**/*.*',
+      '!assets/css/*.scss',
+      '!assets/vendor/**/*.pug',
+      '!ssets/vendor/**/*.js',
+    ],
+    bower: [
+      'bower_components/accounting/**/*.*',
+      'bower_components/angular-animate/**/*.*',
+      'bower_components/angular-aria/**/*.*',
+      'bower_components/angular-bootstrap-toggle/dist/**/*.*',
+      'bower_components/angular-ckeditor/**/*.*',
+      'bower_components/angular-datatables/**/*.*',
+      'bower_components/angular-material/**/*.*',
+      'bower_components/angular-sanitize/**/*.*',
+      'bower_components/angular/**/*.*',
+      'bower_components/animate.css/**/*.*',
+      'bower_components/bootbox.js/*.*',
+      'bower_components/bootstrap/dist/**/*.*',
+      'bower_components/ckeditor/**/*.*',
+      'bower_components/cloudinary/**/*.*',
+      'bower_components/dx-chartjs/*dx.chartjs.js',
+      'bower_components/font-awesome/**/*.*',
+      'bower_components/globalize/**/*.*',
+      'bower_components/jquery.cookie/**/*.*',
+      'bower_components/jquery/dist/**/*.*',
+      'bower_components/jwt-decode/build/**/*.*',
+      'bower_components/moment/**/*.*',
+      'bower_components/mustache.js/*.*',
+      'bower_components/ng-file-upload-shim/*.*',
+      'bower_components/ng-file-upload/*.*',
+      'bower_components/ng-tags-input/**/*.*',
+      'bower_components/owl.carousel/dist/**/*.*',
+      'bower_components/pastac-login/dist/**/*.*',
+      'bower_components/pastac-add-supplier/dist/**/*.*',
+      'bower_components/pastac-edit-supplier/dist/**/*.*',
+      'bower_components/pastac-edit-product/dist/**/*.*',
+      'bower_components/typeahead.js/dist/**/*.*',
+      '!bower_components/jquery.cookie/*.json', // Exclude '.json' files
+      '!bower_components/font-awesome/scss/**', // Exclude 'scss' folder
+      '!bower_components/font-awesome/less/**', // Exclude 'less' folder
+      '!bower_components/font-awesome/*.json', // Exclude '.json' files
+      '!bower_components/font-awesome/*.txt', // Exclude '.txt' files
+      '!bower_components/animate.css/*.js', // Exclude '.json' files
+      '!bower_components/animate.css/*.json' // Exclude '.json' files
+  ]
 }
 
 // - ###########################################################################
@@ -50,7 +102,7 @@ gulp.task('pug-all', function() {
     * Compile ALL pug files except files with
     * file names that starts with an underscore('_').
     */
-    return gulp.src(paths.pug)
+    return gulp.src(paths.pug, { base: './'})
     // Convert the pug files to html files
     .pipe(pug({
         doctype: 'html',
@@ -64,18 +116,17 @@ gulp.task('pug-all', function() {
     // Write a message
     .pipe(debug({title:'Installed'}))
     // Place the resultant HTML file into the destination directory.
-    .pipe(gulp.dest(root + dir))
+    .pipe(gulp.dest(DESTINATION))
     // Refresh the page in the browser
     .pipe(browserSync.stream());
 });
 
 gulp.task('pug-incremental', (done) => {
 
-    var dest = root + dir;
-    gulp.src(paths.pug)
+    gulp.src(paths.pug, { base: './'})
     // Look for files newer than the corresponding .html
     // file in the destination directory.
-    .pipe(changed(dest, {extension: '.html'}))
+    .pipe(changed(DESTINATION, {extension: '.html'}))
     // Convert the pug files to html files
     .pipe(pug({
         doctype: 'html',
@@ -89,7 +140,7 @@ gulp.task('pug-incremental', (done) => {
     // Write a message
     .pipe(debug({title:'Installed'}))
     // Place the resultant HTML file into the destination directory.
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(DESTINATION))
     // Refresh the page in the browser
     .pipe(browserSync.stream());
 
@@ -99,7 +150,7 @@ gulp.task('pug-incremental', (done) => {
 
 
 gulp.task('watch', () => {
-    gulp.watch(paths.pug,['pug-incremental']);
+  gulp.watch(paths.pug, ['pug-incremental']);
 });
 
 
@@ -107,91 +158,72 @@ gulp.task('watch', () => {
 // - Compile JS files
 // - ###########################################################################
 gulp.task('js', function() {
-    return gulp.src(paths.js)
+    return gulp.src(paths.js, { base: './'})
     // .pipe(browserify())
     // .pipe(uglify())
-    .pipe(gulp.dest(root + dir + '/assets/scripts'))
+    //.pipe(gulp.dest(DESTINATION + '/assets/scripts'))
+    .pipe(gulp.dest(DESTINATION))
     .pipe(browserSync.stream());;
+});
+gulp.task('js-incremental', function() {
+
+  return gulp.src(paths.js, { base: './'})
+  // Look for files newer than the corresponding .html
+  // file in the destination directory.
+  .pipe(changed(DESTINATION))
+  // .pipe(browserify())
+  // .pipe(uglify())
+  //.pipe(gulp.dest(DESTINATION))
+  .pipe(gulp.dest(DESTINATION))
+  .pipe(browserSync.stream());;
 });
 
 // - ###########################################################################
 // - Compile SASS files to CSS
 // - ###########################################################################
 gulp.task('sass', function() {
-    return gulp.src(paths.scss)
+    return gulp.src(paths.scss, { base: './'})
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(gulp.dest(root + dir + '/assets/css'))
+    .pipe(gulp.dest(DESTINATION))
     .pipe(browserSync.stream());
 });
 
 // - ###########################################################################
 // - Copy assets (css, images, scripts, etc...)
 // - ###########################################################################
-var assetsBaseDir = "./assets";
-var assets = [
-    assetsBaseDir + '/css/**/*.css',
-    assetsBaseDir + '/images/**/*.*',
-    // assetsBaseDir + '/scripts/**/*.*',
-    assetsBaseDir + '/vendor/bootstrap/dist/**/*.*',
-    assetsBaseDir + '/vendor/**/*.*',
-    assetsBaseDir + '/fonts/**/*.*',
-    "!" + assetsBaseDir + '/css/*.scss',
-    "!" + assetsBaseDir + '/vendor/**/*.pug',
-];
+// var assetsBaseDir = "./assets";
+// var assets = [
+//     assetsBaseDir + '/css/**/*.css',
+//     assetsBaseDir + '/images/**/*.*',
+//     // assetsBaseDir + '/scripts/**/*.*',
+//     assetsBaseDir + '/vendor/bootstrap/dist/**/*.*',
+//     assetsBaseDir + '/vendor/**/*.*',
+//     assetsBaseDir + '/fonts/**/*.*',
+//     "!" + assetsBaseDir + '/css/*.scss',
+//     "!" + assetsBaseDir + '/vendor/**/*.pug',
+//     "!" + assetsBaseDir + '/vendor/**/*.js',
+// ];
 gulp.task('copy', function() {
-    gulp.src(assets, { base: './'})
-    .pipe(gulp.dest(root + dir));
+    gulp.src(paths.assets, { base: './'})
+    .pipe(gulp.dest(DESTINATION));
 });
 
 // - ###########################################################################
 // - Copy plugins from bower
 // - ###########################################################################
-var bowerBaseDir = "./bower_components";
-var bower = [
-    bowerBaseDir + '/accounting/**/*.*',
-    bowerBaseDir + '/angular/**/*.*',
-    bowerBaseDir + '/angular-sanitize/**/*.*',
-    bowerBaseDir + '/angular-datatables/**/*.*',
-    bowerBaseDir + '/angular-material/**/*.*',
-    bowerBaseDir + '/angular-aria/**/*.*',
-    bowerBaseDir + '/angular-animate/**/*.*',
-    bowerBaseDir + '/ckeditor/**/*.*',
-    bowerBaseDir + '/angular-ckeditor/**/*.*',
-    bowerBaseDir + '/animate.css/**/*.*',
-    bowerBaseDir + '/bootstrap/dist/**/*.*',
-    bowerBaseDir + '/font-awesome/**/*.*',
-    bowerBaseDir + '/jquery/dist/**/*.*',
-    bowerBaseDir + '/typeahead.js/dist/**/*.*',
-    bowerBaseDir + '/ng-tags-input/**/*.*',
-    bowerBaseDir + '/jquery.cookie/**/*.*',
-    bowerBaseDir + '/moment/**/*.*',
-    bowerBaseDir + '/owl.carousel/dist/**/*.*',
-    bowerBaseDir + '/mustache.js/*.*',
-    bowerBaseDir + '/bootbox.js/*.*',
-    bowerBaseDir + '/dx-chartjs/*dx.chartjs.js',
-    bowerBaseDir + '/globalize/**/*.*',
-    '!' + bowerBaseDir + '/jquery.cookie/*.json', // Exclude '.json' files
-    '!' + bowerBaseDir + '/font-awesome/scss/**', // Exclude 'scss' folder
-    '!' + bowerBaseDir + '/font-awesome/less/**', // Exclude 'less' folder
-    '!' + bowerBaseDir + '/font-awesome/*.json', // Exclude '.json' files
-    '!' + bowerBaseDir + '/font-awesome/*.txt', // Exclude '.txt' files
-    '!' + bowerBaseDir + '/animate.css/*.js', // Exclude '.json' files
-    '!' + bowerBaseDir + '/animate.css/*.json' // Exclude '.json' files
-];
 gulp.task('bower', function() {
-    gulp.src(bower, { base: './'})
-    .pipe(gulp.dest(root + dir));
+    gulp.src(paths.bower, { base: './'})
+    .pipe(gulp.dest(DESTINATION));
 });
 
 // - ###########################################################################
 // - Clean task (deletes the public folder)
 // - ###########################################################################
 gulp.task('clean', function() {
-    return gulp.src(root + dir, { read: false })
+    return gulp.src(DESTINATION, { read: false })
     .pipe(clean({force: true})); // added the 'force' option because the
-    // directory is outside the gulpfile.js's
-    // root folder
+    // directory is outside the gulpfile.js's root folder
 });
 
 // - ###########################################################################
@@ -200,7 +232,7 @@ gulp.task('clean', function() {
 gulp.task('serve', function() {
     browserSync.init({
         server: {
-            baseDir: root + dir
+            baseDir: DESTINATION
         },
         port: 3030,
         //reloadDelay: 200 // Give the server time to pick up the new files.
@@ -212,7 +244,7 @@ gulp.task('serve', function() {
     console.log('')
     console.log('')
     gulp.watch(paths.scss, ['sass']);
-    gulp.watch(paths.js, ['js']);
+    gulp.watch(paths.js, ['js-incremental']);
     //    gulp.watch('./**/*.pug',['pug-watch']);
     gulp.watch(paths.pug,['pug-incremental']);
 });
@@ -220,7 +252,7 @@ gulp.task('serve', function() {
 gulp.task('serve-all', function() {
     browserSync.init({
         server: {
-            baseDir: root + dir
+            baseDir: DESTINATION
         },
         port: 3030,
         //reloadDelay: 200 // Give the server time to pick up the new files.

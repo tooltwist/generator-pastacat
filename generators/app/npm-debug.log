@@ -107,7 +107,7 @@
 61 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:179:14
 61 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:230:16
 61 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
-62 verbose cwd /Development/generator-pastac/generators/app
+62 verbose cwd /Development/generator-pastacat/generators/app
 63 error Darwin 15.6.0
 64 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save" "fs"
 65 error node v5.0.0

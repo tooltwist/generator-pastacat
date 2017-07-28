@@ -54,7 +54,8 @@ script.
   (function(){
 
     const LABEL = '@NAME@';
-    const VIEW = 'product';
+    const VIEW = 'xyzView';
+    var METADATA = null;
 
     /*
      *  Now register this menu item to use the pane described above.
@@ -99,6 +100,11 @@ script.
          *  This function is called once we have the records.
          */
         function @NAME@_selectCallback(err, data, metadata) {
+          if (err) {
+            console.log('Error selecting view ' + VIEW, err);
+            return;
+          }
+          METADATA = metadata;
           console.log('data=', data);
           console.log('metadata=', metadata);
 
@@ -163,8 +169,13 @@ script.
          */
         $scope.@NAME@_saveButton = function() {
           //alert('@NAME@_saveButton()');
-          TooltwistViews.save(context, VIEW, $scope.@NAME@_record, function(err, reply) {
+          TooltwistViews.save(context, VIEW, 'record', $scope.@NAME@_record, function(err, reply) {
             console.log('save returned', err, reply);
+            if (err) {
+              console.log('Error saving view ' + VIEW, err);
+              return;
+            }
+
             // Jump back to the supplier list
             context.$timeout(function() {
               context.$scope.@NAME@_showListPane = true;

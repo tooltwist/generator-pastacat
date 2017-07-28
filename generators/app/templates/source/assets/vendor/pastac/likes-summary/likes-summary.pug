@@ -1,0 +1,58 @@
+block content
+
+    .list_groups.likedbypage
+      .head
+        h4
+          a(href='#modal_coming_soon', data-toggle='modal')
+            | {{ctrl.heading}}
+      //- head
+      .content
+        
+        small
+        .input-group
+          span.input-group-addon
+            .thumb
+              .img
+                img(src='assets/images/likes/likes_3.png', alt='')
+              //- img
+            //- thumb
+          span.form-control
+            a(href='#modal_coming_soon', data-toggle='modal')
+              strong Hardys
+            //- | likes your photo.
+            //- p
+          //- span
+        //- input-group
+        .input-group
+          span.input-group-addon
+            .thumb
+              .img
+                img(src='assets/images/likes/likes_4.png', alt='')
+              //- img
+            //- thumb
+          span.form-control
+            a(href="profile.html")
+              strong Grant Burge Barossa
+            //- | commented on your post.
+            //- p
+          //- span
+        //- input-group
+        .input-group
+          span.input-group-addon
+            .thumb
+              .img
+                img(src='assets/images/likes/likes_7.png', alt='')
+              //- img
+            //- thumb
+          span.form-control
+            a(href='#modal_coming_soon', data-toggle='modal')
+              strong Ginger Joe
+            //- | shared your post.
+            //- p
+          //- span
+        //- input-group
+      //- content
+      .more
+        a(href='#modal_coming_soon', data-toggle='modal') See all
+      //- more
+    //- list_groups

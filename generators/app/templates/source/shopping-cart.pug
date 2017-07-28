@@ -13,13 +13,13 @@ block css
 
 block content
 
-  section.userprofile.request-list.simple.shopping-cart(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+  section.userprofile.request-list.simple(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
     .container
       .row
 
         // Menu of shopping carts - one per supplier
         .col-md-3
-          h4.title
+          h3.title
             | My Shopping Cart
             span(ng-if="salesOrders.length > 1") s
           .card.shopping-cart-menu
@@ -36,25 +36,30 @@ block content
 
           // Display a message if there are no sales_orders
           .card(ng-hide="salesOrders==null || salesOrders.length > 0")
-            h4.green You currently have no shopping carts
-            p
-              | When you make a purchase at Drinkcircle.com, you are
-              | buying direct from the drink maker. If you are preparing
-              | to buy from multiple drink makers, we will create multiple
-              | shopping carts and show them on the left.
-            p
-              | Each shopping cart will result in a separate payment,
-              | which goes directly to the suppplier, and you will receive
-              | a separate invoice for each order.
-            p
-              | To add items to your shopping cart, go to the page that
-              | describes a drink, and press the "Buy Now" button, or
-              | better yet, start or join a CircleBuy.
-              br
-              br
-              br
-              br
-          //- card
+            .row
+              .col-md-2
+              .col-md-8
+                br
+                br
+                h4.green You currently have no shopping carts
+                p.small
+                  | When you make a purchase at Drinkcircle.com, you are
+                  | buying direct from the drink maker. If you are preparing
+                  | to buy from multiple drink makers, we will create multiple
+                  | shopping carts and show them on the left.
+                p.small
+                  | Each shopping cart will result in a separate payment,
+                  | which goes directly to the suppplier, and you will receive
+                  | a separate invoice for each order.
+                p.small
+                  | To add items to your shopping cart, go to the page that
+                  | describes a drink, and press the "Buy Now" button, or
+                  | better yet, start or join a CircleBuy.
+                  br
+                  br
+                  br
+                  br
+
           // We have sales_orders
           .card(ng-hide="!salesOrders || salesOrders.length == 0")
             .col-md-4

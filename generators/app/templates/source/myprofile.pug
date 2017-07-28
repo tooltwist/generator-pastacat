@@ -19,8 +19,8 @@ block content
         .col-md-3
 
         //- col-md-3
-        .col-md-9.right-block
-          h4.title My Profile
+        .col-md-9
+          h3.title My Profile
         //- col-md-9
       //- row
       .row
@@ -50,7 +50,7 @@ block content
 
 
         // "Personal Details" pane
-        .col-md-9.right-block
+        .col-md-9
           .tab-content
             .tab-pane.active#tab-personal-details(role="tabpanel")
               .card
@@ -78,14 +78,14 @@ block content
                   //- col-md-3
                 //- row
 
-                h4 About Me
+                h3 About Me
                 .row
                   .col-md-12
                     .form-group
                       label(for='pd-about') About Me
                       textarea.form-control#pd-about(ng-model="profile.about", rows='5', placeholder='Tell people a little about yourself')
                     //- form-group
-                h4 Location
+                h3 Location
                 .row
                   .col-md-6
                     .form-group
@@ -100,7 +100,7 @@ block content
                   //- col-md-12
                 //- row
 
-                h4 Interests
+                h3 Interests
                 .row
                   .col-md-12
                     .form-group
@@ -121,7 +121,7 @@ block content
               .row
                 .col-md-6
                   .card
-                    h4 Friends
+                    h3 Friends
                     .table-responsive
                       table.table
                         tr
@@ -163,7 +163,7 @@ block content
                     //- myprofile-add-new-address
                 .col-md-6
                   .card
-                    h4 Friended By
+                    h3 Friended By
                     .table-responsive
                       table.table
                         tr

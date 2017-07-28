@@ -8,8 +8,8 @@
 
       // Float the rating button to the right
       .btn-review-wrap.right(style="float: right")
-        a.button.inline.v7(ng-click="writeAReviewButton()" ng-hide="!loggedIn") Rate this product
-        a.button.inline.v7(ng-hide="loggedIn") Log in to Rate this product
+        a.button.inline.v7(ng-click="writeAReviewButton()" ng-hide="!currentUser") Rate this product
+        a.button.inline.v7(ng-hide="currentUser") Log in to Rate this product
 
       // Show the number of ratings
       .review-widget-no-ratings
@@ -115,8 +115,8 @@
 
       // Float the review button to the right
       .btn-review-wrap(style="float: right;")
-        a.button.inline.v7(ng-click="writeAReviewButton()" ng-hide="!loggedIn") Write a review
-        a.button.inline.v7(ng-hide="loggedIn") Log in to Write a review
+        a.button.inline.v7(ng-click="writeAReviewButton()" ng-hide="!currentUser") Write a review
+        a.button.inline.v7(ng-hide="currentUser") Log in to Write a review
         //a.button.inline.v7(href="product-ratings.html") Rate product
 
       // Show the number of reviews

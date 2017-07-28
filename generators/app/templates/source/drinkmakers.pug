@@ -2,19 +2,51 @@ extends ./layout/layout_main.pug
 
 block css
   style.
+  
+    .admin-zone {
+      margin-left: 15px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #d9534f;
+      padding-left: 20px;
+      padding-right: 20px;
+      color: #d9534f;
+      font-size: 13px;
+    }
 
   //- style
 
 
 block content
+  
+  pastac-add-supplier(jwt="jwt" handler="userHandler" supplier-type="Drinkmaker")
+  
+  // Modal
+  #add-drinkmaker-modal.modal.fade(role="dialog")
+    .modal-dialog
+      .modal-content
+        .modal-header.admin-colors
+          button.close(type="button" data-dismiss="modal") &times;
+          h4.modal-title Add a new Drinkmaker (MY MODAL)
+        .modal-body
+          .form-group
+            label(for="new-drinkmaker-name") Name of New Drinkmaker
+            input#new-drinkmaker-name.form-control(ng-model="newDrinkmakerName")
+            label(for="new-drinkmaker-email") Contact email
+            input#new-drinkmaker-email.form-control(type="email" ng-model="newDrinkmakerEmail")
+            label(for="new-drinkmaker-abn") ABN
+            input#new-drinkmaker-abn.form-control(type="number" ng-model="newDrinkmakerABN")
+        .modal-footer.admin-colors
+          button.btn.btn-danger(type="button" data-dismiss="modal" ng-click="newDrinkmaker()") Add Drinkmaker
+          button.btn.btn-danger(type="button" data-dismiss="modal") Close
 
-  section.drinkmakers(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+  section(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak)
     .container
       .row
         .col-md-3
-          .facets
-            .wrap
-              strong(data-toggle='collapse', data-target='#collapse-category') Products
+          .search-dropdown
+            .dropdown-wrap
+              strong(data-toggle='collapse', data-target='#collapse-category') Category
               #collapse-category.collapse.in
                 ul
                   //- li(ng-repeat="category in categories")
@@ -57,20 +89,41 @@ block content
               //- collpase
             //- filters-wrap
           //- dc-filters-dropdown
+
+          //- br
+          //- br
+          //- a.btn.btn-block.btn-admin Add a new Drinkmaker
+          
+          
+          div(ng-hide="!currentUser.isAdmin")
+            br
+            br
+            br
+            br
+            .card.admin-zone.danger
+              //- h4 Admin zone
+              input(type="checkbox" ng-model="showDisabledSuppliers")
+              | &nbsp; Show disabled
+              br
+              br
+              //a.btn.btn-block.btn-danger.btn-sm(data-toggle="modal" data-target="#add-drinkmaker-modal") Add a new Drinkmaker
+              a.btn.btn-block.btn-admin.btn-sm(data-toggle="modal" data-target="#pastac-add-supplier-modal") Add a new Drinkmaker
+              br
         //- col-md-3
-        .col-md-9.right-block
-          h5.text-center
-            a(href='drinkmakers.html') All Suppliers
+        .col-md-9.card
+          p.text-center
+            small
+              a(href='drinkmakers.html') All Drinkmakers
           //- p
-          h4.text-center Wine, Beer, Cider &amp; Spirit makers
+          h2.text-center Wine, Beer, Cider &amp; Spirit makers
           .maker-filters
             form
               .form-group
                 .input-group.dc-filters
-                  input#searchButton.form-control(type='text', placeholder='Find a supplier...' ng-model="filter" autocomplete="off")
+                  input#searchButton.form-control(type='text', placeholder='Find a drinkmaker...' ng-model="filter" autocomplete="off")
                   span.input-group-btn &nbsp;&nbsp;
                   span.input-group-btn
-                    button.btn.btn-primary(type="submit" ng-click="searchButton()") Search
+                    button.btn.btn-success(type="submit" ng-click="searchButton()") Search
                   //- span
                 //- input-group
               //- form-group
@@ -111,7 +164,8 @@ block content
 
               // Image
               .col-md-5
-                img.maker(src='{{supplier.directory_photo}}')
+                //img.maker(ng-src='{{supplier._banner}}')
+                img.maker(ng-src='{{supplier._directory_photo}}')
                 p.visible-xs.visible-sm
               //- col-md-5
 
@@ -122,27 +176,44 @@ block content
                     .media-left
                       .picture
                         img.placeholder.sm(src='http://placehold.it/150', alt='placeholder')
-                        img.source(src='{{supplier.logo}}')
+                        img.source(ng-src='{{supplier._logo}}')
                       //- picture
                     //- media-left
                     .media-body
                       .media-right
                         //a.btn.btn-success.btn-xs(href='seller.html') Go to Profile
                         //| &nbsp;
-                        a.btn.btn-default.btn-xs(href='shop.html?supplier={{supplier.id}}') Visit Store
+                        a.btn.btn-success.btn-xs(href='shop.html?supplier={{supplier.id}}') Go to Shop
+                        div(ng-hide="!currentUser.isAdmin")
+                          br
+                          a.btn.btn-admin.btn-xs.pull-right(href='supplier-maint.html?supplier={{supplier.id}}') maintain
                       //- media-right
                       h4.media-heading {{supplier.supplier_name}}
-                      .rating-status.md
-                        span.left 4.6
+                      //- .rating-status.md
+                      //-   span.left 4.6
+                      //-   .stars
+                      //-     i.fa.fa-star
+                      //-     i.fa.fa-star
+                      //-     i.fa.fa-star
+                      //-     i.fa.fa-star
+                      //-     i.fa.fa-star-half-o
+                      //-   //- stars
+                      //-   span.right.sm
+                      //-     a(href='#modal_coming_soon', data-toggle='modal') 162 reviews
+                      .rating-status.md.hide.NOTYET
+                        span.left 0.0
+                        | &nbsp;
                         .stars
-                          i.fa.fa-star
-                          i.fa.fa-star
-                          i.fa.fa-star
-                          i.fa.fa-star
-                          i.fa.fa-star-half-o
+                          i.fa.fa-star-o
+                          i.fa.fa-star-o
+                          i.fa.fa-star-o
+                          i.fa.fa-star-o
+                          i.fa.fa-star-o
                         //- stars
+                        | &nbsp;
+                        | &nbsp;
                         span.right.sm
-                          a(href='#modal_coming_soon', data-toggle='modal') 162 reviews
+                          a(href='#modal_coming_soon', data-toggle='modal') 0 reviews
                       //- rating-status
                     //- media-body
                   //- media
@@ -150,7 +221,9 @@ block content
                     strong 401-427 McDonalds Rd Pokolbin, New South Wales
                   //- p
                   .summary-frame.initial-fixed-size
-                    p.summary.size-unrestrained {{supplier.story}}
+                    //p.summary.size-unrestrained {{supplier.story}}
+                    p.summary.size-unrestrained(ng-bind-html="supplier.story")
+
                   a.maker-more(style="display:none;") read more
                 //- maker-description
 
@@ -188,6 +261,7 @@ block content
 
 block scripts
   // External Script goes here...
+  script(src="/bower_components/cloudinary/js/jquery.cloudinary.js", type="text/javascript")
 
   script.
     $(function () {
@@ -216,7 +290,7 @@ block scripts
      *
      *    Angular code.
      */
-    var app = angular.module('myApp', ['ngSanitize']);
+    var app = angular.module('myApp', ['ngSanitize', 'pastac-login', 'pastac-add-supplier' ]);
 
     teaservice.init({
       host: TEASERVICE_HOST,
@@ -225,7 +299,34 @@ block scripts
     });
 
     // Add the controller for this page
-    app.controller('myCtrl', function($scope, teaService) {
+    app.controller('pageCtrl', function($scope, teaService) {
+      
+      var cl = null; // Cloudinary API
+      
+      $scope.authserviceConfig = {
+        host: AUTHSERVICE_HOST,
+        port: AUTHSERVICE_PORT,
+        tenant: AUTHSERVICE_TENANT,
+        dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+      };
+      console.log('HHHHHHHH 1')
+      
+      $scope.userHandler = {
+        onUserChange: function(user, jwt, stale) {
+          console.log('Wow, the user changed!', user);
+          $scope.currentUser = user;
+          $scope.jwt = jwt;
+        },
+        onAddSupplier: function(successResponse, errorResponse) {
+          //alert('userHandler.onAddSupplier()')
+
+          if (successResponse) {
+            var supplierId = successResponse.supplierId;
+            alert('New supplier is ' + supplierId)
+          }
+        }
+      }
+      console.log('HHHHHHHH 2', $scope.userHandler)
 
 
       // This code checks for parameters in the URL
@@ -268,6 +369,12 @@ block scripts
       teaService.getSupplier(options).then(function(suppliers){
         console.log('BACK FROM getSupplier', suppliers);
         $scope.suppliers = suppliers;
+        
+        suppliers.forEach(function(supplier) {
+          setSupplierImages(supplier);
+        });
+        
+        //suppliers.forEach(s => setSupplierImages(supplier))
 
 
         $scope.CATEGORY_RED = CATEGORY_RED;
@@ -314,6 +421,8 @@ block scripts
         });
         $scope.categories = categories;*/
 
+
+
         /*$scope.categoryInList = function(categoryId) {
           //console.log('categoryInList(' + categoryId + ')')
           if (categoriesById[categoryId]) {
@@ -323,6 +432,8 @@ block scripts
           //console.log('- nope')
           return false;
         }*/
+
+
 
         // Is the categoryId one of the those in our selection criteria.
         $scope.categorySelected = function(categoryId, includeNoneSelected) {
@@ -399,6 +510,16 @@ block scripts
       $scope.categorySelection = function() {
         reloadPage();
       };
+      
+      $scope.newDrinkmaker = function() {
+        alert('newDrinkmaker()')
+        
+        var name = $scope.newDrinkmakerName
+        var email = $scope.newDrinkmakerEmail
+        var abn = $scope.newDrinkmakerABN
+
+      }
+
 
 
       /*
@@ -438,6 +559,51 @@ block scripts
         // Relaod with the new criteria
         window.location.href = url;
       }
+      
+      
+      function setSupplierImages(supplier) {
+        console.log('setSupplierImages()');
+        
+        supplier._logo = convertImagePath(supplier.logo, { width: 45, height: 45, crop: "fill" });
+        //supplier._banner = convertImagePath(supplier.banner, { width:1920, height: 280, crop: "fill" });
+        supplier._directory_photo = convertImagePath(supplier.directory_photo, { width: 335, height: 200, crop: "fill" });
+      }
+      
+      function convertImagePath(image, cloudinaryOptions) {
+        console.log('convertImagePath(' + image + ')')
+        
+        const CLOUDINARY_PREFIX = 'cloudinary:';
+        
+        if (!image) {
+
+          // No image
+          console.log('use cleardot.png');
+          return '/assets/images/cleardot.png';
+        } else if (image.startsWith(CLOUDINARY_PREFIX)) {
+
+          // This is a Cloudinary image.
+          console.log('IS CLOUDINARY IMAGE');
+          // Convert the image to multiple formats
+          if (cl == null) {
+              // alert('init cl')
+              cl = cloudinary.Cloudinary.new( { cloud_name: CLOUDINARY_CLOUD_NAME});
+          }
+
+          // See http://cloudinary.com/documentation/image_transformations#resizing_and_cropping_images
+          var publicId = image.substring(CLOUDINARY_PREFIX.length);
+          var imageName = publicId + '.jpg';
+          var url = cl.url(imageName, cloudinaryOptions);
+          console.log('use cloudinary image: ' + url);
+          return url;
+
+        } else {
+
+          // Not a cloudinary image.
+          console.log('use raw image: ' + url);
+          return image;
+        }
+      }//- setImagePaths()
+
     });
 
 
@@ -453,25 +619,7 @@ block scripts
       //  }, 500);
       //}
     }, 100);
-
-
-    /*
-     *  Set up the login part at the top of the page.
-     */
-    authservice.init({
-      // Environment specific values are defined in environment.js
-      host: AUTHSERVICE_HOST,
-      port: AUTHSERVICE_PORT,
-      tenant: AUTHSERVICE_TENANT,
-      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
-      onUserChange: function(user, ttuat, fromCookie) {
-        // If the current user came from the cookie, reload it
-        //if (fromCookie) {
-        //  console.log('Reloading user details (cookie details are just a summary)');
-        //  return authservice.reloadUser();
-        //}
-      }
-    });
+    
 
 
   //- script.

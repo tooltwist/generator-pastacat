@@ -7,11 +7,9 @@ header
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        //a.navbar-brand(href='#') CloudMall
+        //a.navbar-brand(href='#') Drink Circle
         a.navbar-brand(href='index.html')
-          //- img(src="assets/images/cm/logo.png", alt="")
-          i.fa.fa-cloud
-          span CloudMall
+          img(src="assets/images/logo_green.png", alt="")
         //- a
       #navbar.navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-left
@@ -26,16 +24,16 @@ header
           //- li
         //- ul
 
-
         // Menu if logged in.
-        ul(style="display:none;").nav.navbar-nav.navbar-right.authservice-logged-in
+        ul(ng-hide="!currentUser").nav.navbar-nav.navbar-right.authservice-logged-inZ
           li.dropdown
-            a.dropdown-toggle.info(href='profile.html', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-              img(style="display:none;" src="", alt="").authservice-current-user-avatar
-              i.fa.fa-user
-              | &nbsp;Hi&nbsp;
-              span.authservice-current-user-firstname.inline
-              | !
+            a.dropdown-toggle.info(href='profile.html', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false' ng-cloak)
+              img.pastac-login-navbar-avatar(ng-hide="!currentUser.avatar" ng-src="{{currentUser.avatar}}", alt="")
+              //- img(Zstyle="display:none;" ng-src="{{currentUser.avatar}}", alt="").authservice-current-user-avatarZ
+              span(ng-hide="currentUser.avatar").fa-stack.fa-lg
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-user.fa-stack-1x.fa-inverse
+              span.pastac-login-navbar-name &nbsp;Hi {{currentUser.firstname}} !
             ul.dropdown-menu
               li
                 a(href='myprofile.html') Profile
@@ -61,159 +59,192 @@ header
           //-     .counter 2
           //-   //- a
           //- //- li
+          li
+            a.cart-icon(href='/shopping-cart.html')
+              i.fa.fa-shopping-cart
+            //- a
+          //- li
 
         //- ul
 
 
         // Menu if not logged in
-        ul(style="display:none;").nav.navbar-nav.navbar-right.authservice-logged-in
-          li
-            a.cart-icon.text-center(href='/shopping-cart.html')
-              i.fa.fa-shopping-bag
-            //- a
-          //- li
-        //- ul
-        form.navbar-form.navbar-right.text-center
-          .btn-group(style="display:none;").nav.navbar-nav.navbar-right.authservice-logged-out
-            a.btn.btn-success.dropdown-toggle.info(href='', id="authservice-user-dropdown", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Login
-            ul.dropdown-menu
-              // LOGIN
-              li
-                //a(id="authservice-login-button" href="#") Login
-                div(id="authservice-login-div")
-                  form
-                    .form-group
-                      label Username
-                      input(type="email" id="authservice-login-username").form-control
-                    //- form-group
-                    .form-group
-                      label Password
-                      input(type="password" id="authservice-login-password").form-control
-                    //- form-group
-                    button(type="submit" id="authservice-login-submit" onclick="return false;").btn.btn-success.btn-block Sign in
-                    p
-                    .text-center
-                      small
-                        a(href='') Forgot password?
-                  //- form
-                  div(id="authservice-login-errmsg" role="alert" style="display:none;").alert.alert-danger
-                    span.glyphicon.glyphicon-exclamation-sign.aria-hidden
-                    span.sr-only Error:
-                    | Invalid email / password
-                  //- div
-                //- div
-              //- li
+        //- ul(style="display:none;").nav.navbar-nav.navbar-right.authservice-logged-out
+        //-   li.dropdown
+        //-     a.dropdown-toggle.info(Zid="authservice-user-dropdown" data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+        //-       span.fa-stack.fa-lg
+        //-         i.fa.fa-circle.fa-stack-2x
+        //-         i.fa.fa-user.fa-stack-1x.fa-inverse
+        //-       //img(src="assets/images/img_advisor_1.jpg", alt="")
+        //-       | &nbsp;sign in OLD
+        //- 
+        //-     ul.dropdown-menu
+        //-       // LOGIN
+        //-       li
+        //-         //a(id="authservice-login-button" href="#") Sign in
+        //-         div(id="authservice-login-div")
+        //-           form
+        //-             div.form-group
+        //-               input(type="email" id="authservice-login-username" placeholder="Username").form-control
+        //-             div.form-group
+        //-               input(type="password" id="authservice-login-password" placeholder="Password").form-control
+        //-             button(type="submit" id="authservice-login-submit" onclick="return false;").btn.btn-default sign in
+        //-           //- form
+        //-           div(id="authservice-login-errmsg" role="alert" style="display:none;").alert.alert-danger
+        //-             span.glyphicon.glyphicon-exclamation-sign.aria-hidden
+        //-             span.sr-only Error:
+        //-             | Invalid email / password
+        //-           //- div
+        //-         //- div
+        //-       //- li
+        //- 
+        //-       // FORGOT PASSWORD
+        //-       //- li.authservice-loggedin-section
+        //-       //-   a(id="authservice-forgot-button" href="#") Forgot password
+        //-       //-   div(id="authservice-forgot-div" style="display:none;")
+        //-       //-     p
+        //-       //-       | Forgot your password? No problem. Enter your email address below and we'll
+        //-       //-       | well send you an email with details on how to reset your password.
+        //-       //-     form
+        //-       //-       div.form-group
+        //-       //-         input(type="email" id="authservice-forgot-username" placeholder="Email").form-control
+        //-       //-       button(type="submit" id="authservice-forgot-submit").btn.btn-default Send the email
+        //-       //-       button(type="submit" id="authservice-forgot-cancel").btn.btn-default cancel
+        //-       //-     //- form
+        //-       //-     div(id="login-errmsg" role="alert" style="display:none;").alert.alert-danger
+        //-       //-       span(aria-hidden="true").glyphicon.glyphicon-exclamation-sign
+        //-       //-       span.sr-only Error:
+        //-       //-       | Invalid email / password
+        //-       //-   //- div
+        //-       //-   div(id="authservice-forgot-done" style="display:none;")
+        //-       //-     p
+        //-       //-       | We have sent an email to <div id="authservice-forgot-email2"></div> with
+        //-       //-       | instructions to reset your password.
+        //-       //-     button(type="submit" id="authservice-forgot-ok").btn.btn-default ok
+        //-       //-   //- div
+        //-       //- //- li
+        //- 
+        //- 
+        //-       // REGISTER
+        //-       //- li.authservice-loggedin-section
+        //-       //-   a(id="authservice-register-button" href="#") Register
+        //-       //-   div(id="authservice-register-div" style="display:none;")
+        //-       //-     form
+        //-       //-       p
+        //-       //-         | Hi!
+        //-       //-         | Enter your email address and a password and we'll
+        //-       //-         | be happy to sign you up.
+        //-       //-       //- p
+        //-       //-       div.form-group
+        //-       //-         input(type="email" id="authservice-register-username" placeholder="Email").form-control
+        //-       //-       //- div
+        //-       //-       div.form-group
+        //-       //-         input(type="password" id="authservice-register-password" placeholder="Password").form-control
+        //-       //-       //- div
+        //-       //-       button(type="submit" id="authservice-register-submit").btn.btn-default register
+        //-       //-       button(type="submit" id="authservice-register-cancel").btn.btn-default cancel
+        //-       //-     //- form
+        //-       //-     div(id="login-errmsg" role="alert" style="display:none;").alert.alert-danger
+        //-       //-       span(aria-hidden="true").glyphicon.glyphicon-exclamation-sign
+        //-       //-       span.sr-only Error:
+        //-       //-       | Invalid email / password
+        //-       //-     //- div
+        //-       //-   //- authservice-register-div -->
+        //-       //-   div(id="authservice-register-done" style="display:none;")
+        //-       //-     p
+        //-       //-       | Congratulations, you now have a user account.
+        //-       //-       | We have sent you an email to verify you email address.
+        //-       //-     p
+        //-       //-       | Please take a moment to check your email and complete
+        //-       //-       | the registration process.
+        //-       //-     button(type="submit" id="authservice-register-ok").btn.btn-default ok
+        //-       //-   //- div
+        //-       //- //- li
+        //- 
+        //-   // Shopping cart
+        //-   li
+        //-     a.cart-icon(href='/shopping-cart.html')
+        //-       i.fa.fa-shopping-cart
+        //-     //- a
+        //-   //- li
+        //- //- ul
 
-              // FORGOT PASSWORD
-              //- li.authservice-loggedin-section
-              //-   a(id="authservice-forgot-button" href="#") Forgot password
-              //-   div(id="authservice-forgot-div" style="display:none;")
-              //-     p
-              //-       | Forgot your password? No problem. Enter your email address below and we'll
-              //-       | well send you an email with details on how to reset your password.
-              //-     form
-              //-       div.form-group
-              //-         input(type="email" id="authservice-forgot-username" placeholder="Email").form-control
-              //-       button(type="submit" id="authservice-forgot-submit").btn.btn-default Send the email
-              //-       button(type="submit" id="authservice-forgot-cancel").btn.btn-default cancel
-              //-     //- form
-              //-     div(id="login-errmsg" role="alert" style="display:none;").alert.alert-danger
-              //-       span(aria-hidden="true").glyphicon.glyphicon-exclamation-sign
-              //-       span.sr-only Error:
-              //-       | Invalid email / password
-              //-   //- div
-              //-   div(id="authservice-forgot-done" style="display:none;")
-              //-     p
-              //-       | We have sent an email to <div id="authservice-forgot-email2"></div> with
-              //-       | instructions to reset your password.
-              //-     button(type="submit" id="authservice-forgot-ok").btn.btn-default ok
-              //-   //- div
-              //- //- li
-
-
-              // REGISTER
-              //- li.authservice-loggedin-section
-              //-   a(id="authservice-register-button" href="#") Register
-              //-   div(id="authservice-register-div" style="display:none;")
-              //-     form
-              //-       p
-              //-         | Hi!
-              //-         | Enter your email address and a password and we'll
-              //-         | be happy to sign you up.
-              //-       //- p
-              //-       div.form-group
-              //-         input(type="email" id="authservice-register-username" placeholder="Email").form-control
-              //-       //- div
-              //-       div.form-group
-              //-         input(type="password" id="authservice-register-password" placeholder="Password").form-control
-              //-       //- div
-              //-       button(type="submit" id="authservice-register-submit").btn.btn-default register
-              //-       button(type="submit" id="authservice-register-cancel").btn.btn-default cancel
-              //-     //- form
-              //-     div(id="login-errmsg" role="alert" style="display:none;").alert.alert-danger
-              //-       span(aria-hidden="true").glyphicon.glyphicon-exclamation-sign
-              //-       span.sr-only Error:
-              //-       | Invalid email / password
-              //-     //- div
-              //-   //- authservice-register-div -->
-              //-   div(id="authservice-register-done" style="display:none;")
-              //-     p
-              //-       | Congratulations, you now have a user account.
-              //-       | We have sent you an email to verify you email address.
-              //-     p
-              //-       | Please take a moment to check your email and complete
-              //-       | the registration process.
-              //-     button(type="submit" id="authservice-register-ok").btn.btn-default ok
-              //-   //- div
-              //- //- li
-            //- ul
-          //- btn-group
-        //- form
-        ul(style="display:none;").nav.navbar-nav.navbar-right.authservice-logged-out
-          li
-            a.cart-icon.text-center(href='/shopping-cart.html')
-              i.fa.fa-shopping-bag
-            //- a
-          //- li
-        //- ul
         
-
+        ul.nav.navbar-nav.navbar-right
+          li
+            pastac-login(config="authserviceConfig" template="navbar" handler="userHandler" fresh-credentials="true" signin="true" hide-logout="true" facebook="true")
 
 
         // Navbar - DRINKS, RED, WHITE, etc
         //- .clearfix
         //- .div
         ul.nav.navbar-nav.navbar-left.nav-category
-          li.dropdown
-            a.dropdown-toggle(href='drinks.html?category=1', data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Products&nbsp;
-              i.fa.fa-caret-down
-            //- a
-            ul.dropdown-menu
-              li
-                a(href='drinks.html?category=1').navbar-drinktype Red
-              //- li
-              li
-                a(href='drinks.html?category=2').navbar-drinktype White
-              //- li
-              li
-                a(href='drinks.html?category=3').navbar-drinktype Beer
-              //- li
-              li
-                a(href='drinks.html?category=4').navbar-drinktype Spirits
-              //- li
-              li
-                a(href='drinks.html?category=5').navbar-drinktype Bubbles
-              //- li
-              li
-                a(href='drinks.html?category=6').navbar-drinktype Cider
-              //- li
+          li
+            a(href='drinks.html?category=1') Drinks
             //- ul
+            //-   li
+            //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+            //-   //- li
+            //- //- ul
+          //- li
+          //- li
+          //-   a(href='drinks.html?category=1').navbar-drinktype Red
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          //- li
+          //-   a(href='drinks.html?category=2').navbar-drinktype White
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          //- li
+          //-   a(href='drinks.html?category=3').navbar-drinktype Beer
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          //- li
+          //-   a(href='drinks.html?category=4').navbar-drinktype Spirits
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          //- li
+          //-   a(href='drinks.html?category=5').navbar-drinktype Bubbles
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          //- li
+          //-   a(href='drinks.html?category=6').navbar-drinktype Cider
+          //-   //- ul
+          //-   //-   li
+          //-   //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+          //-   //-   //- li
+          //-   //- //- ul
+          //- //- li
+          li
+            a(href='drinkmakers.html') Drinkmakers
+            //- ul
+            //-   li
+            //-     a(href='#modal_coming_soon', data-toggle='modal') Sub Menu
+            //-   //- li
+            //- //- ul
           //- li
           li
-            a(href='drinkmakers.html') Suppliers
-          //- li
-          li
-            a(href='circlebuying.html') Group Buy
+            a(href='circlebuying.html') Circlebuys
           //- li
           //- li
           //-   a(href='#interests', data-toggle='modal') Interests

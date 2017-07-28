@@ -12,48 +12,55 @@ block content
     .gradient
     .owl-carousel
       .item
-        img(src='assets/images/cm/banner/b1.png')
+        img(src='assets/images/banner/banner_slide_1.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b2.png')
+        img(src='assets/images/banner/banner_slide_2.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b3.png')
+        img(src='assets/images/banner/banner_slide_3.jpg')
       //- item
       .item
-        img(src='assets/images/cm/banner/b4.png')
+        img(src='assets/images/banner/banner_slide_4.jpg')
       //- item
     //- owl-carousel
-    .content
-      .container
-        h1.jumbo
-          | The fun marketplace connecting online shoppers.
-          br
-          | It's the new way to save!
-          br
-          small Discover. Share. Enjoy.
-        //- h1
-        .action.authservice-logged-out
-          a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
-            i.fa.fa-envelope
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
-          //- a
-          a.btn.btn-primary.btn-lg
-            i.fa.fa-facebook
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
-          //- a
-        //- action
-      //- container
-    //- content
+    h1.jumbo
+      | The fun marketplace connecting drinklovers and drinkmakers
+      br
+      | it's the new way to save.
+      br
+      small Discover. Share. Enjoy.
+    //- h1
+    .action.authservice-logged-out
+      a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
+        i.fa.fa-envelope
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+      //- a
+      a.btn.btn-info.btn-lg
+        i.fa.fa-facebook
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+      //- a
+    //- action
   //- banner-home
-  
-  article
+
+  section.profile.dd
+    //- h2.direct Welcome to drinksdirect
+    //-   i.fa.fa-arrow-circle-right
+    //- //- h2
     .container
       .row
         .col-md-8.col-md-offset-2
           form
             .form-group
               .input-group.dc-filters
+                a.arrow(href='#drop_recent_search', data-toggle='collapse')
+                  i.fa.fa-caret-down
+                //- a
+                input.form-control.input-lg(type='text', placeholder='Search drinks...')
+                span.input-group-btn &nbsp;&nbsp;
+                span.input-group-btn
+                  a.btn.btn-success.btn-lg(href='#modal_coming_soon', data-toggle='modal') Search
+                //- span
                 a.link-1(href='#refineSearch', data-toggle='collapse') Refine Search
                 #drop_recent_search.search-dropdown.collapse
                   a.close(href='#drop_recent_search', data-toggle='collapse') &times;
@@ -492,53 +499,45 @@ block content
                     //- row
                   //- filters-wrap
                 //- dc-filters-dropdown
-                a.arrow(href='#drop_recent_search', data-toggle='collapse')
-                  i.fa.fa-caret-down
-                //- a
-                input.form-control.input-lg(type='text', placeholder='Search products...')
-                span.input-group-btn
-                  a.btn.btn-default.btn-lg(href='#modal_coming_soon', data-toggle='modal')
-                    i.fa.fa-search
-                //- span
               //- input-group
             //- form-group
           //- form
         //- col-md-8
       //- row
     //- container
-  //- article
+  //- section
 
-  //- section.pagenav
-  //-   .container
-  //-     nav.page
-  //-       ul
-  //-         li
-  //-           a(href='drinks.html?category=620') Red
-  //-         //- li
-  //-         li
-  //-           a(href='drinks.html?category=610') White
-  //-         //- li
-  //-         li
-  //-           a(href='drinks.html?category=660') Beer
-  //-         //- li
-  //-         li
-  //-           a(href='drinks-spirits.html') Spirits
-  //-         //- li
-  //-         li
-  //-           a(href='drinks-bubbles.html') Bubbles
-  //-         //- li
-  //-         li
-  //-           a(href='drinks-cider.html') Cider
-  //-         //- li
-  //-       //- ul
-  //-     //- nav
-  //-   //- container
-  //- //- section
+  section.pagenav
+    .container
+      nav.page
+        ul
+          li
+            a(href='drinks.html?category=620') Red
+          //- li
+          li
+            a(href='drinks.html?category=610') White
+          //- li
+          li
+            a(href='drinks.html?category=660') Beer
+          //- li
+          li
+            a(href='drinks-spirits.html') Spirits
+          //- li
+          li
+            a(href='drinks-bubbles.html') Bubbles
+          //- li
+          li
+            a(href='drinks-cider.html') Cider
+          //- li
+        //- ul
+      //- nav
+    //- container
+  //- section
 
   section.drinks.compare(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
     .container
       .product-wrap
-        h4 Compare Products
+        h4 Compare Drinks
         p Select a maximum of 3 drinks to compare.
         .row.compare-summary
 
@@ -567,7 +566,7 @@ block content
             //- alert
           //- col-md-4
         //- row
-        a.btn.btn-success.btn-small(href='#modal_coming_soon', data-toggle='modal') Compare up to 3 Products
+        a.btn.btn-success.btn-small(href='#modal_coming_soon', data-toggle='modal') Compare up to 3 drinks
         hr
         .row
 

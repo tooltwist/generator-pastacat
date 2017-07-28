@@ -20,6 +20,5 @@ echo "$" s3cmd --exclude=".git/*" --exclude ${ENVFILE} sync ${REMOVE_OPT} ./${su
          s3cmd --exclude=".git/*" --exclude ${ENVFILE} sync ${REMOVE_OPT} ./${subpath} ${S3_BUCKET}/${subpath}
 
 # Update the environment specific config file
-echo "$" s3cmd sync ./${ENVFILE}-drinkcircle-mvp ${S3_BUCKET}/${ENVFILE}
-         s3cmd sync ./${ENVFILE}-drinkcircle-mvp ${S3_BUCKET}/${ENVFILE}
-
+echo "$" s3cmd sync ${DIR}/${ENVFILE}-drinkcircle-test ${S3_BUCKET}/${ENVFILE}
+         s3cmd sync ${DIR}/${ENVFILE}-drinkcircle-test ${S3_BUCKET}/${ENVFILE}

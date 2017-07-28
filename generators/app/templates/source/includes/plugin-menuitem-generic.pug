@@ -65,7 +65,8 @@ script.
   (function(){
 
     const LABEL = 'Generic';
-    const VIEW = 'product';
+    const PRODUCT_VIEW = 'product';
+    var PRODUCT_METADATA = null;
 
     /*
      *  Now register this menu item to use the pane described above.
@@ -82,7 +83,7 @@ script.
          *  Load the initial records.
          */
         var params = { };
-        TooltwistViews.select(context, VIEW, params, generic_selectCallback);
+        TooltwistViews.select(context, PRODUCT_VIEW, params, generic_selectCallback);
 
 
         /*
@@ -98,7 +99,7 @@ script.
           var params = {
             filter: $scope.generic_filter
           };
-          TooltwistViews.select(context, VIEW, params, generic_selectCallback);
+          TooltwistViews.select(context, PRODUCT_VIEW, params, generic_selectCallback);
         };// generic_filterChanged
 
 
@@ -106,9 +107,15 @@ script.
          *  This function is called once we have the records.
          */
         function generic_selectCallback(err, data, metadata) {
+          if (err) {
+            console.log('Error selecting view ' + PRODUCT_VIEW, err);
+            return;
+          }
+          PRODUCT_METADATA = metadata;
+
+
           console.log('data=', data);
           console.log('metadata=', metadata);
-
           $scope.generic_list = data;
           $scope.generic_record = ($scope.generic_list.length > 0) ? $scope.generic_list[0] : null;
           $scope.generic_viewLabel = metadata.label;
@@ -168,7 +175,11 @@ script.
          */
         $scope.generic_saveButton = function() {
           //alert('generic_saveButton()');
-          TooltwistViews.save(context, VIEW, $scope.generic_record, function(err, reply) {
+          TooltwistViews.save(context, PRODUCT_METADATA, 'record', $scope.generic_record, function(err, reply) {
+            if (err) {
+              console.log('Error saving view ' + PRODUCT_VIEW, err);
+              return;
+            }
             console.log('save returned', err, reply);
             // Jump back to the supplier list
             context.$timeout(function() {

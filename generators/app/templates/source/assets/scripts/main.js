@@ -26,9 +26,9 @@ var Main = (function () {
 			$(window).on('scroll resize', function() {
 				if ($(this).width() > 767) {
 					if($(this).scrollTop() > 50) {
-						// $('.nav-category').slideUp('fast');
-					} else if($(this).scrollTop() <= 50) {
-						// $('.nav-category').slideDown('fast');
+						$('.nav-category').slideUp('fast');
+					} else {
+						$('.nav-category').slideDown('fast');
 					}
 				}
 			});
@@ -74,7 +74,7 @@ var Main = (function () {
 			});
 
 			Main.circlebuyGaugeInit();
-
+		
 		},
 
 		circlebuyGaugeInit : function(){
@@ -131,7 +131,7 @@ var Main = (function () {
        			 _this.option('scale.endValue', size);
         		_this.option('rangeContainer.ranges[0].endValue', sold);
 			});
-
+			
 		},
 
 		//--------

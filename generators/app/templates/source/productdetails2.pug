@@ -8,8 +8,7 @@ block css
 
 block content
 
-
-  section.productdetails(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+  section.productdetails(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak)
     .container
       p.bread(ng-repeat="breadcrumbs in product0.breadcrumbs").hide
         span(ng-repeat="crumb in breadcrumbs.breadcrumbs")
@@ -21,18 +20,19 @@ block content
           //- a
         //- span
       //- p.bread
-      p.bread(ng-repeat="breadcrumbs in product0.breadcrumbs")
-        span(ng-repeat="crumb in breadcrumbs.breadcrumbs")
-          a( href='drinks.html?category={{crumb.categoryId}}', data-toggle='modal') {{crumb.name}}
-          | &nbsp;/&nbsp;
-        span
-          a(href='#', data-toggle='modal')
-            strong {{variant0.name}}
-          //- a
-        //- span
-      //- p.bread
       .row
         .col-md-5.text-center
+          p.bread(ng-repeat="breadcrumbs in product0.breadcrumbs")
+            span(ng-repeat="crumb in breadcrumbs.breadcrumbs")
+              a( href='drinks.html?category={{crumb.categoryId}}', data-toggle='modal') {{crumb.name}}
+              | &nbsp;/&nbsp;
+            span
+              a(href='#', data-toggle='modal')
+                strong {{variant0.name}}
+              //- a
+            //- span
+          //- p.bread
+
           h1.hide
             span {{variant0.manufacturer}}
             br
@@ -71,7 +71,7 @@ block content
                     // This value gets set from chratingsandreview.js
                     div.product-rating(id="product_rating" style='display:none') -
                     span.pointContainer(style='display:none')
-                      | rating
+                      | drinker's
                       br
                       | points
                     .first-rating(style='display:none')
@@ -92,7 +92,7 @@ block content
         .col-md-7.product-detail-wrap
           h1.text-center.relative
             span {{variant0.manufacturer}}
-            a.goto-shop.btn.btn-default.btn-xs(href="/shop.html?supplier={{product0.supplierId}}") Visit Store
+            a.button.inline.v8.Zjoincirclebuy.thin-line.Zsee-all-drinks.absolute._right(href="/shop.html?supplier={{product0.supplierId}}") go to shop
             br
             strong
               small {{variant0.name}}
@@ -115,13 +115,20 @@ block content
 
           .infos
             .inventory
-              h4.text-center
+              h4.green
                 strong buy now
+
             .row
               .col-md-12
                 .inventory
                   .pricing
                     .row
+
+                      div(ng-hide="!currentUser.isAdmin")
+                        a.btn.btn-admin.Zbtn-block(href="/product-maint.html?product={{product0.productId}}") Maintain this product
+                        br
+                        br
+                        
                       // Single (non-volume) buy-now price
                       .circlebuy-pricebox.col-md-3.col-sm-3.col-xs-6
                         fieldset.green
@@ -141,6 +148,7 @@ block content
                         //- fieldset
                       //- circlebuy-pricebox
 
+
                       // Volume buy-now price
                       .circlebuy-pricebox.col-md-3.col-sm-3.col-xs-6(ng-repeat="pricingQty in pricing0.pricingQuantity")
                         fieldset
@@ -156,19 +164,28 @@ block content
                           //- small
                         //- fieldset
                       //- circlebuy-pricebox
-                    //- .row
-                  //- pricing
+
                   br
                   div.forms
-                    .authservice-logged-out
-                      h4.green
+                    //- small supplier0: {{supplier0}}
+                    //- br
+                    //- small paypal_client_id: {{supplier0.paypal_client_id}}
+                    //- br
+                    //- small currentUser: {{currentUser}}
+                    //- br
+                    div(ng-if="!supplier0.is_active || !supplier0.paypal_client_id")
+                      .alert.alert-info This product is not available for sale at this time.
+                    //.authservice-logged-out
+                    div(ng-if="supplier0.is_active && supplier0.paypal_client_id")
+                      h4.green(ng-hide="currentUser")
+                        // Not logged in
                         | -- Please sign in to place an order --
-                    .authservice-logged-in
-                      center
+                      center(ng-hide="!currentUser")
+                        // Are logged in
                         table
                           tbody
                             tr
-                              td.text-center(width="70") Qty
+                              td(width="70") quantity:
                               td.text-center(width="100")
                                 .input-group.input-group-sm.input-group-xs
                                   span.input-group-btn
@@ -176,8 +193,8 @@ block content
                                   input.form-control.text-center(type="text" placeholder="1" ng-model="buyNowQty")
                                   span.input-group-btn
                                     button.btn.btn-default(type="button" ng-click="updateBuyNowQty(+1)") +
-                              td.text-center(width="100")
-                                  a.btn.btn-sm.btn-primary(href="" ng-click="buyNow()") buy now
+                              td.text-right(width="100")
+                                  a.button.inline.v7.joincirclebuy.thin-line(href="" ng-click="buyNow()") buy now
 
                           //-tr
                         //-tbody
@@ -414,8 +431,7 @@ block content
                   // Product Details tab
                   #pDetails.tab-pane.active(role='tabpanel')
                     p.comment
-                      br
-                      | {{product0.longDescription}}
+                      div(ng-bind-html="product0.longDescription")
                       br
                       br
                       br
@@ -516,7 +532,7 @@ block content
                   // Tasting notes tab
                   #pTastingNotes.tab-pane(role='tabpanel')
                     br
-                    | {{product0.notes}}
+                    div(ng-bind-html="product0.notes")
                     br
                     br
                     br
@@ -527,7 +543,7 @@ block content
                   // Winery Information tab
                   #pWineryInfo.tab-pane(role='tabpanel')
                     br
-                    | {{supplier0.story}}
+                    div(ng-bind-html="product0.story")
                     //- | No information available at this time.
                     br
                     br
@@ -540,7 +556,6 @@ block content
             //- about
 
           // Reviews Section
-          hr
           review-widget
 
           //- infos
@@ -552,6 +567,8 @@ block content
 block scripts
   // External Script goes here...
   script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+  script(src="/bower_components/cloudinary/js/jquery.cloudinary.js", type="text/javascript")
+  script(src='assets/scripts/image-paths.js', type="text/javascript")
   script.
 
 
@@ -559,7 +576,7 @@ block scripts
      *
      *    Angular code.
      */
-    var app = angular.module('myApp', ['ngSanitize']);
+    var app = angular.module('myApp', ['ngSanitize', 'pastac-login']);
 
     teaservice.init({
       host: TEASERVICE_HOST,
@@ -568,7 +585,70 @@ block scripts
     });
 
     // Add the controller for this page
-    app.controller('myCtrl', function($scope, teaService) {
+    app.controller('pageCtrl', function($scope, teaService) {
+      
+      $scope.authserviceConfig = {
+        host: AUTHSERVICE_HOST,
+        port: AUTHSERVICE_PORT,
+        tenant: AUTHSERVICE_TENANT,
+        dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+      };
+      $scope.userHandler = {
+        onUserChange: function(user, jwt, stale) {
+          console.log('Wow, the user changed!', user);
+          $scope.currentUser = user;
+          $scope.jwt = jwt;          
+          
+          
+          /*
+           *  Now initialize CrowdHound
+           */
+          crowdhoundConfig = {
+                serverUrl : '//' + CROWDHOUND_HOST + ':' + CROWDHOUND_PORT,
+                apiVersion : CROWDHOUND_VERSION,
+                tenantId : CROWDHOUND_TENANT,
+                debug: false,
+                //authenticationToken : authservice.getUserAccessToken(),
+                authenticationToken: authservice.getUserAccessToken(),
+                urlive : false,
+                flat: false,
+                textonly: false,
+                cookers: {
+                    cook_recommended : chratingsandreview.cookTagRecommendedReviews
+                    //cook_avatars : cookAvatars, //definition is in the curia_js widget
+                    //cook_ratings: chratingsandreview.cookRatings
+                },
+                themes : {
+                    "productReview": {
+                        "product-reviews_0" : "#reviewList",
+                        "review_0" : "#review"
+                    }
+                }
+
+                // cookers: {
+                    //cook_avatars : cookAvatars, //definition is in the curia_js widget
+                    //cook_ratings : ProductReview.cookRatings
+                //},
+                //themes : {
+          //"productReview": {
+            //"product-reviews_0" : "#reviewList",
+                        //"review_0" : "#review",
+                        //"options":  { flat: false, textonly: true, readonly: false },
+                  //}
+
+                //}
+          };
+          console.log('about to initialise Crowdhound:', crowdhoundConfig)
+          CrowdHound.init(crowdhoundConfig, function afterCuriaInit() {
+
+            // Load the reviews
+            chratingsandreview.loadReviews(productVariantId);
+
+          }); // CrowdHound.init
+          
+          
+        }
+      }
 
       // This code gets the "product" parameter from the
       // URL so we can use it as productVariantId.
@@ -608,13 +688,18 @@ block scripts
           $scope.product0 = products[0];
           $scope.supplier0 = products[0].supplier;
           $scope.variant0 = products[0].variants[0];
+          
+          imagePaths_setVariantImages($scope.variant0);
+          $scope.variant0_image = $scope.variant0._image;
 
           // See if we have an image for this product variant
+          /*
           if ($scope.variant0.images && $scope.variant0.images.length > 0) {
             $scope.variant0_image = $scope.variant0.images[0].imagePath;
           } else {
             $scope.variant0_image = 'NOTFOUND.jpg'; // ZZZZZ
           }
+          */
 
           // Set the pricing information.
           //$scope.pricingInfo = teaService.calculatePriceTable($scope.variant0);
@@ -716,7 +801,6 @@ block scripts
 
       /*
        *  See if the user is logged in
-       */
       authservice.init({
         // Environment specific values are defined in environment.js
         host: AUTHSERVICE_HOST,
@@ -739,56 +823,9 @@ block scripts
               $scope.$apply();
             }
           }, 100);
-
-
-
-          /*
-           *  Now initialize CrowdHound
-           */
-          crowdhoundConfig = {
-                serverUrl : '//' + CROWDHOUND_HOST + ':' + CROWDHOUND_PORT,
-                apiVersion : CROWDHOUND_VERSION,
-                tenantId : CROWDHOUND_TENANT,
-                debug: false,
-                //authenticationToken : authservice.getUserAccessToken(),
-                authenticationToken: authservice.getUserAccessToken(),
-                urlive : false,
-                flat: false,
-                textonly: false,
-                cookers: {
-                    cook_recommended : chratingsandreview.cookTagRecommendedReviews
-                    //cook_avatars : cookAvatars, //definition is in the curia_js widget
-                    //cook_ratings: chratingsandreview.cookRatings
-                },
-                themes : {
-                    "productReview": {
-                        "product-reviews_0" : "#reviewList",
-                        "review_0" : "#review"
-                    }
-                }
-
-                // cookers: {
-                    //cook_avatars : cookAvatars, //definition is in the curia_js widget
-                    //cook_ratings : ProductReview.cookRatings
-                //},
-                //themes : {
-          //"productReview": {
-            //"product-reviews_0" : "#reviewList",
-                        //"review_0" : "#review",
-                        //"options":  { flat: false, textonly: true, readonly: false },
-                  //}
-
-                //}
-          };
-          console.log('about to initialise Crowdhound:', crowdhoundConfig)
-          CrowdHound.init(crowdhoundConfig, function afterCuriaInit() {
-
-            // Load the reviews
-            chratingsandreview.loadReviews(productVariantId);
-
-          }); // CrowdHound.init
         }
       });
+      */
 
 
 
@@ -846,11 +883,6 @@ block scripts
       };
 
     });// app.controller('myApp')
-
-
-    /*
-     *  Set up the login part at the top of the page.
-     */
 
 
   //- script.

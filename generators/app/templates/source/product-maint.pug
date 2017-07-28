@@ -1,0 +1,122 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+    .logged-in {
+      display: block !important;
+    }
+    .logged-out {
+      display: none;
+    }
+  //- style
+
+  //link(href='/css/normalize.css', rel='stylesheet')
+  link(href="/bower_components/pastac-edit-product/dist/pastac-edit-product.css" rel="stylesheet" type="text/css")
+  link(href="/bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css" rel="stylesheet" type="text/css")
+  link(href="/bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css" rel="stylesheet" type="text/css")
+  link(href="/bower_components/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css")
+  
+  
+
+
+block content
+  div(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak, directive="")
+
+    .container
+      .row
+        .col-md-12
+
+          .admin-colors(Zng-hide="!currentUser || !currentUser.isAdmin" style="min-height: 500px")
+            pastac-edit-product(jwt="jwt" handler="userHandler" product-id="productID" show-products="true" product-button="Go to Drinkmaker page" variant-button="Go to product page")
+
+        //- col-md-9
+        //- row
+      //- container
+    //- section
+
+
+block scripts
+  // External Script goes here...
+  script(src='assets/vendor/crowdhound/chsearchresultrating.js', type="text/javascript")
+  script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+  
+  script(src='assets/vendor/pastac/heroDetail/heroDetail.js', type="text/javascript")
+  script(src='assets/vendor/pastac/reviews-summary/reviews-summary.js', type="text/javascript")
+  //script(src="/bower_components/pastac-edit-supplier/dist/pastac-edit-supplier.js", type="text/javascript")
+  script(src="/bower_components/angular-sanitize/angular-sanitize.min.js", type="text/javascript")
+  script(src='/bower_components/ng-file-upload/ng-file-upload.min.js', type="text/javascript")
+  script(src="/assets/vendor/tooltwist-views-client/tooltwist-views-client.js", type="text/javascript")
+  
+  script(src="/bower_components/pastac-login/dist/tmp-authservice.js", type="text/javascript")
+  script(src="/bower_components/pastac-login/dist/pastac-login.js", type="text/javascript")
+  script(src="/bower_components/pastac-edit-product/dist/pastac-edit-product.js", type="text/javascript")
+  //script(src="/bower_components/angular-sanitize/angular-sanitize.min.js", type="text/javascript")
+  //script(src="/bower_components/ng-file-upload/ng-file-upload.min.js", type="text/javascript")
+  script(src="/bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js", type="text/javascript")
+  script(src="/bower_components/ng-tags-input/ng-tags-input.min.js", type="text/javascript")
+  script(src="/bower_components/accounting/accounting.min.js", type="text/javascript")
+  script(src="/bower_components/cloudinary/js/jquery.cloudinary.js", type="text/javascript")
+
+  script(src="/bower_components/jwt-decode/build/jwt-decode.min.js", type="text/javascript")
+  script(src="/bower_components/ckeditor/ckeditor.js", type="text/javascript")
+  script(src="/bower_components/angular-ckeditor/angular-ckeditor.min.js", type="text/javascript")
+  //script(src="/assets/vendor/tooltwist-views-client/tooltwist-views-client.js", type="text/javascript")
+
+
+  
+  script.
+
+    /************************************************************
+     *
+     *    Angular code.
+     */
+    //var module = angular.module('myApp', [ 'pastac-login', 'pastac-edit-product', 'ngSanitize', 'ckeditor', 'ngFileUpload', 'ui.toggle', 'ngTagsInput' ]);
+    var module = angular.module('myApp', [ 'pastac-login', 'pastac-edit-product', 'ngSanitize', 'ckeditor', 'ngFileUpload', 'ui.toggle', 'ngTagsInput' ]);
+    module.controller('pageCtrl', function($scope, $timeout) {
+
+       $scope.authserviceConfig = {
+         host: AUTHSERVICE_HOST,
+         port: AUTHSERVICE_PORT,
+         tenant: AUTHSERVICE_TENANT,
+         dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+       };
+       $scope.userHandler = {
+         onUserChange: function(user, jwt, stale) {
+           console.log('Wow, the user changed!', user);
+           $scope.currentUser = user;
+           $scope.jwt = jwt;
+         },
+         onLoadProduct: function(product) {
+           $scope.product = product;
+         },
+         onLoadVariants: function(variants) {
+           $scope.variants = variants;
+         },
+         onProductButton: function(product) {
+           window.location.href = 'shop.html?supplier=' + product.supplier_id;
+         },
+         onVariantButton: function(product, variant) {
+           window.location.href = 'productdetails2.html?product=' + variant.product_variant_id;
+         }
+       }//= userHandler
+
+       
+       // Get the "product" parameter from the URL.
+       var productId = null;
+       console.log('window.location=' + window.location + '.')
+       window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
+         //console.log('xx:' + key + ':' + value + ':');
+         if (key === 'product') {
+           productId = value;
+         }
+       });
+       console.log('Displaying the page for productId=' + productId);
+       if ( !productId) {
+         window.location.href = 'index.html';
+       }
+       $scope.productID = productId;
+     });
+
+
+  //- script.
+//- block scripts

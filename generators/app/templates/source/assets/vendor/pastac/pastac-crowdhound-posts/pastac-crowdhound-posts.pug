@@ -1,0 +1,137 @@
+block content
+
+    // See https://gist.github.com/philcal/cd169540822af5f3a135c29ab6bf26ad
+    .composer#postComposer(Zng-hide="!mayPost()", Zstyle="display:none;")
+      
+      .head
+        a#composer-status-button(href="#composer-tab-status", role="tab", data-toggle="tab")
+          i.fa.fa-pencil
+          | Status
+        a(href="#composer-tab-photo-video", role="tab", data-toggle="tab")
+          i.fa.fa-picture-o
+          | Photo/Video
+        a(href="#composer-tab-events", role="tab", data-toggle="tab").hide.NOTYET
+          i.fa.fa-calendar-o
+          | Events
+      //- head
+      
+      // Tabs
+      .content.tab-content
+
+        // Status tab
+        .tab-pane.active#composer-tab-status(role="tabpanel")
+          textarea.form-control(id="postMessage" rows='2' ng-model="ctrl.message" placeholder="Enter your description here")
+        //- composer-tab-status
+
+
+        // Photo tab
+        .tab-pane#composer-tab-photo-video(role="tabpanel")
+          textarea.form-control(rows='2' ng-model="ctrl.message" placeholder="Enter your description here")
+
+          .drop-photo(ngf-select ngf-drop class="drop-box" ng-model="ctrl.file" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-pattern="'image/*,video/*'" ng-hide="!ctrl.showDropArea()")
+
+            i.fa.fa-picture-o
+            br
+            span Select File
+            span(ng-show="ctrl.dropAvailable") &nbsp;or Drop File
+          //- drop-photo
+
+          img(ngf-src="ctrl.file || '/assets/images/cleardot.png'" class="img-responsive" style="max-height: 400px")
+          video(controls ngf-src="ctrl.file")
+          #percentage
+            #progress(ng-hide="!ctrl.showProgressBar()")
+              .small.green
+                br
+                | Loading {{ctrl.filename}}
+                | &nbsp;&nbsp;&nbsp; size={{ctrl.filesize}} bytes
+                | &nbsp;&nbsp;&nbsp; ({{ctrl.getPercentage()}}% complete)
+                br
+                .progress(style="height: 10px;")
+                  .progress-bar.progress-bar-striped.active(role="progressbar" aria-valuenow="{{ctrl.getPercentage()}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( ctrl.getPercentage() + '%' ) }")
+                    .sr-only {{ctrl.getPercentage()}}% Complete (warning)
+            //- #progress
+            #processing(ng-hide="!ctrl.showProcessing()")
+              .small.green
+                br
+                i.fa.fa-refresh.fa-spin.fa-fw
+                //  .sr-only Loading...
+                | Processing image
+            //- #processing
+        //- composer-tab-photo-video
+
+
+        // Events tab
+        .tab-pane#composer-tab-events(role="tabpanel")
+          .drop-photo
+            i.fa.fa-picture-o
+            br
+            span Drag Event Photo Here
+          //- event-photo
+          .row
+            .col-md-12
+              .form-group
+                label(for='composer-event-name') Event Name
+                input#composer-event-name.form-control(type='text', placeholder='')
+              //- form-group
+            //- col-md-12
+            .col-md-12
+              .form-group
+                label(for='composer-location') Location
+                input#composer-location.form-control(type='text', placeholder='')
+              //- form-group
+            //- col-md-12
+            .col-md-6.col-sm-6.col-xs-6
+              .form-group
+                label(for='composer-event-date-from') From
+                input#composer-event-date-from.form-control(type='date', placeholder='')
+              //- form-group
+            //- col-md-6
+            .col-md-6.col-sm-6.col-xs-6
+              .form-group
+                label(for='composer-event-date-to') to
+                input#composer-event-date-to.form-control(type='date', placeholder='')
+              //- form-group
+            //- col-md-6
+            .col-md-12
+              .form-group
+                label(for='composer-description') Description
+                textarea#composer-description.form-control(rows="3")
+              //- form-group
+            //- col-md-12
+          //- row
+        //- composer-tab-events
+
+      //- content
+      .controls
+        // The next line sets the height of the footer, when all else is hidden
+        a &nbsp;
+
+        a(href='#modal_coming_soon', data-toggle='modal').hide
+          i.fa.fa-camera
+        //- a
+        a(href='#modal_coming_soon', data-toggle='modal').hide
+          i.fa.fa-user-plus
+        //- a
+        a(href='#modal_coming_soon', data-toggle='modal').hide
+          i.fa.fa-smile-o
+        //- a
+        a(href='#modal_coming_soon', data-toggle='modal').hide
+          i.fa.fa-map-marker
+        //- a
+        a(href='#modal_coming_soon', data-toggle='modal').hide
+          i.fa.fa-clock-o
+        //- a
+
+        a.post(ng-click="ctrl.cancelPost()" ng-hide="!ctrl.haveMessage()")
+          i.fa.fa-remove
+          | Cancel
+        a.post(ng-click="ctrl.uploadPost(ctrl.message, ctrl.file)" ng-hide="!ctrl.haveMessage()")
+          i.fa.fa-send-o
+          | Post
+        //- a
+      //- controls
+    //- composer
+
+
+    // The posts go here
+    div(id="{{ctrl.postsDivId}}")

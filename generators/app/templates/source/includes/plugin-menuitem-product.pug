@@ -3,7 +3,7 @@
   .card(ng-hide=" !productShowList()")
     .row
       .col-md-12
-        h4 Product List
+        h2 Product List
         .form-group
           label(for='product-filter') Filter
           input#product-filter.form-control(ng-model="productFilter" ng-change="productFilterChanged()" type='text', placeholder="Type part of the product name  (e.g. 'cha' for chardonnay)")
@@ -20,7 +20,11 @@
   .card(ng-hide="productShowList()")
     .row
       .col-md-12
-        h4 {{product.name}}
+        h2 {{product.name}}
+        small
+          | {{product.supplier.company_name}}
+          br
+          br
         ul.nav.nav-tabs
           li.active
             a(href="#tab-product-details" data-toggle="tab") Details
@@ -31,7 +35,7 @@
           li
             a(href="#tab-product-variants" data-toggle="tab") Variants
         br
-        .actions-wrap.hide
+        .actions-wrap.hide.NOTYET
           a.btn(ng-click="product_backButton()") Back to product list
           a.btn(ng-click="productVariant_backButton()" ng-hide="productVariant_showList()") Back to variant list
           a.btn.btn-success(ng-click="productSaveButton()") Save
@@ -63,7 +67,7 @@
 
           // Metadata pane
           #tab-product-descriptions.tab-pane
-            h4 Descriptions
+            h2 Descriptions
             .form-group
               label(for='product-shortDescription') Short Description
               input#product-shortDescription.form-control(ng-model="product.shortDescription" type='text', placeholder='')
@@ -99,10 +103,11 @@
               br
 
           #tab-product-variants.tab-pane
+            
             div(ng-hide=" !productVariant_showList()")
               #productVariant_listDiv
             div(ng-hide="productVariant_showList()")
-              h4
+              h3
                 | {{productVariant_headingForRecordPane}} &nbsp;&nbsp;&nbsp;&nbsp;(pack size {{productVariant_record.components_qty}})
               ul.nav.nav-tabs
                 li.active
@@ -160,7 +165,7 @@
                         a.btn(ng-click="addPricing_BRKQTY()") Add quantity pricing
                     div(ng-repeat="price in productPricing_list")
                       div(ng-if="price.type == 'BRKQTY'")
-                        h4
+                        h3
                           | Additional Rule - Break on Quantity
                           small &nbsp;&nbsp;&nbsp;&nbsp;(\#{{price.pricing_id}})
                         br
@@ -202,7 +207,7 @@
                   #productVariant_notesDiv
 
                 #tab-productVariant-related.tab-pane
-                  h4 related
+                  h3 related
 
                 #tab-productVariant-specs.tab-pane
                   br
@@ -212,7 +217,7 @@
                   br
                   div(ng-repeat="image in productVariantImage_list")
                     .col-md-4
-                      img.img-responsive.thumbnail(src="{{image.image_path}}")
+                      img.img-responsive.thumbnail(ng-src="{{image.image_path}}")
                       hr
 
 
@@ -234,61 +239,49 @@
 
 script.
 
-  var productShowList = true;
-
   if (typeof(menuItems) == 'undefined') {
     menuItems = [ ];
   }
 
 
   (function(){
+    // Private variables
+    var productShowList = true;
+    const VARIANT_VIEW = 'product_variant';
+    const PRICING_VIEW = 'pricing';
+    const PRICING_QTY_VIEW = 'pricing_quantity';
+    const PV_IMAGE_VIEW = 'product_variant_image';
+
+    var VARIANT_METADATA = null;
+    var PRICING_METADATA = null;
+    var PRICING_QTY_METADATA = null;
+    var PV_IMAGE_METADATA = null;
+
 
     /*
      *  Load the list of products that match a filter.
      */
-    function loadProducts($scope, context, filter) {
-      console.log('loadProducts(' + filter + ')');
-
-      if (filter.length < 3) {
+    function loadProducts($scope, context, filter, productId, callback) {
+      console.log('loadProducts(' + filter + ', ' + productId + ')');
+      
+      if (filter && filter.length < 3) {
         $scope.products = [ ];
         return;
       }
 
-      $scope.products = [
-        {
-          name: 'Hello'
-        }
-      ];
-
-
-
       // Check the config
       var protocol = 'http';
-      /*var host = 'localhost';
-      // var host = '192.168.200.15';
-      var port = 3000;*/
       var host = context.TEASERVICE_HOST;
       var port = context.TEASERVICE_PORT;
-
-      // var host = 'drinkcircle.teaservice.io';
-      // var port = 80;
-      /*if (config && config.host && config.host != host) {
-        host = config.host;
-      }
-      if (config && config.port && config.port != port) {
-        port = config.port;
-      }*/
       var baseUrl = protocol + '://' + host + ':' + port;
-
 
       // Load all the categories
       var url = baseUrl + '/philChristmas/product';
-      console.log('url is ' + url)
-
-      var params = {
-        //productVariantId: 6180,
-        filter: filter
-      };
+      var params = { };
+      if (filter) params.filter = filter;
+      if (productId) params.productId = productId;
+      console.log('url is ' + url);
+      console.log('params is ', params);
 
       // Call the API to get the product details
       // ZZZZ This should use JSONP, as some browsers do not support CORS.
@@ -310,10 +303,12 @@ script.
         console.log('success:', response)
         $scope.products = response.data;
         $scope.product = $scope.products[0];
-        //$scope.categoryIndex
+
         context.$timeout(function() {
           $scope.$apply();
-        }, 2000);
+        }, 100);
+        
+        if (callback) return callback();
         //return response.data;
 
       }, function(response) {
@@ -321,7 +316,6 @@ script.
         console.log('failure:', response)
         console.log('failure:', response.data.message);
       });
-
     }
 
     PluginMenuItems.register({
@@ -362,7 +356,7 @@ script.
          *  When the user enters a search string, search for the product.
          */
         $scope.productFilterChanged = function() {
-          loadProducts($scope, context, $scope.productFilter);
+          loadProducts($scope, context, $scope.productFilter, null);
         }
 
 
@@ -416,14 +410,18 @@ script.
           /*
            *  Select the product_variants for this product.
            */
-           var viewName = 'product_variant';
            var params = {
              withReferences: true,
              where: {
                product_id: $scope.product.productId
              }
            }
-          TooltwistViews.select(context, viewName, params, function(err, data, metadata) {
+          TooltwistViews.select(context, VARIANT_VIEW, params, function(err, data, metadata) {
+            if (err) {
+              console.log('Error selecting view ' + VARIANT_VIEW, err);
+              return;
+            }
+            VARIANT_METADATA = metadata;
 
             // Use this product variant data
             $scope.productVariant_list = data;
@@ -509,7 +507,7 @@ script.
         }// productSelect
 
         /*
-         *  Handle a click on the list.
+         *  Handle a click on the variant list.
          */
         $scope.productVariant_listClick = function(record) {
           //alert('productVariant_listClick')
@@ -534,7 +532,6 @@ script.
           /*
            *  Select the 'pricing' and 'pricing_qty' records for this product variant
            */
-           var viewName = 'pricing';
            var params = {
              //withReferences: false,
              where: {
@@ -542,14 +539,15 @@ script.
                scope: 'V' // On Product Variant
              }
            }
-          TooltwistViews.select(context, viewName, params, function(err, data, metadata) {
+          TooltwistViews.select(context, PRICING_VIEW, params, function(err, data, metadata) {
             if (err) {
-              console.log('Error selecting pricing records', err);
+              console.log('Error selecting view ' + PRICING_VIEW, err);
               return;
             }
 
             // Use this product variant data
             // We'll display these manually, so don't need metadata
+            PRICING_METADATA = metadata;
             console.log('pricing data=', data);
             $scope.productPricing_list = data;
 
@@ -579,12 +577,15 @@ script.
               /*
                *  Load the pricing_qty records for the 'break quantity' pricing records.
                */
-              TooltwistViews.select(context, 'pricing_quantity', { where:{ pricing_id: pricing_id } }, function(err, data, metadata) {
+              TooltwistViews.select(context, PRICING_QTY_VIEW, { where:{ pricing_id: pricing_id } }, function(err, data, metadata) {
                 if (err) {
-                  console.log('Error selecting pricing_quantity records', err);
+                  console.log('Error selecting view ' + PRICING_QTY_VIEW, err);
                   return;
                 }
+                PRICING_QTY_METADATA = metadata;
                 console.log('pricing_quantity selected' , data);
+                
+                
                 // Patch the pricing_qty records ointo the pricing records.
                 var pricingQty_list = data;
                 pricingQty_list.forEach(function(pq) {
@@ -642,12 +643,17 @@ script.
           /*
            *  Select the product_variant_image records for this product_variant.
            */
-          TooltwistViews.select(context, 'product_variant_image', {
+          TooltwistViews.select(context, PV_IMAGE_VIEW, {
             withReferences: false,
             where: {
               product_variant_id: record.product_variant_id
             }
           }, function(err, data, metadata) {
+            if (err) {
+              console.log('Error selecting view ' + PV_IMAGE_VIEW, err);
+              return;
+            }
+            PV_IMAGE_METADATA = metadata;
 
             // Use this product variant data
             $scope.productVariantImage_list = data;
@@ -754,8 +760,13 @@ script.
             var saverec = $scope.originalPricingValues.clone(variant);
             //delete saverec.product_id__desc;
             console.log('saving ', saverec);
-            TooltwistViews.save(context, 'product_variant', saverec, function(err, reply) {
+            TooltwistViews.save(context, VARIANT_METADATA, 'record', saverec, function(err, reply) {              
               console.log('save returned', err, reply);
+              if (err) {
+                console.log('Error saving view ' + VARIANT_VIEW, err);
+                return;
+              }
+
               if (reply.data.newId) {
                 variant.product_variant_id = reply.data.newId;
                 /*pricing._pricingQty.forEach(function(pq) {
@@ -810,7 +821,11 @@ script.
               alert('pricing has changed.');
               var saverec = $scope.originalPricingValues.clone(pricing);
               console.log('saving ', saverec);
-              TooltwistViews.save(context, 'pricing', saverec, function(err, reply) {
+              TooltwistViews.save(context, PRICING_METADATA, 'record', saverec, function(err, reply) {
+                if (err) {
+                  console.log('Error saving view ' + PRICING_VIEW, err);
+                  return;
+                }
                 console.log('save returned', err, reply);
                 if (reply.data.newId) {
                   pricing.pricing_id = reply.data.newId;
@@ -866,8 +881,13 @@ script.
               console.log('pricingQty has changed. ' + pq.quantity);
               var saverec = $scope.originalPricingValues.clone(pq);
               console.log('saving ', saverec);
-              TooltwistViews.save(context, 'pricing_quantity', saverec, function(err, reply) {
+              TooltwistViews.save(context, PRICING_QTY_METADATA, 'record', saverec, function(err, reply) {
                 console.log('save returned', err, reply);
+                if (err) {
+                  console.log('Error selecting view ' + PRICING_QTY_VIEW, err);
+                  return;
+                }
+                
                 if (reply.data.newId) {
                   pq.pricing_quantity_id = reply.data.newId;
                 }
@@ -892,7 +912,8 @@ script.
          * /
         $scope.productVariant_saveButton = function() {
           alert('productVariant_saveButton()');
-          //TooltwistViews.save(context, viewName, $scope.generic_record, function(err, reply) {
+          //var fields = TooltwistViews.fieldsForMode(metadata, 'record');
+          //TooltwistViews.save(context, viewName, fields, $scope.generic_record, function(err, reply) {
           //  console.log('returned', err, reply);
           //});
         }// productVariant_saveButton
@@ -991,6 +1012,16 @@ script.
 
       }, // init()
 
+      /*
+       *  Activate this menu option programmatically.
+       */
+      activate: function(context, data) {
+        productShowList = false;
+        context.$scope.productVariant_showListPane = true;
+        loadProducts(context.$scope, context, null, data.productId, function() {
+          context.$scope.productSelect(data.productId);
+        });        
+      },
 
       /*
        *  When we switch menu option, we want to come back to the list.
@@ -1005,7 +1036,7 @@ script.
         // by Angular (for example, during page initialization), preventing
         // and Angular $proc (???) error.
         context.$timeout(function() {
-          $scope.product_showListPane = true;
+          productShowList = true;
           $scope.productVariant_showListPane = true;
         }, 10);
       },

@@ -8,8 +8,7 @@ html(lang="en")
     meta(name="description", content="")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="icon", type="image/png", href="assets/images/favicon.png")
-    link(href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
-    link(href='//fonts.googleapis.com/css?family=Ubuntu', rel='stylesheet', type='text/css')
+    //ZZZ link(href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
     // Bower Components
     link(href='assets/vendor/bootstrap/dist/css/bootstrap.css', rel='stylesheet', type='text/css')
     link(href='bower_components/animate.css/animate.min.css', rel='stylesheet', type='text/css')
@@ -18,14 +17,15 @@ html(lang="en")
     link(href='bower_components/owl.carousel/dist/assets/owl.theme.default.min.css', rel='stylesheet', type='text/css')
     link(href='assets/vendor/authservice/authservice.css', rel='stylesheet', type='text/css')
     link(href='bower_components/ng-tags-input/ng-tags-input.min.css', rel='stylesheet', type='text/css')
+    link(href='bower_components/pastac-login/dist/pastac-login.css', rel='stylesheet', type='text/css')
+    link(href='bower_components/pastac-add-supplier/dist/pastac-add-supplier.css', rel='stylesheet', type='text/css')
 
 
     //- IE10 viewport hack for Surface/desktop Windows 8 bug
     link(href='assets/css/ie10-viewport-bug-workaround.css', rel='stylesheet')
 
     //- Custom styles for this template
-    //- link(href='assets/css/main.css', rel='stylesheet')
-    link(href='assets/css/cm/main.css', rel='stylesheet')
+    link(href='assets/css/main.css', rel='stylesheet')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,7 +43,7 @@ html(lang="en")
       }
 
     block css
-  body
+  body(ng-app="myApp" ng-controller="pageCtrl")
     //- .loader
     include ../includes/_header.pug
 
@@ -53,12 +53,16 @@ html(lang="en")
 
     include ../includes/_modal.pug
 
+    // Server endpoints, etc
+    script(src="assets/scripts/environment.js", type="text/javascript")
+
     // Bower Components
     script(src="bower_components/jquery/dist/jquery.js", type="text/javascript")
     script(src="bower_components/jquery.cookie/jquery.cookie.js", type="text/javascript")
     script(src="bower_components/owl.carousel/dist/owl.carousel.min.js", type="text/javascript")
     script(src="bower_components/accounting/accounting.min.js")
-    script(src="bower_components/angular/angular.min.js")
+    //script(src="bower_components/angular/angular.min.js")
+    script(src="bower_components/angular/angular.js")
     script(src="bower_components/angular-sanitize/angular-sanitize.min.js")
     script(src="bower_components/moment/min/moment.min.js")
     script(src="assets/vendor/bootstrap/dist/js/bootstrap.js", type="text/javascript")
@@ -71,19 +75,27 @@ html(lang="en")
 
     script(src="assets/scripts/main.js", type="text/javascript")
     script(src="assets/vendor/teaservice/teaservice.js", type="text/javascript")
-    script(src="assets/vendor/authservice/authservice.js", type="text/javascript")
+    //script(src="assets/vendor/authservice/authservice.js", type="text/javascript")
+    script(src="bower_components/pastac-login/dist/tmp-authservice.js", type="text/javascript")
+    script(src="bower_components/pastac-login/dist/pastac-login.js", type="text/javascript")
+    script(src="bower_components/jwt-decode/build/jwt-decode.min.js", type="text/javascript")
+    script(src="bower_components/pastac-add-supplier/dist/pastac-add-supplier.js", type="text/javascript")
 
     script(src="bower_components/mustache.js/mustache.min.js", type="text/javascript")
     script(src="bower_components/bootbox.js/bootbox.js", type="text/javascript")
+    
+    // Crowdhound
     script(src='//<%=DOMAIN_PREFIX%>.crowdhound.io/js/crowdhound-0.1.4.js', type="text/javascript")
-    //script(src='//localhost:4000/js/crowdhound-0.1.4.js', type="text/javascript")
 
     //script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
     //script(src='assets/vendor/crowdhound/chwritereview.js', type="text/javascript")
     //script(src='assets/vendor/crowdhound/chsearchresultrating.js', type="text/javascript")
 
-    script(src="assets/scripts/environment.js", type="text/javascript")
-
 
     // External Script goes here...
     block scripts
+      script.
+
+      // Crowdhound
+      //alert('hello')
+      //document.write('<script src="//' + CROWDHOUND_HOST + ':' + CROWDHOUND_PORT + '/js/crowdhound-0.1.4.js", type="text/javascript">')

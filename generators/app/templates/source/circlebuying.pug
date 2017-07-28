@@ -13,35 +13,43 @@ block content
   .banner.home
     .gradient
     .banner-static
-      img(src='assets/images/cm/banner/b2.png')
+      img(src='assets/images/banner/banner_slide_2.jpg')
     //- banner-static
-    .content
-      .container
-        h1.jumbo Join in the fun and save big time
-          br
-          small Group Buy
-        //- h1
-        .action.authservice-logged-out
-          a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
-            i.fa.fa-envelope
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
-          //- a
-          a.btn.btn-primary.btn-lg
-            i.fa.fa-facebook
-            span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
-          //- a
-        //- action
-      //- container
-    //- content
+    h1.jumbo Join in the fun and save big time
+      br
+      small(style='font-size: 5.7vw;') circlebuying
+    //- h1
+
+    .action.authservice-logged-out
+      a.btn.btn-success.btn-lg(href='#modal_signup', data-toggle='modal')
+        i.fa.fa-envelope
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Signup with Email
+      //- a
+      a.btn.btn-info.btn-lg
+        i.fa.fa-facebook
+        span.hidden-xs &nbsp;&nbsp;&nbsp;Continue with Facebook
+      //- a
+    //- action
   //- banner-home
 
-  article
+  section.profile.dd
+    //- h2.direct Welcome to drinksdirect
+    //-   i.fa.fa-arrow-circle-right
+    //- //- h2
     .container
       .row
         .col-md-8.col-md-offset-2
           form
             .form-group
               .input-group.dc-filters
+                a.arrow(href='#drop_recent_search', data-toggle='collapse')
+                  i.fa.fa-caret-down
+                //- a
+                input.form-control.input-lg(type='text', placeholder='Search circlebuys...')
+                span.input-group-btn &nbsp;&nbsp;
+                span.input-group-btn
+                  a.btn.btn-success.btn-lg(href='#modal_coming_soon', data-toggle='modal') Search
+                //- span
                 a.link-1(href='#refineSearch', data-toggle='collapse') Refine Search
                 #drop_recent_search.search-dropdown.collapse
                   a.close(href='#drop_recent_search', data-toggle='collapse') &times;
@@ -480,14 +488,6 @@ block content
                     //- row
                   //- filters-wrap
                 //- dc-filters-dropdown
-                a.arrow(href='#drop_recent_search', data-toggle='collapse')
-                  i.fa.fa-caret-down
-                //- a
-                input.form-control.input-lg(type='text', placeholder='Search group buy...')
-                span.input-group-btn
-                  a.btn.btn-default.btn-lg(href='#modal_coming_soon', data-toggle='modal')
-                    i.fa.fa-search
-                //- span
               //- input-group
             //- form-group
           //- form
@@ -495,69 +495,69 @@ block content
       //- row
       br
       .text-center
-        a.btn.btn-default.btn-lg(href='circlebuy-start.html') Start a Group Buy
+        a.btn-action-1(href='circlebuy-start.html') Create a circlebuy
     //- container
-  //- article
+  //- section
 
-  //- section.pagenav
-  //-   .container
-  //-     .row
-  //-       .col-md-3.text-center
-  //-         p
-  //-         form.form-inline
-  //-           .form-group
-  //-             label(for='exampleInputName2') Sort by
-  //-             select.form-control
-  //-               option finish soonest
-  //-               option my friends
-  //-               option my circles
-  //-               option highest no.
-  //-             //- select
-  //-           //- form-group
-  //-         //- form
-  //-       //- col-md-4
-  //-       .col-md-6
-  //-         nav.page
-  //-           ul
-  //-             li
-  //-               a(href='circlebuying-red.html') Red
-  //-             //- li
-  //-             li
-  //-               a(href='circlebuying-white.html') White
-  //-             //- li
-  //-             li
-  //-               a(href='circlebuying-beer.html') Beer
-  //-             //- li
-  //-             li
-  //-               a(href='circlebuying-spirits.html') Spirits
-  //-             //- li
-  //-             li
-  //-               a(href='circlebuying-bubbles.html') Bubbles
-  //-             //- li
-  //-             li
-  //-               a(href='circlebuying-cider.html') Cider
-  //-             //- li
-  //-           //- ul
-  //-         //- nav
-  //-       //- col-md-4
-  //-       .col-md-3.text-center
-  //-         p
-  //-         form.form-inline
-  //-           .form-group
-  //-             label(for='exampleInputEmail2') Show
-  //-             select.form-control
-  //-               option 16
-  //-               option 32
-  //-               option 64
-  //-             //- select
-  //-           //- form-group
-  //-         //- form
-  //-       //- col-md-4
-  //-     //- row
-  //-   //- container
-  //- //- section
+  section.pagenav
+    .container
+      .row
+        .col-md-3.text-center
+          p
+          form.form-inline
+            .form-group
+              label(for='exampleInputName2') Sort by
+              select.form-control
+                option finish soonest
+                option my friends
+                option my circles
+                option highest no.
+              //- select
+            //- form-group
+          //- form
+        //- col-md-4
+        .col-md-6
+          nav.page
+            ul
+              li
+                a(href='circlebuying-red.html') Red
+              //- li
+              li
+                a(href='circlebuying-white.html') White
+              //- li
+              li
+                a(href='circlebuying-beer.html') Beer
+              //- li
+              li
+                a(href='circlebuying-spirits.html') Spirits
+              //- li
+              li
+                a(href='circlebuying-bubbles.html') Bubbles
+              //- li
+              li
+                a(href='circlebuying-cider.html') Cider
+              //- li
+            //- ul
+          //- nav
+        //- col-md-4
+        .col-md-3.text-center
+          p
+          form.form-inline
+            .form-group
+              label(for='exampleInputEmail2') Show
+              select.form-control
+                option 16
+                option 32
+                option 64
+              //- select
+            //- form-group
+          //- form
+        //- col-md-4
+      //- row
+    //- container
+  //- section
 
-  section.drinks(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+  section.drinks(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak)
     .container
       .productdetails.search
         .row
@@ -585,7 +585,7 @@ block content
                     big= circlebuy[index].name + "'s "
                       strong
                         big= circlebuy[index].qty + " case "
-                      | Group Buy
+                      | circlebuy
                   .shortsummary
                     .sold
                       p.cases-sold sold
@@ -712,88 +712,88 @@ block content
               a(href='productdetails2.html')
                 img.img-prod(src='//www.brokenwood.com.au/assets/images/products/pictures/GraveyardVineyardShiraz11.jpg', alt='')
               //- a
+              .details
+                p
+                .name
+                  a(href='#modal_coming_soon', data-toggle='modal') Brokenwood
+                  br
+                  small Graveyard Vineyard
+                //- name
+                table.table
+                  tbody
+                    tr
+                      th Rating
+                      td 94 points
+                    //- tr
+                    tr
+                      th Variety
+                      td Shiraz
+                    //- tr
+                    tr
+                      th Region
+                      td Hunter Valley
+                    //- tr
+                    tr
+                      th Alcohol
+                      td 14.5%
+                    //- tr
+                    tr
+                      th Vintage
+                      td 2010
+                    //- tr
+                    tr
+                      th Shipping
+                      td Free
+                    //- tr
+                    tr
+                      th Returns
+                      td 60 days
+                    //- tr
+                    tr
+                      th Circlebuys
+                      td 84
+                    //- tr
+                    tr
+                      th No. Ratings
+                      td 242
+                    //- tr
+                    tr
+                      th No. Reviews
+                      td 88
+                    //- tr
+                    tr
+                      th Case Size
+                      td 12 bottles
+                    //- tr
+                    tr
+                      th Standard Drinks
+                      td 8
+                    //- tr
+                    tr
+                      th Food Matching
+                      td Osso Bucco, Lamb
+                    //- tr
+                    tr
+                      th
+                      td
+                    //- tr
+                  //- tbody
+                //- table
+                .pricing
+                  .buy.drop
+                    ul
+                      li
+                        a.thumb-action(href='productdetails2.html') Buy
+                      //- li
+                      li.price $19.99
+                      li
+                        a.thumb-action(href='productdetails2.html') View
+                      //- li
+                    //- ul
+                  //- buy
+                //- pricing
+              //- details
             //- thumb
-            .details
-              p
-              .name
-                a(href='#modal_coming_soon', data-toggle='modal') Brokenwood
-                br
-                small Graveyard Vineyard
-              //- name
-              table.table
-                tbody
-                  tr
-                    th Rating
-                    td 94 points
-                  //- tr
-                  tr
-                    th Variety
-                    td Shiraz
-                  //- tr
-                  tr
-                    th Region
-                    td Hunter Valley
-                  //- tr
-                  tr
-                    th Alcohol
-                    td 14.5%
-                  //- tr
-                  tr
-                    th Vintage
-                    td 2010
-                  //- tr
-                  tr
-                    th Shipping
-                    td Free
-                  //- tr
-                  tr
-                    th Returns
-                    td 60 days
-                  //- tr
-                  tr
-                    th Circlebuys
-                    td 84
-                  //- tr
-                  tr
-                    th No. Ratings
-                    td 242
-                  //- tr
-                  tr
-                    th No. Reviews
-                    td 88
-                  //- tr
-                  tr
-                    th Case Size
-                    td 12 bottles
-                  //- tr
-                  tr
-                    th Standard Drinks
-                    td 8
-                  //- tr
-                  tr
-                    th Food Matching
-                    td Osso Bucco, Lamb
-                  //- tr
-                  tr
-                    th
-                    td
-                  //- tr
-                //- tbody
-              //- table
-              .pricing
-                .buy.drop
-                  ul
-                    li
-                      a.thumb-action(href='productdetails2.html') Buy
-                    //- li
-                    li.price $19.99
-                    li
-                      a.thumb-action(href='productdetails2.html') View
-                    //- li
-                  //- ul
-                //- buy
-              //- pricing
-            //- details
           //- product
         //- modal-body
       //- modal-content
@@ -1029,7 +1029,27 @@ block scripts
     });
 
     // Add the controller for this page
-    app.controller('myCtrl', function($scope, teaService) {
+    app.controller('pageCtrl', function($scope, teaService) {
+      
+      // Handle the logging in
+      $scope.authserviceConfig = {
+        host: AUTHSERVICE_HOST,
+        port: AUTHSERVICE_PORT,
+        tenant: AUTHSERVICE_TENANT,
+        dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+      };
+      $scope.userHandler = {
+        onUserChange: function(user, ttuat, stale) {
+          /*if (user) {
+            alert('Have user')
+          } else {
+            alert('Have no user')
+          }*/
+          console.log('Wow, the user changed!', user);
+          $scope.currentUser = user;
+          $scope.ttuat = ttuat;
+        }
+      }
 
         // Look after the product_variant
         var NICE_PRODUCT_VARIANT_ID = 6180;
@@ -1052,24 +1072,6 @@ block scripts
 
     });
 
-
-    /*
-     *  Set up the login part at the top of the page.
-     */
-    authservice.init({
-      // Environment specific values are defined in environment.js
-      host: AUTHSERVICE_HOST,
-      port: AUTHSERVICE_PORT,
-      tenant: AUTHSERVICE_TENANT,
-      pretend: AUTHSERVICE_USE_DUMMY_LOGIN,
-      onUserChange: function(user, ttuat, fromCookie) {
-        // If the current user came from the cookie, reload it
-        //if (fromCookie) {
-        //  console.log('Reloading user details (cookie details are just a summary)');
-        //  return authservice.reloadUser();
-        //}
-      }
-    });
 
 
   //- script.

@@ -3,7 +3,7 @@
   .card(ng-hide=" !supplier2_listPaneIsVisible()")
     .row
       .col-md-12
-        h4 {{supplier2_viewLabel}} List
+        h1 {{supplier2_viewLabel}} List
 
         // A "filter" field, so the user can search
         //- .form-group
@@ -22,10 +22,20 @@
   //- tab-pane
 
   // Pane for single record
-  .card(ng-hide="supplier2_listPaneIsVisible()")
+  .card#supplier-single-record-pane(ng-hide="supplier2_listPaneIsVisible()")
     .row
       .col-md-12
-        h4 {{supplier2_headingForRecordPane}}
+        h1 {{supplier2_headingForRecordPane}}  ({{supplier2_record.id}})
+        
+        .alert.alert-danger(ng-hide="supplier2_record.deleted==0")
+          strong
+            | Warning!&nbsp;&nbsp;
+          | &nbsp;This supplier has been marked as deleted.
+          
+        .alert.alert-danger(ng-hide="supplier2_record.deleted==1 || supplier2_record.is_active>0")
+          strong
+            | Warning!&nbsp;&nbsp;
+          | This supplier is not currently active.
 
         // Buttons above
         .actions-wrap
@@ -33,8 +43,122 @@
           a.btn.btn-success(ng-click="supplier2_saveButton()") Save
         //- actions-wrap
 
-        // The fields generated from metadata are inserted here.
-        #supplier2_recordDiv
+        
+        ul.nav.nav-tabs
+          li.active
+            a(href="#tab-supplier-products" data-toggle="tab") Products
+          li
+            a(href="#tab-supplier-details" data-toggle="tab") Details
+          li
+            a(href="#tab-supplier-logo" data-toggle="tab") Logo
+          li
+            a(href="#tab-supplier-banner" data-toggle="tab") Banner
+          li
+            a(href="#tab-supplier-directory" data-toggle="tab") Directory Photo
+        br
+
+
+
+
+        .tab-content.clearfix
+          
+
+          #tab-supplier-products.tab-pane.active
+            table.table.table-condensed.table-hover
+              tr
+                th Product Id
+                th Name
+                th Displayed
+              tr(ng-repeat="product in supplier2_products" ng-click="supplier2_clickOnProduct(product.productId)")
+                td {{product.productId}}
+                td {{product.name}}
+                td {{product.isDisplayed}}
+
+          // Product details pane
+          #tab-supplier-details.tab-pane
+            // The fields generated from metadata are inserted here.
+            #supplier2_recordDiv
+              
+            .form-group
+              label(for='product-longDescription') Story
+              // See https://github.com/lemonde/angular-ckeditor
+              div(ckeditor="ckeditorOptions", ng-model="supplier2_record.story", ready="onReady()")
+              br
+
+            #supplier2_adminDiv
+            
+
+          #tab-supplier-logo.tab-pane
+            h3 Logo
+            | {{supplier2_record.logo}}
+            br
+            img.img-responsive(ng-src="{{supplier2_record.logo}}")
+
+
+          #tab-supplier-banner.tab-pane
+            h3 Banner
+            | {{supplier2_record.banner}}
+            br
+            img.img-responsive(ng-src="{{supplier2_record.banner}}")
+            
+
+          #tab-supplier-directory.tab-pane
+            h3 Directory Photo
+            small
+              | {{supplier2_record.directory_photo}}
+            br
+            img.img-responsive.center(ng-src="{{supplier2_record.directory_photo}}")
+              
+            br
+            br
+            br
+            h3 Load a new image
+            | You can load an image from your machine, or copy an image from a URL.
+            br
+            br
+            
+            .form-group
+              label(for='supplier-directory-url') Copy an image
+              input#supplier-directory-url.form-control(ng-model="ctrl.directoryUrl" type='text', placeholder='URL of an image to copy')
+              br
+
+            
+            //input.form-control(rows='2' ng-model="ctrl.message" placeholder="Enter your description here")
+            //textarea.form-control(rows='2' ng-model="ctrl.message" placeholder="Enter your description here")
+
+            .form-group
+              label(for='supplier-directory-url') Upload an image
+            .drop-photo(ngf-select ngf-drop class="drop-box" ng-model="ctrl.file" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-pattern="'image/*,video/*'" zng-hide="!ctrl.showDropArea()")
+              i.fa.fa-picture-o
+              br
+              span Select File
+              span(ng-show="ctrl.dropAvailable") &nbsp;or Drop File
+            //- drop-photo
+
+            img(ngf-src="ctrl.file || '/assets/images/cleardot.png'" class="img-responsive" style="max-height: 400px")
+            video(controls ngf-src="ctrl.file")
+            #percentage
+              #progress(ng-hide="!ctrl.showProgressBar()")
+                .small.green
+                  br
+                  | Loading {{ctrl.filename}}
+                  | &nbsp;&nbsp;&nbsp; size={{ctrl.filesize}} bytes
+                  | &nbsp;&nbsp;&nbsp; ({{ctrl.getPercentage()}}% complete)
+                  br
+                  .progress(style="height: 10px;")
+                    .progress-bar.progress-bar-striped.active(role="progressbar" aria-valuenow="{{ctrl.getPercentage()}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( ctrl.getPercentage() + '%' ) }")
+                      .sr-only {{ctrl.getPercentage()}}% Complete (warning)
+              //- #progress
+              #processing(ng-hide="!ctrl.showProcessing()")
+                .small.green
+                  br
+                  i.fa.fa-refresh.fa-spin.fa-fw
+                  //  .sr-only Loading...
+                  | Processing image
+              //- #processing
+            //- #percentage
+          //- #tab-supplier-directory
+
 
         // Buttons below
         hr
@@ -54,7 +178,8 @@ script.
   (function(){
 
     const LABEL = 'Supplier List';
-    const VIEW = 'supplier';
+    const SUPPLIER_VIEW = 'supplier';
+    var SUPPLIER_METADATA = null;
 
     /*
      *  Now register this menu item to use the pane described above.
@@ -75,7 +200,8 @@ script.
          *  Load the initial records.
          */
         var params = { };
-        TooltwistViews.select(context, VIEW, params, supplier2_selectCallback);
+    console.log('life before death')
+        TooltwistViews.select(context, SUPPLIER_VIEW, params, supplier2_selectCallback);
 
 
         /*
@@ -91,7 +217,7 @@ script.
           var params = {
             filter: $scope.supplier2_filter
           };
-          TooltwistViews.select(context, VIEW, params, supplier2_selectCallback);
+          TooltwistViews.select(context, SUPPLIER_VIEW, params, supplier2_selectCallback);
         };// supplier2_filterChanged
 
 
@@ -99,12 +225,20 @@ script.
          *  This function is called once we have the records.
          */
         function supplier2_selectCallback(err, data, metadata) {
+          if (err) {
+            console.log('Error selecting view ' + SUPPLIER_VIEW, err);
+            return;
+          }
+          SUPPLIER_METADATA = metadata;
+          console.log('SUPPLIER_METADATA=', metadata);
           console.log('data=', data);
           console.log('metadata=', metadata);
+          
 
           data.sort(function(a, b){
-            var nameA = a.supplier_name.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.supplier_name.toUpperCase(); // ignore upper and lowercase
+            var nameB = (b.supplier_name) ? b.supplier_name.toUpperCase() : ''; // ignore upper and lowercase
+            var nameA = (a.supplier_name) ? a.supplier_name.toUpperCase() : ''; // ignore upper and lowercase
+            var nameB = (b.supplier_name) ? b.supplier_name.toUpperCase() : ''; // ignore upper and lowercase
             if (nameA < nameB) { return -1; }
             if (nameA > nameB) { return 1; }
             return 0;
@@ -137,6 +271,18 @@ script.
           recordDiv.html(html);
           // Ask Angular to bind our new DOM elements onto it's models.
           context.$compile(recordDiv)($scope);
+
+          // If this is an admin user, show admin-only fields.
+          if ($scope.isAdminUser) {
+            // Add fields to the DOM for the record
+            var recordDiv = $('#supplier2_adminDiv');
+            var fields = TooltwistViews.fieldsForMode(metadata, 'admin');
+            var html = TooltwistViews.htmlForAngular_edit(metadata, fields, displayOptions);
+            recordDiv.html(html);
+            // Ask Angular to bind our new DOM elements onto it's models.
+            context.$compile(recordDiv)($scope);
+          }
+            
         }// supplier2_selectCallback
 
 
@@ -149,9 +295,12 @@ script.
           // Show the single record pane.
           // Set the label for the pane.
           $scope.supplier2_record = record;
-    console.log('Set record:', record)
+    console.log('Set record:', $scope.supplier2_record);
           $scope.supplier2_showListPane = false;
-          $scope.supplier2_headingForRecordPane = record.name;
+          $scope.supplier2_headingForRecordPane = record.supplier_name;
+          
+          // Load products for this supplier
+          loadProductsForSupplier($scope, context, $scope.supplier2_record.id);
         }// supplier2_listClick
 
 
@@ -172,13 +321,43 @@ script.
          */
         $scope.supplier2_saveButton = function() {
           //alert('supplier2_saveButton()');
-          TooltwistViews.save(context, VIEW, $scope.supplier2_record, function(err, reply) {
+          // Jump back to the supplier list
+            
+          // Update the basic details
+          alert('saving 1');
+          console.log('rec is ', $scope.supplier2_record);
+
+          TooltwistViews.save(context, SUPPLIER_METADATA, 'record', $scope.supplier2_record, function(err, reply) {
             console.log('save returned', err, reply);
-            // Jump back to the supplier list
-            context.$timeout(function() {
-              context.$scope.supplier2_showListPane = true;
-            }, 10);
+            if (err) {
+              console.log('Error selecting view ' + SUPPLIER_VIEW + '/record', err);
+              return;
+            }
           });
+
+          // Update the story
+          TooltwistViews.save(context, SUPPLIER_METADATA, 'story', $scope.supplier2_record, function(err, reply) {
+            console.log('story save returned', err, reply);
+            if (err) {
+              console.log('Error selecting view ' + SUPPLIER_METADATA + '/story', err);
+              return;
+            }
+          });
+
+          // If we are an administrator, update those values as well
+          if ($scope.isAdminUser) {
+            TooltwistViews.save(context, SUPPLIER_METADATA, 'admin', $scope.supplier2_record, function(err, reply) {
+              console.log('admin save returned', err, reply);
+              if (err) {
+                console.log('Error selecting view ' + SUPPLIER_VIEW + '/admin', err);
+                return;
+              }
+            });
+          }
+
+          context.$timeout(function() {
+            context.$scope.supplier2_showListPane = true;
+          }, 10);
         }// supplier2_saveButton
 
 
@@ -188,6 +367,14 @@ script.
         $scope.supplier2_listPaneIsVisible = function() {
           return $scope.supplier2_showListPane;
         }// supplier2_listPaneIsVisible
+        
+        
+        $scope.supplier2_clickOnProduct = function(productId) {
+          //console.log('supplier2_clickOnProduct():', productId)
+          //alert('supplier2_clickOnProduct(productId)')
+          
+          window.location = 'admin.html?product=' + productId;
+        }
 
       },// init
 
@@ -209,5 +396,67 @@ script.
       }// reset
 
     });// PluginMenuItems.register()
+    
+    
+    /*
+     *  Load the list of products that match a filter.
+     */
+    function loadProductsForSupplier($scope, context, supplierId) {
+      console.log('loadProductsForSupplier(' + supplierId + ')');
+
+      var filter = 'broken';
+      if (filter.length < 3) {
+        $scope.supplier2_products = [ ];
+        return;
+      }
+
+      $scope.supplier2_products = [ ];
+
+      // Prepare the URL to Teaservice
+      var protocol = 'http';
+      var host = context.TEASERVICE_HOST;
+      var port = context.TEASERVICE_PORT;
+      var baseUrl = protocol + '://' + host + ':' + port;
+      var url = baseUrl + '/philChristmas/product';
+      console.log('url is ' + url)
+
+      var params = {
+        //productVariantId: 6180,
+        supplierId: supplierId
+      };
+
+      // Call the API to get the product details
+      // ZZZZ This should use JSONP, as some browsers do not support CORS.
+      // ZZZZ Unfortunately JSONP does not support headers, so we need
+      // ZZZZ to pass details either in the url or the data. i.e. the
+      // ZZZZ server requires changes.
+      var req = {
+        method: 'POST',
+        url: url,
+        headers: {
+          "access-token": "0613952f81da9b3d0c9e4e5fab123437",
+          "version": "2.0.0"
+        },
+        data: params
+      };
+
+      // Prepare the promise, so the caller can use .then(fn) to handle the result.
+      var promise = context.$http(req).then(function(response) {
+        console.log('success:', response)
+        
+        $scope.supplier2_products = response.data;
+        context.$timeout(function() {
+          $scope.$apply();
+        }, 2000);
+        //return response.data;
+
+      }, function(response) {
+        alert('An error occurred calling the TEA API.\nSee the Javascript console for details.')
+        console.log('failure:', response)
+        console.log('failure:', response.data.message);
+      });
+
+    }
+
 
   })();

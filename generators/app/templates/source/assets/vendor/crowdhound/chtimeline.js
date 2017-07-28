@@ -62,6 +62,7 @@ var TimelinePost = (function() {
             cookers: {
               cook_post : TimelinePost.cookPost,
               cook_likes : TimelinePost.cookLikes,
+              cook_cloudinary : TimelinePost.cookCloudinary,
               //cook_avatars : cookAvatars
             },
             themes : {
@@ -168,7 +169,7 @@ var TimelinePost = (function() {
             //deleted : 0,
           };
         // }
-        console.log('params=', params);
+        //console.log('params=', params);
 
         CrowdHound.select(params, function(err, selection){
           console.log('after select:', err, selection);
@@ -233,14 +234,19 @@ var TimelinePost = (function() {
                 var url = CrowdHound.addAuthenticationToken(CHConfig.API_URL + '/element');
                 var userId = AUTHSERVICE_USERID;
 
+        console.log('\n\n\n----------\nURL is: ' + url);
+        console.log('userId=' + userId);
+
                 var data = {
-					"type" : "post",
+          					"type" : "post",
                     "rootId" : "$community-page-user-"+userId,
                     "parentId" : "$community-page-user-"+userId,
                     "description" : message,
                     //"anchor" : 'community-page-post-'+userId,
                     "deleted" : 0
                 };
+
+        console.log('data:', data);
 
                 $.ajax({
                     type : "POST",
@@ -251,6 +257,7 @@ var TimelinePost = (function() {
                             && messageResponse.status
                             && messageResponse.status === "ok") {
 
+        alert('posted');
                             //check message for any url links
                             //var urls = findUrls(message);
                             //if(urls.length == 1){
@@ -348,6 +355,45 @@ var TimelinePost = (function() {
           }, callback);
 
         },// cookPost
+
+
+        /*
+         *  For any attachments stored in Cloudinary, get the
+         *  urls for common image sizes.
+         */
+        cookCloudinary: function(params, selection, callback) {
+          //alert('invoked cookCloudinary');
+
+          var cl = null;
+          const prefix = 'cloudinary:';
+          CrowdHound.traverse(selection, function _cookCloudinary(level, element, parent, next) {
+
+            var filename = element.filename;
+            if (filename.startsWith(prefix)) {
+              var publicId = filename.substring(prefix.length);
+              if (cl == null) {
+                //alert('init cl')
+                cl = cloudinary.Cloudinary.new( { cloud_name: CLOUDINARY_CLOUD_NAME});
+              }
+
+              // See http://cloudinary.com/documentation/image_transformations#resizing_and_cropping_images
+              var imageName = publicId + '.jpg';
+              element._cloudinaryImage_raw = cl.url(imageName);
+              element._cloudinaryImage_lowquality = cl.url(imageName, { width:200, effect:"blur:600", opacity:50, crop: "scale" });
+
+              console.log('----> ' + element._cloudinaryImage_lowquality);
+              //console.log('====> ' + cl.imageTab(imageName, { width:100, blur:300, opacity:50 }));
+              element._cloudinaryImage_320 = cl.url(imageName, { width: 320, crop: "limit"});
+              element._cloudinaryImage_480 = cl.url(imageName, { width: 480, crop: "limit"});
+              element._cloudinaryImage_768 = cl.url(imageName, { width: 768, crop: "limit"});
+              element._cloudinaryImage_992 = cl.url(imageName, { width: 992, crop: "limit"});
+              element._cloudinaryImage_1200 = cl.url(imageName, { width: 1200, crop: "limit"});
+              element._cloudinaryImage_1920 = cl.url(imageName, { width: 1920, crop: "limit"});
+            }
+            return next(null);
+          }, callback);
+
+        },// cookCloudinary
 
         constructPostLinkHTML: function(data) {
           var html = "<div class='shared'>"+
@@ -636,6 +682,8 @@ var TimelinePost = (function() {
                     // Called after traversal is finished (and we have the ids and elements).
                     //console.log('select with ids=' + ids)
                     TimelinePost.getLikesTotals(ids, 'like', function(reply) {
+
+                      if (reply) {
                         // reply is [ { elementId, num, total } ]
                         //console.log('votes reply is ', reply)
 
@@ -682,6 +730,11 @@ var TimelinePost = (function() {
                             return callback();
 
                         }, false); // getMyLikes
+
+                      }
+                      else {
+                        alert('null reply from getLikesTotals();');
+                      }
 
                         // This cooker is finished.
                         //return callback();

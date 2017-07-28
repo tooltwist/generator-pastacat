@@ -69,14 +69,15 @@ block css
 
 block content
 
-  section.userprofile.myprofile.simple(ng-app="myApp" ng-controller="myCtrl" ng-cloak)
+  section.userprofile.myprofile.simple(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak)
     .container
       .row
         .col-md-3
           .card.myprofile-menu
             ul(role="tablist")
               li.active(role="presentation")
-                a(href="#tab-tenant-details", role="tab", data-toggle="tab") Details
+                a(href="#tab-tenant-details", role="tab", data-toggle="tab")
+                  span.green Topics
               //- li
 
               include ./includes/plugin-menuitems.pug
@@ -92,7 +93,7 @@ block content
         //- col-md-3
 
 
-        .col-md-9.right-block
+        .col-md-9
           .tab-content
 
 
@@ -101,7 +102,7 @@ block content
               .card
                 .row
                   .col-md-12
-                    h4 DrinkCircle Administration
+                    h1 DrinkCircle Administration
                     br
                     | Select a topic on the left to maintain the Drinkcircle data.
                     br
@@ -122,7 +123,7 @@ block content
             //include ./includes/plugin-menuitem-supplier.pug
             include ./includes/plugin-menuitem-product.pug
             include ./includes/plugin-menuitem-category.pug
-            include ./includes/plugin-menuitem-pv.pug
+            //include ./includes/plugin-menuitem-pv.pug
 
 
           //- tab-content
@@ -144,6 +145,8 @@ block scripts
   script(src="/bower_components/ckeditor/ckeditor.js")
   script(src="/bower_components/angular-ckeditor/angular-ckeditor.min.js")
   script(src="assets/vendor/tooltwist-views-client/tooltwist-views-client.js", type="text/javascript")
+
+  script(src='bower_components/ng-file-upload/ng-file-upload.min.js', type="text/javascript")
 
   script.
     $(function () {
@@ -174,13 +177,8 @@ block scripts
      *    Angular code.
      */
     var DUMMY_LOGIN = false;
-
-    // Tell Angular about this application
-    //var app = angular.module('myApp', ['ngSanitize','toggle-switch']);
-    var app = angular.module('myApp', ['ngSanitize','ckeditor']);
-
-    // Add the controller for this page
-    app.controller('myCtrl', function($scope, $http, $timeout, $compile /*, authserviceApi */) {
+    var app = angular.module('myApp', ['ngSanitize', 'ckeditor', 'ngFileUpload']);
+    app.controller('pageCtrl', function($scope, $http, $timeout, $compile /*, authserviceApi */) {
 
 
       $scope.content = "Hi there<br>Everyone!"
@@ -193,19 +191,21 @@ block scripts
 
       // This code gets the "product" parameter from the
       // URL so we can use it as productVariantId.
-      var productVariantId = NaN;
+      var productId = null;
+      //var productVariantId = NaN;
       window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
         if (key === 'product') {
-          productVariantId = parseInt(value);
+          //productVariantId = parseInt(value);
+          productId = parseInt(value);
+          if (isNaN(productId)) {
+            productId = null;
+          }
         }
       });
       //console.log('Displaying the page for productVariantId=' + productVariantId);
-
-      // During development only
-      var DEFAULT_PRODUCT_VARIANT_ID = 6180;
-      if (isNaN(productVariantId)) {
-        productVariantId = DEFAULT_PRODUCT_VARIANT_ID;
-      }
+      
+      
+      $scope.isAdminUser = false;
 
       authservice.init({
         host: AUTHSERVICE_HOST,
@@ -222,6 +222,20 @@ block scripts
           }
 
           if (user) {
+            
+            // See if this is an admin user
+            if (
+              user.id == 904      // Phil
+              || user.id == 910   // Andrew
+              || user.id == 909   // Darren
+              || user.id == 905   // Aravind
+            ) {
+
+              // Full admin user
+              $scope.isAdminUser = true;
+            }
+            
+            
             $timeout(function(){
         			// Logged in - have a current user
         			$scope.user = user;
@@ -442,8 +456,6 @@ block scripts
 
 
 
-
-
       /*
        *  Set up the menu items
        */
@@ -452,6 +464,8 @@ block scripts
         $http: $http,
         $timeout: $timeout,
         $compile: $compile,
+        host: TEASERVICE_HOST,
+        port: TEASERVICE_PORT,
         TEASERVICE_HOST: TEASERVICE_HOST,
         TEASERVICE_PORT: TEASERVICE_PORT,
         TEASERVICE_VERSION: TEASERVICE_VERSION,
@@ -460,6 +474,20 @@ block scripts
       });
 
 
+      
+
+            
+      /*
+       *  If a productId was specified, we need to show the products tab
+       *  and jump directly to the specified product.
+       */
+      if (productId) {
+        //alert('Jump to product ' + productId);
+        $timeout(function() {
+          PluginMenuItems.activate('Products', { productId: productId });
+          
+        }, 100)
+      }
 
 
 
@@ -786,7 +814,7 @@ block scripts
      */
 
 
-
+    //ZZZZZZZ IS THIS USED?
     $('#authservice-login-submit').click(function() {
        var username = $('#authservice-login-username').val();
        var password = $('#authservice-login-password').val();

@@ -12,1004 +12,1009 @@ block css
 
 
 block content
-  
-  div
-    .banner.social
-      //- .gradient
-      .container.wall-header
-        .col-md-3.photo
-          .img
-            a(href='#modal_coming_soon', data-toggle='modal')
-              i.fa.fa-camera
-            //- a
-            img(src="assets/images/favicon.png", alt="")
-          //- img
-          .name
-            span drinkcircle&nbsp;
-            sup
-              a(href='#modal_coming_soon', data-toggle='modal')
-                i.fa.fa-pencil
-                span edit profile
-              //- a
-            //- sup
-          //- name
-        //- photo
-        .col-md-9.wall-menu
-          .row
-            nav.menu
-              ul
-                li
-                  a.active(href="#") Photos
-                //- li
-                li
-                  a(href='#modal_coming_soon', data-toggle='modal') Events
-                //- li
-              //- ul
-            //- nav
-          //- row
-        //- wall-menu
-      //- info
-    //- banner-home
 
-    section.wall
+  .banner.userprofile.seller.dc
+    .gradient
+    .info
       .container
         .row
-          .col-md-3
-            //- .search.circle
-            //-   a(href="#", target="_blank")
-            //-     i.fa.fa-search
-            //-   //- a
-            //-   input.form-control(type='text', placeholder='search the circle...')
-            //- //- search
-            .intro
-              h4 Online marketplace
-              .rating-status
-                | 4.6
-                .stars
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star-half-o
-                //- stars
-              //- rating-status
-            //- intro
-            .list_groups
-              .search.page.form-icon
-                a(href="#", target="_blank")
-                  i.fa.fa-search
-                //- a
-                input.form-control(type='text', placeholder='search for posts on this page...')
-              //- search
-            //- list_groups
-            .list_groups.sellerinfo
-              .content
-                p
-                  i.fa.fa-users
-                  span
-                    a(href='#modal_coming_soon', data-toggle='modal') 625,842 people like this
-                  //- span
-                //- p
-                p
-                  i.fa.fa-user-plus
-                  span
-                    a(href='#modal_coming_soon', data-toggle='modal') Invite friends to like this Page
-                  //- span
-                //- p
-              //- content
-            //- sellerinfo
-
-            .grid_groups.friends
-              h4
-                a(href='#modal_coming_soon', data-toggle='modal') Photos
-                small (
-                  a(href='#modal_coming_soon', data-toggle='modal') 213
-                  | )
-              //- h4
-              .content
-                .container-fluid
-                  .row
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_5.png", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_6.png", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_7.png", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_8.png", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_1.jpg", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_2.jpg", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_3.jpg", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_4.jpg", alt="")
-                    //- col-md-4
-                    .col-xs-4.col-sm-4.col-md-4.thumb
-                      img(src="assets/images/activity/slide_9.png", alt="")
-                    //- col-md-4
-                  //- row
-                //- container
-              //- content
-              .more
-                a(href='#modal_coming_soon', data-toggle='modal') See all
-              //- more
-            //- grid_groups
-          //- col-md-3
-          .col-md-6
-            .composer
-              .head
-                a(href="#composer-tab-status", role="tab", data-toggle="tab")
-                  i.fa.fa-pencil
-                  | Status
-                a(href="#composer-tab-photo-video", role="tab", data-toggle="tab")
-                  i.fa.fa-picture-o
-                  | Photo/Video
-                a(href="#composer-tab-events", role="tab", data-toggle="tab")
-                  i.fa.fa-calendar-o
-                  | Events
-              //- head
-              .content.tab-content
-                .tab-pane.active#composer-tab-status(role="tabpanel")
-                  textarea.form-control(rows='2')
-                //- composer-tab-status
-                .tab-pane#composer-tab-photo-video(role="tabpanel")
-                  .drop-photo
-                    i.fa.fa-picture-o
-                    br
-                    span Drag Photos/Videos Here
-                  //- event-photo
-                //- composer-tab-status
-                .tab-pane#composer-tab-events(role="tabpanel")
-                  .drop-photo
-                    i.fa.fa-picture-o
-                    br
-                    span Drag Event Photo Here
-                  //- event-photo
-                  .row
-                    .col-md-12
-                      .form-group
-                        label(for='composer-event-name') Event Name
-                        input#composer-event-name.form-control(type='text', placeholder='')
-                      //- form-group
-                    //- col-md-12
-                    .col-md-12
-                      .form-group
-                        label(for='composer-location') Location
-                        input#composer-location.form-control(type='text', placeholder='')
-                      //- form-group
-                    //- col-md-12
-                    .col-md-6.col-sm-6.col-xs-6
-                      .form-group
-                        label(for='composer-event-date-from') From
-                        input#composer-event-date-from.form-control(type='date', placeholder='')
-                      //- form-group
-                    //- col-md-6
-                    .col-md-6.col-sm-6.col-xs-6
-                      .form-group
-                        label(for='composer-event-date-to') to
-                        input#composer-event-date-to.form-control(type='date', placeholder='')
-                      //- form-group
-                    //- col-md-6
-                    .col-md-12
-                      .form-group
-                        label(for='composer-description') Description
-                        textarea#composer-description.form-control(rows="3")
-                      //- form-group
-                    //- col-md-12
-                  //- row
-                //- composer-tab-status
-              //- content
-              .controls
+          .col-sm-3.col-md-3
+            .photo
+              .img.square
                 a(href='#modal_coming_soon', data-toggle='modal')
                   i.fa.fa-camera
                 //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-user-plus
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-smile-o
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-map-marker
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-clock-o
-                //- a
-
-                a.post(href="#")
-                  i.fa.fa-send-o
-                  | Post
-                //- a
-              //- controls
-            //- composer
-
-            .timeline#drinking
-              .content
-                .head
-                  .user
-                    .img
-                      img(src="assets/images/favicon.png", alt="")
-                    //- img
-                    a(href="seller.html") drinkcircle
-                  //- user
-                  .more
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      i.fa.fa-chevron-down
-                    //- a
-                  //- more
-                //- header
-                .inner
-                  //- .caption
-                  //-   p Studies reveal red wine is the drink of choice for great sex...&nbsp;
-                  //-     a(href="#article_sex", data-toggle='modal') see more
-                  //- //- caption
-                  .post
-                    .shared
-                      a(href='#article_sex', data-toggle='modal')
-                        img(src="assets/images/activity/image-1.png", alt="")
-                      .caption
-                        .input-group
-                          span.form-control
-                            h3 Drinking Wine Can Improve Your Sex Life
-                            | Studies reveal red wine is the drink of choice for great sex...&nbsp;
-                            a(href='#article_sex', data-toggle='modal') see more
-                            //- a(href="seller.html") See more
-                          //- span
-                        //- input-group
-                      //- caption
-                    //- shared
-                  //- post
-                //- inner
+                img(src="assets/images/favicon.png", alt="")
+              //- img
+              .name
+                span drinkcircle&nbsp;
+                sup
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-pencil
+                    span edit profile
+                  //- a
+                //- sup
                 br
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | &nbsp;216
-              //- content
-              .controls
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | Like
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-comment
-                  | Comment
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-share
-                  | Share
-                //- a
-              //- controls
-              .footer
-                .comments
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_3.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Darren Crone
-                      //- strong
-                      | Hey mate this is worth reading.
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 15 at 9:53am
-                  //- input-group
-                  .indent
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/img_advisor_1.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="profile.html") Andrew Steer
-                        //- strong
-                        | Thanks for the heads up mate!
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 10:55am
-                    //- input-group
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/users/user_4.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="#", target="_blank") Phil Callender
-                        //- strong
-                        | This is gotta be good news
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 11:23am
-                    //- input-group
-                  //- indent
-                //- comments
-                .comment
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/favicon.png", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    input.form-control(type='text', placeholder='Write a comment...')
-                    span.input-group-addon
-                      a(href='#modal_coming_soon', data-toggle='modal')
-                        i.fa.fa-camera
-                      //- a
-                    //- input-group-addon
-                  //- input-group
-                //- comment
-              //- footer
-            //- timeline
-            .timeline#cooking
-              .content
-                .head
-                  .user
-                    .img
-                      img(src="assets/images/favicon.png", alt="")
-                    //- img
-                    a(href="seller.html") drinkcircle
-                  //- user
-                  .more
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      i.fa.fa-chevron-down
-                    //- a
-                  //- more
-                //- header
-                .inner
-                  //- .caption
-                  //-   p Great tips to make the most from adding wine to your cooking...&nbsp;
-                  //-     a(href='#article_cooking', data-toggle='modal') see more
-                  //- //- caption
-                  .post
-                    .shared
-                      a(href='#article_cooking', data-toggle='modal')
-                        img(src="assets/images/activity/image-8.png", alt="")
-                      .caption
-                        .input-group
-                          span.form-control
-                            h3 The Guide To Cooking With Wine
-                            | Great tips to make the most from adding wine to your cooking...&nbsp;
-                            a(href='#article_cooking', data-toggle='modal') see more
-                            //- a(href="seller.html") See more
-                          //- span
-                        //- input-group
-                      //- caption
-                    //- shared
-                  //- post
-                //- inner
-                br
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | &nbsp;111
-              //- content
-              .controls
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | Like
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-comment
-                  | Comment
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-share
-                  | Share
-                //- a
-              //- controls
-              .footer
-                .comments
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_5.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Cathy Gadd
-                      //- strong
-                      | Looking forward to this, should be awesome !
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 8 at 6:58am
-                  //- input-group
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_6.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Graeme Brunton
-                      //- strong
-                      | See you there Mal I'll be in room 32
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 21 at 6:01pm
-                  //- input-group
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_7.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Kathy Coombe
-                      //- strong
-                      | This sounds a bit special Caitlin Coombe.
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 21 at 9:13am
-                  //- input-group
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_8.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Melissa-Jane Laney
-                      //- strong
-                      a(href='#modal_coming_soon', data-toggle='modal') Alisha-jane Laney
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 12 at 5:55am
-                  //- input-group
-                //- comments
-                .comment
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/favicon.png", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    input.form-control(type='text', placeholder='Write a comment...')
-                    span.input-group-addon
-                      a(href='#modal_coming_soon', data-toggle='modal')
-                        i.fa.fa-camera
-                      //- a
-                    //- input-group-addon
-                  //- input-group
-                //- comment
-              //- footer
-            //- timeline
-            .timeline#top10
-              .content
-                .head
-                  .user
-                    .img
-                      img(src="assets/images/favicon.png", alt="")
-                    //- img
-                    a(href="seller.html") drinkcircle
-                  //- user
-                  .more
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      i.fa.fa-chevron-down
-                    //- a
-                  //- more
-                //- header
-                .inner
-                  //- .caption
-                  //-   p This years hottest 10 list includes a few surprises...&nbsp;
-                  //-     a(href='#article_beers', data-toggle='modal') see more
-                  //- //- caption
-                  .post
-                    .shared
-                      a(href='#article_beers', data-toggle='modal')
-                        img(src="assets/images/activity/image-3.png", alt="")
-                      .caption
-                        .input-group
-                          span.form-control
-                            h3 Top 10 Aussie Craft Beers
-                            | This years hottest 10 list includes a few surprises...&nbsp;
-                            a(href='#article_beers', data-toggle='modal') see more
-                            //- a(href="seller.html") See more
-                          //- span
-                        //- input-group
-                      //- caption
-                    //- shared
-                  //- post
-                //- inner
-                br
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | &nbsp;216
-              //- content
-              .controls
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | Like
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-comment
-                  | Comment
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-share
-                  | Share
-                //- a
-              //- controls
-              .footer
-                .comments
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_3.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Darren Crone
-                      //- strong
-                      | Hey mate this came through this morning I'm down for 3 cases better jump on it straight away?
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 15 at 9:53am
-                  //- input-group
-                  .indent
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/img_advisor_1.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="profile.html") Andrew Steer
-                        //- strong
-                        | thanks for the heads up mate I just ordered 3 cases too. Passed it on Phil and Arv as well! Hope they're not too late it's nearly all gone!
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 10:55am
-                    //- input-group
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/users/user_4.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="#", target="_blank") Phil Callender
-                        //- strong
-                        | thanks Darren just managed to get 2 cases but Arv missed out! Let me know if any other buys like that come up and I'll do the same.
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 11:23am
-                    //- input-group
-                  //- indent
-                //- comments
-                .comment
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/favicon.png", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    input.form-control(type='text', placeholder='Write a comment...')
-                    span.input-group-addon
-                      a(href='#modal_coming_soon', data-toggle='modal')
-                        i.fa.fa-camera
-                      //- a
-                    //- input-group-addon
-                  //- input-group
-                //- comment
-              //- footer
-            //- timeline
-            .timeline#whywine
-              .content
-                .head
-                  .user
-                    .img
-                      img(src="assets/images/favicon.png", alt="")
-                    //- img
-                    a(href="seller.html") drinkcircle
-                  //- user
-                  .more
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      i.fa.fa-chevron-down
-                    //- a
-                  //- more
-                //- header
-                .inner
-                  //- .caption
-                  //-   p Discover the truth that not all alcohol makes you on weight...&nbsp;
-                  //-     a(href='#article_wine', data-toggle='modal') see more
-                  //- //- caption
-                  .post
-                    .shared
-                      a(href='#article_wine', data-toggle='modal')
-                        img(src="assets/images/activity/image-9.png", alt="")
-                      .caption
-                        .input-group
-                          span.form-control
-                            h3 Why Wine Doesn't Make You Fat
-                            | Discover the truth that not all alcohol makes you on weight...&nbsp;
-                            a(href='#article_wine', data-toggle='modal') see more
-                            //- a(href="seller.html") See more
-                          //- span
-                        //- input-group
-                      //- caption
-                    //- shared
-                  //- post
-                //- inner
-                br
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | &nbsp;216
-              //- content
-              .controls
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-heart
-                  | Like
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-comment
-                  | Comment
-                //- a
-                a(href='#modal_coming_soon', data-toggle='modal')
-                  i.fa.fa-share
-                  | Share
-                //- a
-              //- controls
-              .footer
-                .comments
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/users/user_3.jpg", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    span.form-control
-                      strong
-                        a(href="#", target="_blank") Darren Crone
-                      //- strong
-                      | Hey mate this came through this morning I'm down for 3 cases better jump on it straight away?
-                      p
-                        a(href='#modal_coming_soon', data-toggle='modal') Like
-                        | &nbsp;&middot;&nbsp;
-                        a(href='#modal_coming_soon', data-toggle='modal') Reply
-                        | &middot;
-                        small &nbsp;May 15 at 9:53am
-                  //- input-group
-                  .indent
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/img_advisor_1.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="profile.html") Andrew Steer
-                        //- strong
-                        | thanks for the heads up mate I just ordered 3 cases too. Passed it on Phil and Arv as well! Hope they're not too late it's nearly all gone!
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 10:55am
-                    //- input-group
-                    .input-group
-                      span.input-group-addon
-                        .thumb
-                          .img
-                            img(src="assets/images/users/user_4.jpg", alt="")
-                          //- img
-                        //- thumb
-                      //- input-group-addon
-                      span.form-control
-                        strong
-                          a(href="#", target="_blank") Phil Callender
-                        //- strong
-                        | thanks Darren just managed to get 2 cases but Arv missed out! Let me know if any other buys like that come up and I'll do the same.
-                        p
-                          a(href='#modal_coming_soon', data-toggle='modal') Like
-                          | &nbsp;&middot;&nbsp;
-                          a(href='#modal_coming_soon', data-toggle='modal') Reply
-                          | &middot;
-                          small &nbsp;May 15 at 11:23am
-                    //- input-group
-                  //- indent
-                //- comments
-                .comment
-                  .input-group
-                    span.input-group-addon
-                      .thumb
-                        .img
-                          img(src="assets/images/favicon.png", alt="")
-                        //- img
-                      //- thumb
-                    //- input-group-addon
-                    input.form-control(type='text', placeholder='Write a comment...')
-                    span.input-group-addon
-                      a(href='#modal_coming_soon', data-toggle='modal')
-                        i.fa.fa-camera
-                      //- a
-                    //- input-group-addon
-                  //- input-group
-                //- comment
-              //- footer
-            //- timeline
+                small Online marketplace
+              //- name
+            //- photo
+          //- col-md-3
+        //- row
+        .row
+          .col-sm-9.col-md-9.col-sm-offset-3.col-md-offset-3
+            .userprofilemenu
+              nav.menu
+                ul
+                  li
+                    a.active(href="#") Photos
+                  //- li
+                  li
+                    a(href='#modal_coming_soon', data-toggle='modal') Events
+                  //- li
+                //- ul
+              //- nav
+            //- userprofilemenu
           //- col-md-6
-          .col-md-3
-            .list_groups.reviews
+        //- row
+      //- container
+    //- info
+  //- banner-home
 
-              .content
+  section.userprofile
+    .container
+      .row
+        .col-md-3
+          //- .search.circle
+          //-   a(href="#", target="_blank")
+          //-     i.fa.fa-search
+          //-   //- a
+          //-   input.form-control(type='text', placeholder='search the circle...')
+          //- //- search
+          .intro
+            h4 Online marketplace
+            .rating-status
+              | 4.6
+              .stars
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star-half-o
+              //- stars
+            //- rating-status
+          //- intro
+          .search.page
+            a(href="#", target="_blank")
+              i.fa.fa-search
+            //- a
+            input.form-control(type='text', placeholder='search for posts on this page...')
+          //- search
+          .list_groups.sellerinfo
+            .content
+              .input-group
+                span.input-group-addon
+                  i.fa.fa-users
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal') 625,842 people like this
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  i.fa.fa-user-plus
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    | Invite friends to like this Page
+                  //- p
+                //- span
+              //- input-group
+            //- content
+          //- sellerinfo
 
+          .grid_groups.friends
+            h4
+              a(href='#modal_coming_soon', data-toggle='modal') Photos
+              small (
+                a(href='#modal_coming_soon', data-toggle='modal') 213
+                | )
+            //- h4
+            .content
+              .container-fluid
+                .row
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_5.png", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_6.png", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_7.png", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_8.png", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_1.jpg", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_2.jpg", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_3.jpg", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_4.jpg", alt="")
+                  //- col-md-4
+                  .col-xs-4.col-sm-4.col-md-4.thumb
+                    img(src="assets/images/activity/slide_9.png", alt="")
+                  //- col-md-4
+                //- row
+              //- container
+            //- content
+            .more
+              a(href='#modal_coming_soon', data-toggle='modal') See all
+            //- more
+          //- grid_groups
+        //- col-md-3
+        .col-md-6
+          .composer
+            .head
+              a(href="#composer-tab-status", role="tab", data-toggle="tab")
+                i.fa.fa-pencil
+                | Status
+              a(href="#composer-tab-photo-video", role="tab", data-toggle="tab")
+                i.fa.fa-picture-o
+                | Photo/Video
+              a(href="#composer-tab-events", role="tab", data-toggle="tab")
+                i.fa.fa-calendar-o
+                | Events
+            //- head
+            .content.tab-content
+              .tab-pane.active#composer-tab-status(role="tabpanel")
+                textarea.form-control(rows='2')
+              //- composer-tab-status
+              .tab-pane#composer-tab-photo-video(role="tabpanel")
+                .drop-photo
+                  i.fa.fa-picture-o
+                  br
+                  span Drag Photos/Videos Here
+                //- event-photo
+              //- composer-tab-status
+              .tab-pane#composer-tab-events(role="tabpanel")
+                .drop-photo
+                  i.fa.fa-picture-o
+                  br
+                  span Drag Event Photo Here
+                //- event-photo
+                .row
+                  .col-md-12
+                    .form-group
+                      label(for='composer-event-name') Event Name
+                      input#composer-event-name.form-control(type='text', placeholder='')
+                    //- form-group
+                  //- col-md-12
+                  .col-md-12
+                    .form-group
+                      label(for='composer-location') Location
+                      input#composer-location.form-control(type='text', placeholder='')
+                    //- form-group
+                  //- col-md-12
+                  .col-md-6.col-sm-6.col-xs-6
+                    .form-group
+                      label(for='composer-event-date-from') From
+                      input#composer-event-date-from.form-control(type='date', placeholder='')
+                    //- form-group
+                  //- col-md-6
+                  .col-md-6.col-sm-6.col-xs-6
+                    .form-group
+                      label(for='composer-event-date-to') to
+                      input#composer-event-date-to.form-control(type='date', placeholder='')
+                    //- form-group
+                  //- col-md-6
+                  .col-md-12
+                    .form-group
+                      label(for='composer-description') Description
+                      textarea#composer-description.form-control(rows="3")
+                    //- form-group
+                  //- col-md-12
+                //- row
+              //- composer-tab-status
+            //- content
+            .controls
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-camera
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-user-plus
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-smile-o
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-map-marker
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-clock-o
+              //- a
+
+              a.post(href="#")
+                i.fa.fa-send-o
+                | Post
+              //- a
+            //- controls
+          //- composer
+
+          .timeline#drinking
+            .content
+              .head
+                .user
+                  .img
+                    img(src="assets/images/favicon.png", alt="")
+                  //- img
+                  a(href="seller.html") drinkcircle
+                //- user
+                .more
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-chevron-down
+                  //- a
+                //- more
+              //- header
+              .inner
+                //- .caption
+                //-   p Studies reveal red wine is the drink of choice for great sex...&nbsp;
+                //-     a(href="#article_sex", data-toggle='modal') see more
+                //- //- caption
+                .post
+                  .shared
+                    a(href='#article_sex', data-toggle='modal')
+                      img(src="assets/images/activity/image-1.png", alt="")
+                    .caption
+                      .input-group
+                        span.form-control
+                          h3 Drinking Wine Can Improve Your Sex Life
+                          | Studies reveal red wine is the drink of choice for great sex...&nbsp;
+                          a(href='#article_sex', data-toggle='modal') see more
+                          //- a(href="seller.html") See more
+                        //- span
+                      //- input-group
+                    //- caption
+                  //- shared
+                //- post
+              //- inner
+              br
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | &nbsp;216
+            //- content
+            .controls
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | Like
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-comment
+                | Comment
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-share
+                | Share
+              //- a
+            //- controls
+            .footer
+              .comments
                 .input-group
                   span.input-group-addon
                     .thumb
                       .img
-                        img(src='assets/images/img_advisor_1.jpg', alt='')
+                        img(src="assets/images/users/user_3.jpg", alt="")
                       //- img
                     //- thumb
+                  //- input-group-addon
                   span.form-control
-                    strong Tell people what you think
-                    br
-                    a.rate(href="#", target="_blank")
+                    strong
+                      a(href="#", target="_blank") Darren Crone
+                    //- strong
+                    | Hey mate this is worth reading.
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 15 at 9:53am
+                //- input-group
+                .indent
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/img_advisor_1.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="profile.html") Andrew Steer
+                      //- strong
+                      | Thanks for the heads up mate!
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 10:55am
+                  //- input-group
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/users/user_4.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="#", target="_blank") Phil Callender
+                      //- strong
+                      | This is gotta be good news
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 11:23am
+                  //- input-group
+                //- indent
+              //- comments
+              .comment
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/favicon.png", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  input.form-control(type='text', placeholder='Write a comment...')
+                  span.input-group-addon
+                    a(href='#modal_coming_soon', data-toggle='modal')
+                      i.fa.fa-camera
+                    //- a
+                  //- input-group-addon
+                //- input-group
+              //- comment
+            //- footer
+          //- timeline
+          .timeline#cooking
+            .content
+              .head
+                .user
+                  .img
+                    img(src="assets/images/favicon.png", alt="")
+                  //- img
+                  a(href="seller.html") drinkcircle
+                //- user
+                .more
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-chevron-down
+                  //- a
+                //- more
+              //- header
+              .inner
+                //- .caption
+                //-   p Great tips to make the most from adding wine to your cooking...&nbsp;
+                //-     a(href='#article_cooking', data-toggle='modal') see more
+                //- //- caption
+                .post
+                  .shared
+                    a(href='#article_cooking', data-toggle='modal')
+                      img(src="assets/images/activity/image-8.png", alt="")
+                    .caption
+                      .input-group
+                        span.form-control
+                          h3 The Guide To Cooking With Wine
+                          | Great tips to make the most from adding wine to your cooking...&nbsp;
+                          a(href='#article_cooking', data-toggle='modal') see more
+                          //- a(href="seller.html") See more
+                        //- span
+                      //- input-group
+                    //- caption
+                  //- shared
+                //- post
+              //- inner
+              br
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | &nbsp;111
+            //- content
+            .controls
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | Like
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-comment
+                | Comment
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-share
+                | Share
+              //- a
+            //- controls
+            .footer
+              .comments
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_5.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Cathy Gadd
+                    //- strong
+                    | Looking forward to this, should be awesome !
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 8 at 6:58am
+                //- input-group
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_6.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Graeme Brunton
+                    //- strong
+                    | See you there Mal I'll be in room 32
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 21 at 6:01pm
+                //- input-group
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_7.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Kathy Coombe
+                    //- strong
+                    | This sounds a bit special Caitlin Coombe.
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 21 at 9:13am
+                //- input-group
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_8.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Melissa-Jane Laney
+                    //- strong
+                    a(href='#modal_coming_soon', data-toggle='modal') Alisha-jane Laney
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 12 at 5:55am
+                //- input-group
+              //- comments
+              .comment
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/favicon.png", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  input.form-control(type='text', placeholder='Write a comment...')
+                  span.input-group-addon
+                    a(href='#modal_coming_soon', data-toggle='modal')
+                      i.fa.fa-camera
+                    //- a
+                  //- input-group-addon
+                //- input-group
+              //- comment
+            //- footer
+          //- timeline
+          .timeline#top10
+            .content
+              .head
+                .user
+                  .img
+                    img(src="assets/images/favicon.png", alt="")
+                  //- img
+                  a(href="seller.html") drinkcircle
+                //- user
+                .more
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-chevron-down
+                  //- a
+                //- more
+              //- header
+              .inner
+                //- .caption
+                //-   p This years hottest 10 list includes a few surprises...&nbsp;
+                //-     a(href='#article_beers', data-toggle='modal') see more
+                //- //- caption
+                .post
+                  .shared
+                    a(href='#article_beers', data-toggle='modal')
+                      img(src="assets/images/activity/image-3.png", alt="")
+                    .caption
+                      .input-group
+                        span.form-control
+                          h3 Top 10 Aussie Craft Beers
+                          | This years hottest 10 list includes a few surprises...&nbsp;
+                          a(href='#article_beers', data-toggle='modal') see more
+                          //- a(href="seller.html") See more
+                        //- span
+                      //- input-group
+                    //- caption
+                  //- shared
+                //- post
+              //- inner
+              br
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | &nbsp;216
+            //- content
+            .controls
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | Like
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-comment
+                | Comment
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-share
+                | Share
+              //- a
+            //- controls
+            .footer
+              .comments
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_3.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Darren Crone
+                    //- strong
+                    | Hey mate this came through this morning I'm down for 3 cases better jump on it straight away?
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 15 at 9:53am
+                //- input-group
+                .indent
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/img_advisor_1.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="profile.html") Andrew Steer
+                      //- strong
+                      | thanks for the heads up mate I just ordered 3 cases too. Passed it on Phil and Arv as well! Hope they're not too late it's nearly all gone!
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 10:55am
+                  //- input-group
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/users/user_4.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="#", target="_blank") Phil Callender
+                      //- strong
+                      | thanks Darren just managed to get 2 cases but Arv missed out! Let me know if any other buys like that come up and I'll do the same.
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 11:23am
+                  //- input-group
+                //- indent
+              //- comments
+              .comment
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/favicon.png", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  input.form-control(type='text', placeholder='Write a comment...')
+                  span.input-group-addon
+                    a(href='#modal_coming_soon', data-toggle='modal')
+                      i.fa.fa-camera
+                    //- a
+                  //- input-group-addon
+                //- input-group
+              //- comment
+            //- footer
+          //- timeline
+          .timeline#whywine
+            .content
+              .head
+                .user
+                  .img
+                    img(src="assets/images/favicon.png", alt="")
+                  //- img
+                  a(href="seller.html") drinkcircle
+                //- user
+                .more
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-chevron-down
+                  //- a
+                //- more
+              //- header
+              .inner
+                //- .caption
+                //-   p Discover the truth that not all alcohol makes you on weight...&nbsp;
+                //-     a(href='#article_wine', data-toggle='modal') see more
+                //- //- caption
+                .post
+                  .shared
+                    a(href='#article_wine', data-toggle='modal')
+                      img(src="assets/images/activity/image-9.png", alt="")
+                    .caption
+                      .input-group
+                        span.form-control
+                          h3 Why Wine Doesn't Make You Fat
+                          | Discover the truth that not all alcohol makes you on weight...&nbsp;
+                          a(href='#article_wine', data-toggle='modal') see more
+                          //- a(href="seller.html") See more
+                        //- span
+                      //- input-group
+                    //- caption
+                  //- shared
+                //- post
+              //- inner
+              br
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | &nbsp;216
+            //- content
+            .controls
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-heart
+                | Like
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-comment
+                | Comment
+              //- a
+              a(href='#modal_coming_soon', data-toggle='modal')
+                i.fa.fa-share
+                | Share
+              //- a
+            //- controls
+            .footer
+              .comments
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/users/user_3.jpg", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  span.form-control
+                    strong
+                      a(href="#", target="_blank") Darren Crone
+                    //- strong
+                    | Hey mate this came through this morning I'm down for 3 cases better jump on it straight away?
+                    p
+                      a(href='#modal_coming_soon', data-toggle='modal') Like
+                      | &nbsp;&middot;&nbsp;
+                      a(href='#modal_coming_soon', data-toggle='modal') Reply
+                      | &middot;
+                      small &nbsp;May 15 at 9:53am
+                //- input-group
+                .indent
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/img_advisor_1.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="profile.html") Andrew Steer
+                      //- strong
+                      | thanks for the heads up mate I just ordered 3 cases too. Passed it on Phil and Arv as well! Hope they're not too late it's nearly all gone!
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 10:55am
+                  //- input-group
+                  .input-group
+                    span.input-group-addon
+                      .thumb
+                        .img
+                          img(src="assets/images/users/user_4.jpg", alt="")
+                        //- img
+                      //- thumb
+                    //- input-group-addon
+                    span.form-control
+                      strong
+                        a(href="#", target="_blank") Phil Callender
+                      //- strong
+                      | thanks Darren just managed to get 2 cases but Arv missed out! Let me know if any other buys like that come up and I'll do the same.
+                      p
+                        a(href='#modal_coming_soon', data-toggle='modal') Like
+                        | &nbsp;&middot;&nbsp;
+                        a(href='#modal_coming_soon', data-toggle='modal') Reply
+                        | &middot;
+                        small &nbsp;May 15 at 11:23am
+                  //- input-group
+                //- indent
+              //- comments
+              .comment
+                .input-group
+                  span.input-group-addon
+                    .thumb
+                      .img
+                        img(src="assets/images/favicon.png", alt="")
+                      //- img
+                    //- thumb
+                  //- input-group-addon
+                  input.form-control(type='text', placeholder='Write a comment...')
+                  span.input-group-addon
+                    a(href='#modal_coming_soon', data-toggle='modal')
+                      i.fa.fa-camera
+                    //- a
+                  //- input-group-addon
+                //- input-group
+              //- comment
+            //- footer
+          //- timeline
+        //- col-md-6
+        .col-md-3
+          .list_groups.reviews
+
+            .content
+
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/img_advisor_1.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  strong Tell people what you think
+                  br
+                  a.rate(href="#", target="_blank")
+                    i.fa.fa-star-o
                       i.fa.fa-star-o
                         i.fa.fa-star-o
                           i.fa.fa-star-o
                             i.fa.fa-star-o
-                              i.fa.fa-star-o
-                            //- i
                           //- i
                         //- i
                       //- i
-                    //- a
-                  //- span
-                //- input-group
-              //- content
-              .review
-                input.form-control(type='text', placeholder='write a review...')
-              //- review
-            //- feed
+                    //- i
+                  //- a
+                //- span
+              //- input-group
+            //- content
+            .review
+              input.form-control(type='text', placeholder='write a review...')
+            //- review
+          //- feed
 
-            .list_groups.feed
-              .head
-                h4
-                  a(href='#modal_coming_soon', data-toggle='modal') Latest activity
-              //- head
-              .content
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/activity/img_advisor_2.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      strong Rodan Luzuriaga
-                    br
-                    | likes your photo.
-                    //- p
-                  //- span
-                //- input-group
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/img_advisor_1.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a(href="profile.html")
-                      strong Andrew Steer
-                    br
-                    | commented on your post.
-                    //- p
-                  //- span
-                //- input-group
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/activity/img_advisor_2.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      strong Rodan Luzuriaga
-                    br
-                    | shared your post.
-                    //- p
-                  //- span
-                //- input-group
-              //- content
-            //- feed
+          .list_groups.feed
+            .head
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Latest activity
+            //- head
+            .content
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/activity/img_advisor_2.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    strong Rodan Luzuriaga
+                  | likes your photo.
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/img_advisor_1.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a(href="profile.html")
+                    strong Andrew Steer
+                  | commented on your post.
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/activity/img_advisor_2.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    strong Rodan Luzuriaga
+                  | shared your post.
+                  //- p
+                //- span
+              //- input-group
+            //- content
+          //- feed
 
-            .list_groups.messaging
-              .head
-                h4 Live chat
-              //- head
-              .content
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/users/user_3.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a.online(href="#") Darren Crone
-                    br
-                    small online
-                    //- p
-                  //- span
-                //- input-group
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/users/user_2.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a.offline(href="#") Rodan Luzuriaga
-                    br
-                    small 2hours ago
-                    //- p
-                  //- span
-                //- input-group
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/users/user_1.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a.online(href="profile.html") Andrew Steer
-                    br
-                    small online
-                    //- p
-                  //- span
-                //- input-group
-              //- content
-              .search
-                input.form-control(type='text')
-                a.new(href="#")
-                  i.fa.fa-pencil-square-o
-                //- a
-              //- search
-            //- messaging
+          .list_search_groups.messaging
+            .head
+              h4 Live chat
+            //- head
+            .content
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/users/user_3.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a.online(href="#") Darren Crone
+                  small online
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/users/user_2.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a.offline(href="#") Rodan Luzuriaga
+                  small 2hours ago
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/users/user_1.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a.online(href="profile.html") Andrew Steer
+                  small online
+                  //- p
+                //- span
+              //- input-group
+            //- content
+            .search
+              input.form-control(type='text')
+              a.new(href="#")
+                i.fa.fa-pencil-square-o
+              //- a
+            //- search
+          //- messaging
 
-            .list_groups.events
-              .head
-                h4
-                  a(href='#modal_coming_soon', data-toggle='modal') Events
-              //- head
-              .content
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/producers/brokenwood/logo.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      strong Captain's Table Dinner - Monthly
+          .list_groups.events
+            .head
+              h4
+                a(href='#modal_coming_soon', data-toggle='modal') Events
+            //- head
+            .content
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/producers/brokenwood/logo.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    strong Captain's Table Dinner - Monthly
+                  br
+                  | Brokenwood Wines
+                  br
+                  small Fri, 03/06/2016
                     br
-                    | Brokenwood Wines
+                    | 5:30 PM
+                  //- p
+                //- span
+              //- input-group
+              .input-group
+                span.input-group-addon
+                  .thumb
+                    .img
+                      img(src='assets/images/producers/brokenwood/logo.jpg', alt='')
+                    //- img
+                  //- thumb
+                span.form-control
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    strong The Grazing Blaze
+                  br
+                  | Brokenwood Wines
+                  br
+                  small Sat, 11/06/2016
                     br
-                    small Fri, 03/06/2016
-                      br
-                      | 5:30 PM
-                    //- p
-                  //- span
-                //- input-group
-                .input-group
-                  span.input-group-addon
-                    .thumb
-                      .img
-                        img(src='assets/images/producers/brokenwood/logo.jpg', alt='')
-                      //- img
-                    //- thumb
-                  span.form-control
-                    a(href='#modal_coming_soon', data-toggle='modal')
-                      strong The Grazing Blaze
-                    br
-                    | Brokenwood Wines
-                    br
-                    small Sat, 11/06/2016
-                      br
-                      | 4:00 PM to 8:00 PM
-                    //- p
-                  //- span
-                //- input-group
-              //- content
-              .more
-                a(href='#modal_coming_soon', data-toggle='modal') See all
-              //- more
-            //- list_groups
+                    | 4:00 PM to 8:00 PM
+                  //- p
+                //- span
+              //- input-group
+            //- content
+            .more
+              a(href='#modal_coming_soon', data-toggle='modal') See all
+            //- more
+          //- list_groups
 
-          //- col-md-3
-        //- row
-      //- container
-    //- section
-  //- div
+        //- col-md-3
+      //- row
+    //- container
+  //- section
 
 
 block scripts

@@ -335,21 +335,21 @@
           }
         });
 
-        // Add an Angular directive for the login widget
-        console.log('adding directive for login widget')
-        app.directive('authservice-login-widget', function(){
-          return {
-            restrict: 'E',
-            scope: false,
-            templateUrl: 'assets/vendor/authservice/authservice-login-widget.html'
-          }
-        });
+        // // Add an Angular directive for the login widget
+        // console.log('adding directive for login widget')
+        // app.directive('authservice-login-widget', function(){
+        //   return {
+        //     restrict: 'E',
+        //     scope: false,
+        //     templateUrl: 'assets/vendor/authservice/authservice-login-widget.html'
+        //   }
+        // });
 
         app.directive('reviewWidget', function(){
           return {
             restrict: 'E',
             scope: false,
-            templateUrl: 'review-widget.html'
+            templateUrl: 'partials/review-widget.html'
           }
         });
 
@@ -777,7 +777,7 @@
 
       nocomma: null // does nothing
 
-    }; //
+    }; //-addSupplier
 
 
 

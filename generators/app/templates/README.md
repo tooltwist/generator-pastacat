@@ -19,8 +19,8 @@ you might find this suffices:
     gulp copy bower
 
 
-## About the PastaC Stack
-The PastaC Stack makes use of popular technologies to provide highly
+## About the pastacat Stack
+The pastacat Stack makes use of popular technologies to provide highly
 functional applications
 
 Pug - Templating engine.  

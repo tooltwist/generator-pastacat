@@ -1,0 +1,268 @@
+extends ./layout/layout_main.pug
+
+block css
+  style.
+    .logged-in {
+      display: block !important;
+    }
+    .logged-out {
+      display: none;
+    }
+  //- style
+
+  link(href="bower_components/pastac-edit-supplier/dist/pastac-edit-supplier.css" rel="stylesheet" type="text/css")
+
+
+block content
+  div(Zng-app="myApp" Zng-controller="myCtrl" ng-cloak, directive="")
+
+    .banner.userprofile.seller(style="background: url({{supplier._banner}});")
+      .gradient
+      .info
+        .container
+          .row
+            .col-sm-3.col-md-3
+              .photo
+                .img.square
+                  a(href='#modal_coming_soon', data-toggle='modal')
+                    i.fa.fa-camera
+                  //- a
+                  img(ng-src="{{supplier._logo}}", alt="")
+                //- img
+                .name
+                  span {{supplier.supplier_name}}&nbsp;
+                  //- sup
+                  //-   a(href='#modal_coming_soon', data-toggle='modal')
+                  //-     i.fa.fa-pencil
+                  //-     span edit profile
+                  //-   //- a
+                  //- //- sup
+                  br
+                  small.hide.NOTYET
+                    | Winery &amp; Vineyard
+                  br
+                //- name
+              //- photo
+            //- col-md-3
+          //- row
+          
+          .row
+            .col-sm-9.col-md-9.col-sm-offset-3.col-md-offset-3
+              .userprofilemenu
+                nav.menu
+                  .btn-add-friend.hide.NOTYET
+                    | &nbsp;
+                    a.btn.btn-success.btn-sm(href="#")
+                      | Follow
+                    //- a
+                  //- btn-add-friend
+                  ul
+                    li
+                      a(href="seller.html?supplier={{supplierId}}") News
+                    //- li
+                    li
+                      a(href="shop.html?supplier={{supplierId}}") Shop
+                    li
+                      a.active(href="supplier-maint.html?supplier={{supplierId}}").admin-colors Maintenance
+                    //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Shipping
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Return Policy
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Circlebuys
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') Contact Us
+                    //- //- li
+                    //- li
+                    //-   a(href='#modal_coming_soon', data-toggle='modal') About Us
+                    //- //- li
+                  //- ul
+                //- nav
+              //- userprofilemenu
+            //- col-md-6
+          //- row
+        //- container
+      //- info
+    //- banner-home
+
+
+    section.userprofile.drinks.results
+      .container
+        .row
+          .col-md-12
+            br
+            form.form-inline.hide.NOTYET
+              .form-group
+                label(for='exampleInputName2') Sort by
+                select.form-control
+                  //- option Highest rated
+                  //- option Most reviews
+                  option(ng-click=" sortType='name' ; sortReverse=false ") A to Z
+                  option(ng-click=" sortType='name' ; sortReverse=true ") Z to A
+                //- select
+              //- form-group
+              //- .form-group
+              //-   label(for='exampleInputEmail2') Show
+              //-   select.form-control
+              //-     option 15
+              //-     option 50
+              //-     option 100
+              //-   //- select
+              //- //- form-group
+            //- form
+            hr
+
+            .admin-colors
+              pastac-edit-supplier(jwt="jwt" handler="userHandler" supplier-id="supplierID" show-products="true" back-button="false")
+
+        //- col-md-9
+        //- row
+      //- container
+    //- section
+
+
+block scripts
+  // External Script goes here...
+  script(src='assets/vendor/crowdhound/chsearchresultrating.js', type="text/javascript")
+  script(src='assets/vendor/crowdhound/chratingsandreview.js', type="text/javascript")
+  
+  script(src='assets/vendor/pastac/heroDetail/heroDetail.js', type="text/javascript")
+  script(src='assets/vendor/pastac/reviews-summary/reviews-summary.js', type="text/javascript")
+  script(src="/bower_components/pastac-edit-supplier/dist/pastac-edit-supplier.js", type="text/javascript")
+  script(src="/bower_components/angular-sanitize/angular-sanitize.min.js", type="text/javascript")
+  script(src='/bower_components/ng-file-upload/ng-file-upload.min.js', type="text/javascript")
+  script(src="/assets/vendor/tooltwist-views-client/tooltwist-views-client.js", type="text/javascript")
+  script(src="/bower_components/ckeditor/ckeditor.js", type="text/javascript")
+  script(src="/bower_components/angular-ckeditor/angular-ckeditor.min.js", type="text/javascript")
+  script(src="/bower_components/pastac-edit-supplier/dist/pastac-edit-supplier.js", type="text/javascript")
+  script(src="/bower_components/cloudinary/js/jquery.cloudinary.js", type="text/javascript")
+
+  
+  script.
+
+    /************************************************************
+     *
+     *    Angular code.
+     */
+    var app = angular.module('myApp', ['ngSanitize', 'pastac-login', 'pastac-edit-supplier', 'ckeditor', 'ngFileUpload' ]);
+    // Initialise teaservice
+    teaservice.init({
+      host: TEASERVICE_HOST,
+      port: TEASERVICE_PORT,
+      accessToken: TEASERVICE_ACCESS_TOKEN
+    });
+    app.controller('pageCtrl', function($scope, teaService) {
+      
+      var cl = null; // Cloudinary API
+      
+        $scope.authserviceConfig = {
+          host: AUTHSERVICE_HOST,
+          port: AUTHSERVICE_PORT,
+          tenant: AUTHSERVICE_TENANT,
+          dummyLogin: AUTHSERVICE_USE_DUMMY_LOGIN
+        };
+        $scope.userHandler = {
+          onUserChange: function(user, jwt, stale) {
+            console.log('Wow, the user changed!', user);
+            $scope.currentUser = user;
+            $scope.jwt = jwt;
+          },
+          onLoadSupplier: function(supplier) {
+            //alert('handler.onLoadSupplier()');
+            setSupplierImages(supplier);
+            $scope.supplier = supplier;
+          },
+          onLogoUpdate: function(supplier) {
+            console.log('handler.onLogoUpdate(): ' + supplier.logo);
+            setSupplierImages(supplier);
+          },
+          onBannerUpdate: function(supplier) {
+            console.log('handler.onBannerUpdate(): ' + supplier.banner);
+            setSupplierImages(supplier);
+          },
+          onDirectoryPhotoUpdate: function(supplier) {
+            console.log('handler.onDirectoryPhotoUpdate(): ' + supplier.directory_photo);
+            setSupplierImages(supplier);
+          },
+          onNewProduct: function(productId) {
+            console.log('handler.onNewProduct: productId=' + productId)
+          },
+          onSelectProduct: function(product) {
+            //alert('handler.onSelectProduct: productId=' + product.product_id)
+            window.location.href = 'product-maint.html?product=' + product.product_id;
+          }
+
+        }//= handler
+
+
+        // Get the "supplierId" parameter from the URL.
+        var supplierId = null;
+        console.log('window.location=' + window.location + '.')
+        window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) {
+          //console.log('xx:' + key + ':' + value + ':');
+          if (key === 'supplier') {
+            supplierId = value;
+          }
+        });
+        console.log('Displaying the page for supplierId=' + supplierId);
+        if ( !supplierId) {
+          window.location.href = 'index.html';
+        }
+        
+        $scope.supplierID = supplierId;
+
+
+
+      
+        function setSupplierImages(supplier) {
+          console.log('setSupplierImages()');
+          
+          supplier._logo = convertImagePath(supplier.logo, { width:512, height: 512, crop: "scale" });
+          supplier._banner = convertImagePath(supplier.banner, { width:1920, height: 250, crop: "fill" });
+        }
+        
+        function convertImagePath(image, cloudinaryOptions) {
+          console.log('convertImagePath(' + image + ')')
+          
+          const CLOUDINARY_PREFIX = 'cloudinary:';
+          
+          if (!image) {
+
+            // No image
+            console.log('use cleardot.png');
+            return '/assets/images/cleardot.png';
+          } else if (image.startsWith(CLOUDINARY_PREFIX)) {
+
+            // This is a Cloudinary image.
+            console.log('IS CLOUDINARY IMAGE');
+            // Convert the image to multiple formats
+            if (cl == null) {
+                // alert('init cl')
+                cl = cloudinary.Cloudinary.new( { cloud_name: CLOUDINARY_CLOUD_NAME});
+            }
+
+            // See http://cloudinary.com/documentation/image_transformations#resizing_and_cropping_images
+            var publicId = image.substring(CLOUDINARY_PREFIX.length);
+            var imageName = publicId + '.jpg';
+            var url = cl.url(imageName, cloudinaryOptions);
+            console.log('use cloudinary image: ' + url);
+            return url;
+
+          } else {
+
+            // Not a cloudinary image.
+            console.log('use raw image: ' + url);
+            return image;
+          }
+        }//- setImagePaths()
+
+    });
+
+
+
+  //- script.
+//- block scripts

@@ -3109,7 +3109,7 @@ section {
 			}
 		}
 		.drop-photo {
-			padding: 25px;
+			padding: 10px;
 			border: 2px dashed #ddd;
 			text-align: center;
 			margin-bottom: 15px;
@@ -4562,5 +4562,119 @@ div[rn-stepper] {
 circlebuy-widget {
 	.bottle-price {
     margin-left: 50px;
+	}
+}
+
+
+
+
+
+
+// ADMIN, SUPPLIER PANE ======================================================================
+
+#tab-supplier-directory .drop-photo {
+	padding: 10px;
+	border: 2px dashed #ddd;
+	text-align: center;
+	margin-bottom: 15px;
+	i {
+		font-size: 72px;
+		color: #ddd;
+	}
+	span {
+		color: #ccc;
+	}
+}
+
+
+.btn-admin1 {
+	// See http://charliepark.org/bootstrap_buttons/
+	background-color: hsl(36, 100%, 40%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffad32", endColorstr="#cc7a00");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#ffad32), to(#cc7a00));
+	background-image: -moz-linear-gradient(top, #ffad32, #cc7a00);
+	background-image: -ms-linear-gradient(top, #ffad32, #cc7a00);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffad32), color-stop(100%, #cc7a00));
+	background-image: -webkit-linear-gradient(top, #ffad32, #cc7a00);
+	background-image: -o-linear-gradient(top, #ffad32, #cc7a00);
+	background-image: linear-gradient(#ffad32, #cc7a00);
+	border-color: #cc7a00 #cc7a00 hsl(36, 100%, 35%);
+	color: #333 !important;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-admin {
+	// See http://charliepark.org/bootstrap_buttons/
+  background-color: hsl(0, 97%, 37%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fb2626", endColorstr="#b90202");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fb2626), to(#b90202));
+  background-image: -moz-linear-gradient(top, #fb2626, #b90202);
+  background-image: -ms-linear-gradient(top, #fb2626, #b90202);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fb2626), color-stop(100%, #b90202));
+  background-image: -webkit-linear-gradient(top, #fb2626, #b90202);
+  background-image: -o-linear-gradient(top, #fb2626, #b90202);
+  background-image: linear-gradient(#fb2626, #b90202);
+  border-color: #b90202 #b90202 hsl(0, 97%, 32%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+//$admin 	: #d9534f;
+$admin-highlight 	: #d9534f;
+$admin-color 	: #555;
+$admin-font-size 	: 14px;
+
+
+.admin-colors {
+	color: $admin-color !important;
+	font-size: $admin-font-size;
+
+	h2 {
+		color: #d9534f;
+	}
+
+	// Input fields
+	input {
+		color: $admin-color !important;
+		font-size: $admin-font-size;
+	}
+	select {
+		color: $admin-color !important;
+		font-size: $admin-font-size;
+	}
+
+	// tabs and anchors
+	a {
+		//color: #d9534f !important;
+		//color: #666 !important;
+		//color: #999 !important;
+	}
+
+	li.active a {
+		//color: $admin-highlight !important;
+		font-weight: bold;
+		//color: orange !important;
+
+	}
+
+	// Placeholder
+	::-webkit-input-placeholder { /* Chrome */
+	  color: #999;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  color: #999;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  color: #999;
+	  opacity: 1;
+	}
+	:-moz-placeholder { /* Firefox 4 - 18 */
+	  color: #999;
+	  opacity: 1;
 	}
 }

@@ -2,7 +2,8 @@
 .tab-pane#tab-category-pane(role="tabpanel")
   .card
     .row
-      .col-md-2
+      .col-md-5
+        br
         ul.category-hierarchy
           li(ng-repeat="cat in categories")
             a.mouse-pointer(ng-click="categorySelectButton(cat)" ng-class="{'category-selected': cat == category}") &nbsp;{{cat.name}}
@@ -16,7 +17,7 @@
                       li(ng-repeat="cat4 in cat3.children")
                         a.mouse-pointer(ng-click="categorySelectButton(cat4)" ng-class="{'category-selected': cat4.categoryId == category.categoryId}") &nbsp;{{cat4.name}}
       //- col-md-6
-      .col-md-10
+      .col-md-7
         ul.nav.nav-tabs
           li.active
             a(href="#tab-category-details" data-toggle="tab") Details
@@ -45,18 +46,20 @@
 
           // Category specifications pane
           #tab-category-specifications.tab-pane
-            h4 {{category.name}}
+            h3 {{category.name}}
             table.table.table-condensed
               tr
                 th Name
                 th Id
                 th Data type
+                th Units
                 th
 
               // Row showing the
               tr(ng-repeat-start="type in categorySpecificationTypes")
                 td(style="border:none;" ng-class="strikethroughClassIf_is_deleted(type)") {{type.name}}
                 td(style="border:none;" ng-class="strikethroughClassIf_is_deleted(type)") {{type.category_specification_type_id}}
+                td(style="border:none;" ng-class="strikethroughClassIf_is_deleted(type)") {{type.data_type}}
                 //td(style="border:none;" ng-class="strikethroughClassIf_is_deleted(type)") {{type.specification_type_id}}
                 td.category-spec-type(style="border:none;" ng-class="strikethroughClassIf_is_deleted(type)")
                   p(ng-if="type.data_type == 'OPT'")
@@ -82,8 +85,14 @@
                         span.glyphicon.glyphicon-trash.delete-button(ng-if="!option.is_deleted" aria-hidden="true" ng-click="catSpecOption_toggleDelete(option)")
                         span.glyphicon.glyphicon-trash.restore-button(ng-if="option.is_deleted" aria-hidden="true" ng-click="catSpecOption_toggleDelete(option)")
 
-                      //td {{option.sequence}}
+                        // Edit button
+                        | &nbsp;
+                        a(data-toggle="modal" data-target="#tab-category-pane-option-name-modal" ng-click="categorySpecificationTypes_setCurrentOption(option)") &nbsp;edit
+                  //- table
+                  a(data-toggle="modal" data-target="#tab-category-pane-option-name-modal" ng-click="categorySpecificationTypes_addOption(type)") Add a new option
 
+              //- tr
+            //- table
 
 
 
@@ -109,6 +118,27 @@
   //- card
 //- tab-pane
 
+
+// Modal
+#tab-category-pane-option-name-modal.modal.fade(role="dialog")
+  .modal-dialog
+    .modal-content
+      .modal-header.admin-colors
+        button.close(type="button" data-dismiss="modal") &times;
+        h4.modal-title Option name
+      .modal-body
+        small
+          | {{categorySpecificationTypes_currentOption}}
+        .form-group
+          label(for="categorySpecificationType_option_name") Name
+          input#categorySpecificationType_option_name.form-control(ng-model="categorySpecificationTypes_currentOption.name")
+        .alert.alert-danger(ng-hide="!ctrl.errmsg")
+          | {{ctrl.errmsg}}
+      .modal-footer.admin-colors
+        button.btn.btn-danger(type="button" ng-click="categorySpecificationTypes_saveCurrentOption(categorySpecificationTypes_currentOption)" ng-disabled="categorySpecificationTypes_inProgress")
+          .spinner.glyphicon.glyphicon-refresh(ng-hide="!categorySpecificationTypes_inProgress")
+          | Save
+        button.btn.btn-danger(type="button" data-dismiss="modal") Close
 
 
 
@@ -435,10 +465,118 @@ script.
       };
 
 
+      $scope.categorySpecificationTypes_setCurrentOption = function(option) {
+        console.log('option is ', option);
+        $scope.categorySpecificationTypes_currentOption = option;
+      }
+      
+      
+      $scope.categorySpecificationTypes_saveCurrentOption = function(option) {
+        
+        // Prepare the request.
+        var url = baseUrl + '/admin/categorySpecificationOption_name/save';
+        var req = {
+          method: 'POST',
+          url: url,
+          headers: {
+            "access-token": "0613952f81da9b3d0c9e4e5fab123437",
+            "version": "2.0.0"
+          },
+          data: {
+            "category_specification_option_id": option.category_specification_option_id,
+          	"name": option.name
+          }
+        };
+        console.log('url=' + url);
+        console.log('params=', req)
+
+        // Call the server
+        context.$http(req).then(function(response) {
+          console.log('saved okay');
+          $('#tab-category-pane-option-name-modal').modal('hide');
+        }, function(response) {
+          alert('An error occurred calling the TEA API.\nSee the Javascript console for details.')
+          console.log('failure:', response)
+          console.log('failure:', response.data.message);
+        });
+
+      }//- categorySpecificationTypes_saveCurrentOption
+
+
+      /*
+       *  Add a new option to a specification type.
+       */
+      $scope.categorySpecificationTypes_addOption = function(type) {
+        console.log('categorySpecificationTypes_addOption()', type);
+        
+        // Find an unused option name
+        for (var cnt = 0; ; cnt++) {
+          var name = (cnt == 0) ? '' : ('option-' + cnt);
+          var taken = false;
+          type.options.forEach(function(opt) {
+            if (opt.name == name) {
+              taken = true;
+            }
+          });
+          if ( !taken) {
+            break;
+          }
+        }
+        
+        // Get the new option ready
+        var option = {
+          // category_specification_option_id is missing, causing a new record
+          // to be created. We patch the value in below so it can be updated.
+          category_specification_type_id: type.category_specification_type_id,
+          name: name
+        };
+
+        // Create a new option immediately, with no name.
+        var url = baseUrl + '/admin/categorySpecificationOption/save';
+        var req = {
+          method: 'POST',
+          url: url,
+          headers: {
+            "access-token": "0613952f81da9b3d0c9e4e5fab123437",
+            "version": "2.0.0"
+          },
+          data: option
+        };
+        console.log('url=' + url);
+        console.log('params=', req)
+
+        // Call the server
+        context.$http(req).then(function(response) {
+          
+          // Update the record with it's new primary key.
+          //alert('new category_specification_option_id = ' + option.category_specification_option_id)
+          option.category_specification_option_id = response.data.newId;
+          
+          // Add this new option to the type, sort the options, and edit the option.
+          type.options.push(option);
+          type.options.sort(function(o1, o2) {
+            var name1 = o1.name.toUpperCase();
+            var name2 = o2.name.toUpperCase();
+            if (name1 < name2) return -1;
+            if (name1 > name2) return +1;
+            return 0;
+          });
+          $scope.categorySpecificationTypes_currentOption = option;
+          $('#tab-category-pane-option-name-modal').modal('show');
+          
+        }, function(response) {
+          alert('An error occurred calling the TEA API.\nSee the Javascript console for details.')
+          console.log('failure:', response)
+          console.log('failure:', response.data.message);
+        });
+
+      }
 
 
 
-
+      /*
+       *  Load the data for the page.
+       */
       // Load all the categories
       var url = baseUrl + '/philChristmas/getCategories';
 
